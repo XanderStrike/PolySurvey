@@ -1,0 +1,28 @@
+
+	<div id="header">
+		<h1>Survey</h1>
+		<hr size="1">
+	</div>
+
+	<div id="body">
+		<div id="content">
+			<h3>There are a number of important issues in any election.  Please tell us your opinion on the following 15 hot-button issues.  On many questions, people are torn between two options.  If you find yourself torn between two choices, try to select the option <i>closest</i> to your opinion.  </h3>
+
+			<%= form_tag 'p003' do -%>
+
+			<div id="question">
+					<p>1. Do you think that we should increase our spending on national defense, keep it about the same, or cut it back?</p>
+
+					<%= radio_button_tag(:n01, "+1", false, :required => 'required') %>
+					<%= label_tag("n01__1", "Increase defense spending") %><br>
+					<%= radio_button_tag(:n01, "0", false, :required => 'required') %>
+					<%= label_tag("n01_0", "Keep it about the same") %><br>
+					<%= radio_button_tag(:n01, "-1", false, :required => 'required') %>
+					<%= label_tag("n01_-1", "Cut it back") %><br>
+			</div>
+
+			<%= submit_tag "Continue" %>
+
+			<% end %>
+		</div>
+	</div>
