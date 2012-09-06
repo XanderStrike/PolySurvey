@@ -58,5 +58,8 @@ class Results < ActiveRecord::Base
   attr_accessible :time1
   attr_accessible :time2
   attr_accessible :time3
+  attr_accessible :time4
+  attr_accessible :time5
+  attr_accessible :time6
   attr_accessible :vote
 end
