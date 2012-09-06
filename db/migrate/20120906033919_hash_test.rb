@@ -1,60 +1,59 @@
 class HashTest < ActiveRecord::Migration
   def change
-    add_column :q1
-    add_column :q2
-    add_column :q3
-    add_column :q4  
-    add_column :q5
-    add_column :q6
-    add_column :q7
-    add_column :q8
-    add_column :q9
-    add_column :q10
-    add_column :q11
-    add_column :q12
-    add_column :q13
-    add_column :q14 
-    add_column :q15
-    add_column :psq1
-    add_column :psq2
-    add_column :psq3
-    add_column :psq4
-    add_column :psq5
-    add_column :psq6
-    add_column :psq7
-    add_column :psq8
-    add_column :psq9
-    add_column :psq10
-    add_column :psq11
-    add_column :psq12
-    add_column :psq13
-    add_column :psq14
-    add_column :psq15
-    add_column :psq16
-    add_column :psq17
-    add_column :psq18
-    add_column :psq19
-    add_column :psq20
-    add_column :psq21
-    add_column :psq22
-    add_column :psq23
-    add_column :psq24
-    add_column :psq25
-    add_column :psq26
-    add_column :psq27
-    add_column :psq28
-    add_column :psq29
-    add_column :psq30
-    add_column :psq31
-    add_column :psq32
-    add_column :psq32
-    add_column :psq33
-    add_column :psq34
-    add_column :psq35
-    add_column :psq36
-    add_column :psq37
-    add_column :psq38
-    add_column :psq39
-    add_column :special_response
+    add_column :results :q1 :integer
+    add_column :results :q2 :integer
+    add_column :results :q3 :integer
+    add_column :results :q4 :integer
+    add_column :results :q5 :integer
+    add_column :results :q6 :integer
+    add_column :results :q7 :integer
+    add_column :results :q8 :integer
+    add_column :results :q9 :integer
+    add_column :results :q10 :integer
+    add_column :results :q11 :integer
+    add_column :results :q12 :integer
+    add_column :results :q13 :integer
+    add_column :results :q14  :integer
+    add_column :results :q15 :integer
+    add_column :results :psq1 :integer
+    add_column :results :psq2 :integer
+    add_column :results :psq3 :integer
+    add_column :results :psq4 :integer
+    add_column :results :psq5 :integer
+    add_column :results :psq6 :integer
+    add_column :results :psq7 :integer
+    add_column :results :psq8 :integer
+    add_column :results :psq9 :integer
+    add_column :results :psq10 :integer
+    add_column :results :psq11 :integer
+    add_column :results :psq12 :integer
+    add_column :results :psq13 :integer
+    add_column :results :psq14 :integer
+    add_column :results :psq15 :integer
+    add_column :results :psq16 :integer
+    add_column :results :psq17 :integer
+    add_column :results :psq18 :integer
+    add_column :results :psq19 :integer
+    add_column :results :psq20 :integer
+    add_column :results :psq21 :integer
+    add_column :results :psq22 :integer
+    add_column :results :psq23 :integer
+    add_column :results :psq24 :integer
+    add_column :results :psq25 :integer
+    add_column :results :psq26 :integer
+    add_column :results :psq27 :integer
+    add_column :results :psq28 :integer
+    add_column :results :psq29 :integer
+    add_column :results :psq30 :integer
+    add_column :results :psq31 :integer
+    add_column :results :psq32 :integer
+    add_column :results :psq32 :integer
+    add_column :results :psq33 :integer
+    add_column :results :psq34 :integer
+    add_column :results :psq35 :integer
+    add_column :results :psq36 :integer
+    add_column :results :psq37 :integer
+    add_column :results :psq38 :integer
+    add_column :results :psq39 :integer
   end
 end
