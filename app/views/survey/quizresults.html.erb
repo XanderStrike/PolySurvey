@@ -1,5 +1,4 @@
-<html>
-<body>
+
 	<div id="header">
 		<h1>Survey</h1>
 		<hr size="1">
@@ -14,9 +13,11 @@
 				Candidate <%= @name1[0] %> - <%= @name1[1] %> match</br>
 				Candidate <%= @name2[0] %> - <%= @name2[1] %> match </p>
 
-			<a href="blurb">Continue</a>
+			<%= form_tag 'blurb' do -%>
+				<%= hidden_field_tag :results, @data %>
+				<%= submit_tag "Continue" %>
+			<% end %>
 
 			<br><br><%= @data %>
 		</div>
 	</div>
-</body>
