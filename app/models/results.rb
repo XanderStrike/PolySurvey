@@ -56,3 +56,4 @@ class Results < ActiveRecord::Base
   attr_accessable :psq39
   attr_accessable :special_response
   
+end

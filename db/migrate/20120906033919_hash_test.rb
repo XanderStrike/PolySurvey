@@ -1,7 +1,60 @@
 class HashTest < ActiveRecord::Migration
-  def up
-  end
-
-  def down
+  def change
+    add_columm :q1
+    add_columm :q2
+    add_columm :q3
+    add_columm :q4  
+    add_columm :q5
+    add_columm :q6
+    add_columm :q7
+    add_columm :q8
+    add_columm :q9
+    add_columm :q10
+    add_columm :q11
+    add_columm :q12
+    add_columm :q13
+    add_columm :q14 
+    add_columm :q15
+    add_columm :psq1
+    add_columm :psq2
+    add_columm :psq3
+    add_columm :psq4
+    add_columm :psq5
+    add_columm :psq6
+    add_columm :psq7
+    add_columm :psq8
+    add_columm :psq9
+    add_columm :psq10
+    add_columm :psq11
+    add_columm :psq12
+    add_columm :psq13
+    add_columm :psq14
+    add_columm :psq15
+    add_columm :psq16
+    add_columm :psq17
+    add_columm :psq18
+    add_columm :psq19
+    add_columm :psq20
+    add_columm :psq21
+    add_columm :psq22
+    add_columm :psq23
+    add_columm :psq24
+    add_columm :psq25
+    add_columm :psq26
+    add_columm :psq27
+    add_columm :psq28
+    add_columm :psq29
+    add_columm :psq30
+    add_columm :psq31
+    add_columm :psq32
+    add_columm :psq32
+    add_columm :psq33
+    add_columm :psq34
+    add_columm :psq35
+    add_columm :psq36
+    add_columm :psq37
+    add_columm :psq38
+    add_columm :psq39
+    add_columm :special_response
   end
 end
