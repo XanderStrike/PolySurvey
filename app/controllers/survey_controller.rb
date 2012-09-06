@@ -75,7 +75,7 @@ class SurveyController < ApplicationController
     @name2 = ["#{@data[20]}", "#{@data[21]}"]
 
     # Determine which group, close election or blowout election they are part of
-    group = rand(2)
+    @group = rand(4)
   end
 
   def p005
