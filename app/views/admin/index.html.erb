@@ -1,0 +1,4 @@
+<%# if @user.admin? %>
+  Welcome, Admin!
+  <%= button_to "Output results to file", {:controller => "admin", :action => "output_results"}, :remote => true %>
+<%# end %>

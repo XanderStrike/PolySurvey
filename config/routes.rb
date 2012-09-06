@@ -1,4 +1,8 @@
 PolySurvey::Application.routes.draw do
+  get "admin/new"
+
+  get "admin/output_results"
+
   get "survey/p001"
 
   get "survey/p002"
@@ -11,6 +15,10 @@ PolySurvey::Application.routes.draw do
 
   get "survey/p005"
   post "survey/p005"
+
+  get "admin/index"
+  
+  post "admin/output_results"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
