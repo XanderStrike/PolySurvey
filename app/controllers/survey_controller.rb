@@ -69,16 +69,25 @@ class SurveyController < ApplicationController
 
   def p004
     @data = params["results"].split(',')
-
     @name0 = ["#{@data[16]}", "#{@data[17]}"]
     @name1 = ["#{@data[18]}", "#{@data[19]}"]
     @name2 = ["#{@data[20]}", "#{@data[21]}"]
 
     # Determine which group, close election or blowout election they are part of
     @group = rand(4)
+
+    @data_new = params["results"] + ",#{@group}"
   end
 
   def p005
+    @data = params["results"].split(',')
+    @name0 = ["#{@data[16]}", "#{@data[17]}"]
+    @name1 = ["#{@data[18]}", "#{@data[19]}"]
+    @name2 = ["#{@data[20]}", "#{@data[21]}"]
+
+    @group = @data[23]
+
+    @debug = params["results"]
   end
 
 
@@ -89,3 +98,5 @@ end
 #   15 - Political alignment
 #   16, 18, 20 - Candidate names, most to least
 #   17, 19, 21 - Percentages
+#   22 - Group for candidate display (0-5)
+#   23 - Group for news blurb display (0-3)
