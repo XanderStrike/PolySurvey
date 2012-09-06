@@ -90,6 +90,14 @@ class SurveyController < ApplicationController
     @debug = params["results"]
   end
 
+  def p006
+    @data = params["results"].split(',')
+
+    @params = params.to_s
+
+    @vote = params[:vote]
+  end
+
 
 end
 
