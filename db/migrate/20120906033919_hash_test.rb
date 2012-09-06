@@ -47,7 +47,6 @@ class HashTest < ActiveRecord::Migration
     add_column :results, :psq30, :integer
     add_column :results, :psq31, :integer
     add_column :results, :psq32, :integer
-    add_column :results, :psq32, :integer
     add_column :results, :psq33, :integer
     add_column :results, :psq34, :integer
     add_column :results, :psq35, :integer
