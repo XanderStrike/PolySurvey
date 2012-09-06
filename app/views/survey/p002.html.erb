@@ -10,150 +10,149 @@
 
 			<%= form_tag 'p003' do -%>
 
-			<div id="question">
+			<div class="question">
 					<p>1. Do you think that we should increase our spending on national defense, keep it about the same, or cut it back?</p>
-
-					<%= radio_button_tag(:n01, "+1") %>
-					<%= label_tag("n01__1", "Increase defense spending") %><br>
-					<%= radio_button_tag(:n01, "0") %>
-					<%= label_tag("n01_0", "Keep it about the same") %><br>
-					<%= radio_button_tag(:n01, "-1") %>
-					<%= label_tag("n01_-1", "Cut it back") %><br>
+					<input type="radio" name="n01" value="+1" id="n01__1" />
+					<label for="n01__1">Increase defense spending</label><br>
+					<input type="radio" name="n01" value="0" id="n01_0" />
+					<label for="n01_0">Keep it about the same</label><br>
+					<input type="radio" name="n01" value="-1" id="n01_-1" />
+					<label for="n01_-1">Cut it back</label><br>
 			</div>
 
-			<div id="question">
+			<div class="question">
 					<p>2. If you were making up the budget for the federal government this year (2011), would you increase spending, decrease spending or keep spending the same for...health care?</p>
 					
-					<%= radio_button_tag(:n02, "-1") %>
-					<%= label_tag("n02_-1", "Increase spending") %><br>
-					<%= radio_button_tag(:n02, "0") %>
-					<%= label_tag("n02_0", "Keep spending the same") %><br>
-					<%= radio_button_tag(:n02, "+1") %>
-					<%= label_tag("n02__1", "Decrease spending") %><br>
+					<input type="radio" name="n02" value="-1" id="n02_-1" />
+					<label for="n02_-1">Increase spending</label><br>
+					<input type="radio" name="n02" value="0" id="n02_0" />
+					<label for="n02_0">Keep spending the same</label><br>
+					<input type="radio" name="n02" value="+1" id="n02_+1" />
+					<label for="n02_+1">Decrease spending</label><br>
 			</div>
 
-			<div id="question">
+			<div class="question">
 					<p>3. Would you support or oppose building a security fence along the US (United States)-Mexico border to try to stop illegal immigration?</p>
 					
-					<%= radio_button_tag(:n03, "+1") %>
-					<%= label_tag("n03__1", "Support building a fence") %><br>
-					<%= radio_button_tag(:n03, "-1") %>
-					<%= label_tag("n03_-1", "Oppose building a fence") %><br>
+					<input type="radio" name="n03" value="+1" id="n03_+1" />
+					<label for="n03_+1">Support building a fence</label><br>
+					<input type="radio" name="n03" value="-1" id="n03_-1" />
+					<label for="n03_-1">Oppose building a fence</label><br>
 			</div>
 
-			<div id="question">
+			<div class="question">
 					<p>4. In your view, what is the best way to reduce the federal budget deficit? Should we mostly focus on cutting major programs, mostly focus on increasing taxes, or should we do a combination of both?</p>
 					
-					<%= radio_button_tag(:n04, "+1") %>
-					<%= label_tag("n04__1", "Cut major programs") %><br>
-					<%= radio_button_tag(:n04, "-1") %>
-					<%= label_tag("n04_-1", "Increase taxes") %><br>
-					<%= radio_button_tag(:n04, "0") %>
-					<%= label_tag("n04_0", "A combination of both") %><br>
+					<input type="radio" name="n04" value="+1" id="n04_+1" />
+					<label for="n04_+1">Cut major programs</label><br>
+					<input type="radio" name="n04" value="-1" id="n04_-1" />
+					<label for="n04_-1">Increase taxes</label><br>
+					<input type="radio" name="n04" value="0" id="n04_0" />
+					<label for="n04_0">A combination of both</label><br>
 			</div>
 
-			<div id="question">
+			<div class="question">
 					<p>5. As it conducts the war on terrorism, do you think the United States government is or is not doing enough to protect the civil liberties of American citizens?</p>
 					
-					<%= radio_button_tag(:n05, "+1") %>
-					<%= label_tag("n05__1", "Doing enough to protect civil liberties") %><br>
-					<%= radio_button_tag(:n05, "-1") %>
-					<%= label_tag("n05_-1", "Not doing enough to protect civil liberties") %><br>
+					<input type="radio" name="n05" value="+1" id="n05_+1" />
+					<label for="n05_+1">Doing enough to protect civil liberties</label><br>
+					<input type="radio" name="n05" value="-1" id="n05_-1" />
+					<label for="n05_-1">Not doing enough to protect civil liberties</label><br>
 			</div>
 
-			<div id="question">
+			<div class="question">
 					<p>6. Do you think it should be legal or not legal for same-sex couples to marry?</p>
 					
-					<%= radio_button_tag(:n06, "-1") %>
-					<%= label_tag("n06_-1", "Legal") %><br>
-					<%= radio_button_tag(:n06, "+1") %>
-					<%= label_tag("n06__1", "Illegal") %><br>
+					<input type="radio" name="n06" value="-1" id="n06_-1" />
+					<label for="n06_-1">Legal</label><br>
+					<input type="radio" name="n06" value="+1" id="n06_+1" />
+					<label for="n06_+1">Illegal</label><br>
 			</div>
 
-			<div id="question">
+			<div class="question">
 					<p>7. When there is a conflict between environmental protection and economic growth, which do you think is more important?</p>
 					
-					<%= radio_button_tag(:n07, "-1") %>
-					<%= label_tag("n07_-1", "Protecting the environment") %><br>
-					<%= radio_button_tag(:n07, "+1") %>
-					<%= label_tag("n07__1", "Economic growth") %><br>
+					<input type="radio" name="n07" value="-1" id="n07_-1" />
+					<label for="n07_-1">Protecting the environment</label><br>
+					<input type="radio" name="n07" value="+1" id="n07_+1" />
+					<label for="n07_+1">Economic growth</label><br>
 			</div>
 
-			<div id="question">
+			<div class="question">
 					<p>8. Do you think the US (United States) is doing the right thing by fighting the war in Afghanistan now, or should the US not be involved in Afghanistan now?</p>
 					
-					<%= radio_button_tag(:n08, "+1") %>
-					<%= label_tag("n08__1", "Right thing") %><br>
-					<%= radio_button_tag(:n08, "-1") %>
-					<%= label_tag("n08_-1", "Should not be involved") %><br>
+					<input type="radio" name="n08" value="+1" id="n08_+1" />
+					<label for="n08_+1">Right thing</label><br>
+					<input type="radio" name="n08" value="-1" id="n08_-1" />
+					<label for="n08_-1">Should not be involved</label><br>
 			</div>
 
-			<div id="question">
+			<div class="question">
 					<p>9. In your opinion, which is more important? </p>
 					
-					<%= radio_button_tag(:n09, "+1") %>
-					<%= label_tag("n09__1", "Preventing Iran from developing nuclear weapons, even if it means taking military action.") %><br>
-					<%= radio_button_tag(:n09, "-1") %>
-					<%= label_tag("n09_-1", "Avoiding a military conflict with Iran, even if it means they may develop nuclear weapons.") %><br>
+					<input type="radio" name="n09" value="+1" id="n09_+1" />
+					<label for="n09_+1">Preventing Iran from developing nuclear weapons, even if it means taking military action.</label><br>
+					<input type="radio" name="n09" value="-1" id="n09_-1" />
+					<label for="n09_-1">Avoiding a military conflict with Iran, even if it means they may develop nuclear weapons.</label><br>
 			</div>
 
-			<div id="question">
+			<div class="question">
 					<p>10. What do you think is more important--to protect the right of Americans to own guns, or to control gun ownership?</p>
 					
-					<%= radio_button_tag(:n10, "+1") %>
-					<%= label_tag("n10__1", "Protecting the right to own guns") %><br>
-					<%= radio_button_tag(:n10, "-1") %>
-					<%= label_tag("n10_-1", "Controlling gun ownership") %><br>
+					<input type="radio" name="n10" value="+1" id="n10_+1" />
+					<label for="n10_+1">Protecting the right to own guns</label><br>
+					<input type="radio" name="n10" value="-1" id="n10_-1" />
+					<label for="n10_-1">Controlling gun ownership</label><br>
 			</div>
 
-			<div id="question">
+			<div class="question">
 					<p>11. Which of the following two statements about the role of government comes closest to your point of view.  Statement A: “Government should do more to solve problems and help meet the needs of people.” OR Statement B: “Government is doing too many things better left to businesses and individuals.”</p>
 					
-					<%= radio_button_tag(:n11, "-1") %>
-					<%= label_tag("n11_-1", "Government should do more") %><br>
-					<%= radio_button_tag(:n11, "+1") %>
-					<%= label_tag("n11__1", "Government is doing too many things") %><br>
+					<input type="radio" name="n11" value="-1" id="n11_-1" />
+					<label for="n11_-1">Government should do more</label><br>
+					<input type="radio" name="n11" value="+1" id="n11_+1" />
+					<label for="n11_+1">Government is doing too many things</label><br>
 			</div>
 
-			<div id="question">
+			<div class="question">
 					<p>12. In general, government grows bigger as it provides more services.  If you had to choose, would you rather have a smaller government providing less services, or a bigger government providing more services.</p>
 					
-					<%= radio_button_tag(:n12, "+1") %>
-					<%= label_tag("n12__1", "Smaller government, less services") %><br>
-					<%= radio_button_tag(:n12, "-1") %>
-					<%= label_tag("n12_-1", "Bigger government, more services") %><br>
+					<input type="radio" name="n12" value="+1" id="n12_+1" />
+					<label for="n12_+1">Smaller government, less services</label><br>
+					<input type="radio" name="n12" value="-1" id="n12_-1" />
+					<label for="n12_-1">Bigger government, more services</label><br>
 			</div>
 
-			<div id="question">
+			<div class="question">
 					<p>13. Which punishment do you prefer for people convicted of murder: the death penalty or life in prison with no chance of parole?</p>
 					
-					<%= radio_button_tag(:n13, "+1") %>
-					<%= label_tag("n13__1", "Death penalty") %><br>
-					<%= radio_button_tag(:n13, "-1") %>
-					<%= label_tag("n13_-1", "Life in prison") %><br>
+					<input type="radio" name="n13" value="+1" id="n13_+1" />
+					<label for="n13_+1">Death penalty</label><br>
+					<input type="radio" name="n13" value="-1" id="n13_-1" />
+					<label for="n13_-1">Life in prison</label><br>
 			</div>
 
-			<div id="question">
+			<div class="question">
 					<p>14. Do you think the government should require all Americans to have health insurance?</p>
 					
-					<%= radio_button_tag(:n14, "+1") %>
-					<%= label_tag("n14__1", "Should not require") %><br>
-					<%= radio_button_tag(:n14, "-1") %>
-					<%= label_tag("n14_-1", "Should require") %><br>
+					<input type="radio" name="n14" value="+1" id="n14_+1" />
+					<label for="n14_+1">Should not require</label><br>
+					<input type="radio" name="n14" value="-1" id="n14_-1" />
+					<label for="n14_-1">Should require</label><br>
 			</div>
 
-			<div id="question">
+			<div class="question">
 					<p>15. With respect to the abortion issue, do you consider yourself pro-choice or pro-life?</p>
 					
-					<%= radio_button_tag(:n15, "-1") %>
-					<%= label_tag("n15_-1", "Pro-choice") %><br>
-					<%= radio_button_tag(:n15, "+1") %>
-					<%= label_tag("n15__1", "Pro-life") %><br>
+					<input type="radio" name="n15" value="-1" id="n15_-1" />
+					<label for="n15_-1">Pro-choice</label><br>
+					<input type="radio" name="n15" value="+1" id="n15_+1" />
+					<label for="n15_+1">Pro-life</label><br>
 			</div>
 
 			<br><br>
 
-			<%= submit_tag "Continue" %>
+			<button type="submit">Continue</button>
 
 			<% end %>
 		</div>
