@@ -53,9 +53,10 @@ class Results < ActiveRecord::Base
   attr_accessible :psq37
   attr_accessible :psq38
   attr_accessible :psq39
-  attr_accessible :special_response
-  attr_accessible :start_time
-  attr_accessible :finish_time
   attr_accessible :match_scenario
   attr_accessible :poll_scenario
+  attr_accessible :time1
+  attr_accessible :time2
+  attr_accessible :time3
+  attr_accessible :vote
 end
