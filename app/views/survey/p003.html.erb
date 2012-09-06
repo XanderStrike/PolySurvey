@@ -1,0 +1,23 @@
+
+	<div id="header">
+		<h1>Survey</h1>
+		<hr size="1">
+	</div>
+
+	<div id="body">
+		
+		<div id="content">
+			<h3>Using your answers to the previous questions, we have determined that your political stance is <%= @output %>. We have compared your opinions to that of a set of candidates to determine your similarity:</h3>
+
+			<p>Candidate <%= @name0[0] %> - <%= @name0[1] %> match<br>
+				Candidate <%= @name1[0] %> - <%= @name1[1] %> match</br>
+				Candidate <%= @name2[0] %> - <%= @name2[1] %> match </p>
+
+			<%= form_tag 'p004' do -%>
+				<%= hidden_field_tag :results, @data %>
+				<%= submit_tag "Continue" %>
+			<% end %>
+
+			<br><br><%= @data %>
+		</div>
+	</div>

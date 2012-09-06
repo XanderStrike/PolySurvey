@@ -1,12 +1,12 @@
 class SurveyController < ApplicationController
 
-  def home
+  def p001
   end
 
-  def quiz
+  def p002
   end
 
-  def quizresults
+  def p003
   	results = [params["n01"].to_i, params["n02"].to_i, params["n03"].to_i, params["n04"].to_i, params["n05"].to_i, params["n06"].to_i, params["n07"].to_i, params["n08"].to_i, params["n09"].to_i, params["n10"].to_i, params["n11"].to_i, params["n12"].to_i, params["n13"].to_i, params["n14"].to_i, params["n15"].to_i]
 
     result = results.inject(0){|sum,item| sum + item}
@@ -67,8 +67,18 @@ class SurveyController < ApplicationController
 
   end
 
-  def blurb
+  def p004
     @data = params["results"].split(',')
+
+    @name0 = ["#{@data[16]}", "#{@data[17]}"]
+    @name1 = ["#{@data[18]}", "#{@data[19]}"]
+    @name2 = ["#{@data[20]}", "#{@data[21]}"]
+
+    # Determine which group, close election or blowout election they are part of
+    group = rand(2)
+  end
+
+  def p005
   end
 
 
