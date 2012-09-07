@@ -177,25 +177,29 @@
 			<h3>Importance of Vote</h3>
 
 			<div class="question">
-				<p>14. Generally speaking, do you believe that you have a duty to vote in every national election, or do you believe that you do not have a duty to vote in every national election?</h3>
+				<p>12. Generally speaking, do you believe that you have a duty to vote in every national election, or do you believe that you do not have a duty to vote in every national election?</h3>
 					<input type="radio" name="q12" value="0" id="q12_0" />
 					<label for="q12_0">Yes, have a duty</label><br>
 					<input type="radio" name="q12" value="1" id="q12_1" />
 					<label for="q12_1">No, do not have a duty</label><br>
 			</div>
-a. Yes, have a duty
-a. Yes, have a duty
-a. Yes, have a duty
-b. No, do not have a duty
 
-15. Which of the following statements comes closest to your view?  A) I use my vote to help elect a candidate for office or B) I use my vote to express my political preference?
-a. Help elect a candidate for office
-b. Express my political preference
-
-16. How much do you feel that having elections makes the government pay attention to what the people think?
-a. A good deal
-b. Some 
-c. Not much
+			<div class="question">
+				<p>13. Which of the following statements comes closest to your view?</p>
+					<input type="radio" name="q13" value="0" id="q13_0" />
+					<label for="q13_0">I use my vote to help elect a candidate for office</label><br>
+					<input type="radio" name="q13" value="1" id="q13_1" />
+					<label for="q13_1">I use my vote to express my political preference</label><br>
+			</div>
+			<div class="question">
+				<p>14. How much do you feel that having elections makes the government pay attention to what the people think?</p>
+					<input type="radio" name="q14" value="0" id="q14_0" />
+					<label for="q14_0">A good deal</label><br>
+					<input type="radio" name="q14" value="1" id="q14_1" />
+					<label for="q14_1">Some</label><br>
+					<input type="radio" name="q14" value="2" id="q14_2" />
+					<label for="q14_2">Not Much</label><br>
+			</div>
 
 17. Some people say that no matter who people vote for, it won't make any difference to what happens. Others say that who people vote for can make a difference to what happens. What do you think?
 a. Who you vote for won’t make any difference
@@ -314,10 +318,12 @@ b. Female
 a. Did not graduate high school
 b. High school diploma (including AA)
 c. I am currently in college
-d. I have completed my undergraduate degree (MA or BA)
+d. I have completed my undergraduate degree (BS or BA)
 e. I am currently in graduate school
 f. I have completed an advanced degree (e.g., Masters, Doctorate, MBA, MD, JD, etc.)
 g. Other [write in]
+
+41. What state do you live in?
 			<%= @vote %>
 		</div>
 	</div>

@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   # attr_accessible :title, :body
-  attr_accessable :email
-  attr_accessable :password
-  attr_accessable :survey_finished?
-  attr_accessable :admin?
-  attr_accessable :uid
+  attr_accessible :email
+  attr_accessible :password
+  attr_accessible :survey_finished?
+  attr_accessible :admin?
+  attr_accessible :uid
 end
