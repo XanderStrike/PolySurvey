@@ -1,0 +1,52 @@
+
+	<div id="header">
+		<h1>Survey</h1>
+		<hr size="1">
+
+	</div>
+
+	<div id="body">
+
+		<center><a>Your results: <%= @name0[0] %> - <%= @name0[1] %>; <%= @name1[0] %> - <%= @name1[1] %>; <%= @name2[0] %> - <%= @name2[1] %></a></center>
+		<hr size="1">
+		
+		<div id="content">
+			<h3>For context, please read this short news blurb about the candidates:</h3>
+
+			<center>
+			<div id="blurb">
+				<% if @group.to_i == 0 %>
+					<p>"The presidential election is coming down to the wire and the candidates are neck-and-neck.  The latest polls show a statistical dead heat, with <%= @name1[0] %> receiving 49 percent support, <%= @name2[0] %> 48 percent, and third party challenger <%= @name0[0] %> just a mere 3 percent.  Both the <%= @name1[0].split(' ')[1] %> and <%= @name2[0].split(' ')[1] %> camps are busy…"<br><br>-API</p>
+				<% elsif @group.to_i == 1 %>
+					<p>"The presidential election is coming down to the wire and the candidates are neck-and-neck.  The latest polls show a statistical dead heat, with <%= @name2[0] %> receiving 49 percent support, <%= @name1[0] %> 48 percent, and third party challenger <%= @name0[0] %> just a mere 3 percent.  Both the <%= @name1[0].split(' ')[1] %> and <%= @name2[0].split(' ')[1] %> camps are busy…"<br><br>-API</p>
+				<% elsif @group.to_i == 2 %>
+					<p>"If the polls are to be believed, we may already know who our next president is. <%= @name1[0] %> is leading with at an unprecidented 86 percent, with <%= @name2[0] %> trailing at 20 percent, and third party challenger <%= @name0[0] %> at 4 percent."<br><br>-API</p>
+				<% elsif @group.to_i == 3 %>
+					<p>"If the polls are to be believed, we may already know who our next president is. <%= @name2[0] %> is leading with at an unprecidented 86 percent, with <%= @name1[0] %> trailing at 20 percent, and third party challenger <%= @name0[0] %> at 4 percent."<br><br>-API</p>
+				<% end %>
+			</div>
+		</center>
+
+		
+			<%= form_tag 'p006' do -%>
+
+				<div id="question">
+					<p>Who will you vote for?</p>
+
+					<%= radio_button_tag(:vote, "0") %>
+					<%= label_tag("vote_0", "#{@name0[0]}") %><br>
+					<%= radio_button_tag(:vote, "1") %>
+					<%= label_tag("vote_1", "#{@name1[0]}") %><br>
+					<%= radio_button_tag(:vote, "2") %>
+					<%= label_tag("vote_2", "#{@name2[0]}") %><br>
+				</div>
+
+				<br>
+				<%= hidden_field_tag :results, @data_new %>
+				<%= submit_tag "Vote!" %>
+			<% end %>
+
+			<br><br>
+
+		</div>
+	</div>

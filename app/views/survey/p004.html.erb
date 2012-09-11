@@ -21,13 +21,19 @@
 					<p>"The presidential election is coming down to the wire and the candidates are neck-and-neck.  The latest polls show a statistical dead heat, with <%= @name2[0] %> receiving 49 percent support, <%= @name1[0] %> 48 percent, and third party challenger <%= @name0[0] %> just a mere 3 percent.  Both the <%= @name1[0].split(' ')[1] %> and <%= @name2[0].split(' ')[1] %> camps are busy…"<br><br>-API</p>
 				<% elsif @group == 2 %>
 					<p>"If the polls are to be believed, we may already know who our next president is. <%= @name1[0] %> is leading with at an unprecidented 86 percent, with <%= @name2[0] %> trailing at 20 percent, and third party challenger <%= @name0[0] %> at 4 percent."<br><br>-API</p>
-				<% elsif @group == 3 %>
+				<% else @group == 3 %>
 					<p>"If the polls are to be believed, we may already know who our next president is. <%= @name2[0] %> is leading with at an unprecidented 86 percent, with <%= @name1[0] %> trailing at 20 percent, and third party challenger <%= @name0[0] %> at 4 percent."<br><br>-API</p>
 				<% end %>
 			</div>
 		</center>
+		
+			<%= form_tag 'p005' do -%>
+				<%= hidden_field_tag :results, @data_new %>
+				<%= submit_tag "Continue" %>
+			<% end %>
 
-			<a href="p005">Continue</a>
+			<br><br><%= @data_new %>
+
 		</div>
 	</div>
 	

@@ -12,7 +12,7 @@ class Results < ActiveRecord::Base
   attr_accessible :q11
   attr_accessible :q12
   attr_accessible :q13
-  attr_accessible :q14
+  attr_accessible :q14 
   attr_accessible :q15
   attr_accessible :psq1
   attr_accessible :psq2
@@ -46,7 +46,6 @@ class Results < ActiveRecord::Base
   attr_accessible :psq30
   attr_accessible :psq31
   attr_accessible :psq32
-  attr_accessible :psq32
   attr_accessible :psq33
   attr_accessible :psq34
   attr_accessible :psq35
@@ -54,6 +53,10 @@ class Results < ActiveRecord::Base
   attr_accessible :psq37
   attr_accessible :psq38
   attr_accessible :psq39
-  attr_accessible :special_response
-  
+  attr_accessible :match_scenario
+  attr_accessible :poll_scenario
+  attr_accessible :time1
+  attr_accessible :time2
+  attr_accessible :time3
+  attr_accessible :vote
 end
