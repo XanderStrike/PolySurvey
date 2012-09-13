@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120913092247) do
+ActiveRecord::Schema.define(:version => 20120913162744) do
 
   create_table "results", :force => true do |t|
     t.datetime "created_at",     :null => false
@@ -79,15 +79,12 @@ ActiveRecord::Schema.define(:version => 20120913092247) do
     t.string   "q22e"
     t.string   "q30a"
     t.string   "q32a"
+    t.string   "q25a"
   end
 
   create_table "users", :force => true do |t|
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.string   "email"
-    t.string   "password"
-    t.boolean  "survey_finished"
-    t.boolean  "admin"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
