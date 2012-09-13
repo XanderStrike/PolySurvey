@@ -2,12 +2,87 @@
 	<div id="header">
 		<h1>Survey</h1>
 		<hr size="1">
+
+        <script type="text/javascript">
+            function validatePage() {
+                var isValid = true;
+                var error = "";
+
+                //Loop through to see if there are any errors, going in reverse
+                if(!isRadioSelected("q06")){ isValid = false; error = getErrorText(6); }
+                if(!isRadioSelected("q05")){ isValid = false; error = getErrorText(5); }
+                if(!isRadioSelected("q04")){ isValid = false; error = getErrorText(4); }
+                if(!isRadioSelected("q03")){ isValid = false; error = getErrorText(3); }
+                if(!isRadioSelected("q02")){ isValid = false; error = getErrorText(2); }
+                if(!isRadioSelected("q01")){ isValid = false; error = getErrorText(1); }
+
+                if (isValid == true) {
+                    frm.submit();
+                } else {
+                    document.getElementById("errorText").innerHTML = error;
+                    alert(error);
+                }
+            }
+
+            function isRadioSelected(nme) {
+                var isChecked = false;
+                for(var i = 0; i < document.getElementsByName(nme).length; i++)
+                {
+                    if(document.getElementsByName(nme)[i].checked == true){ return true; }
+                }
+                return false;
+            }
+
+            function getErrorText(question)
+            {
+                return "Question " + question + " has not been answered yet.";
+            }
+
+            function setHiddenFields(field){
+
+                //Clear everything
+                for(var i = 0; i < document.getElementsByName("q03").length; i++)
+                {
+                    document.getElementsByName("q03")[i].checked = false;
+                }
+
+                //Show the appropriate field
+                if (field == "a") {
+                    document.getElementById("qset3a").style.visibility = "visible";
+                    document.getElementById("qset3b").style.visibility = "hidden";
+                    document.getElementById("qset3c").style.visibility = "hidden";
+                    document.getElementById("qset3a").style.display = "block";
+                    document.getElementById("qset3b").style.display = "none";
+                    document.getElementById("qset3c").style.display = "none";
+                }
+                else if (field == "b") {
+                    document.getElementById("qset3a").style.visibility = "hidden";
+                    document.getElementById("qset3b").style.visibility = "visible";
+                    document.getElementById("qset3c").style.visibility = "hidden";
+                    document.getElementById("qset3a").style.display = "none";
+                    document.getElementById("qset3b").style.display = "block";
+                    document.getElementById("qset3c").style.display = "none";
+                }
+                else if (field == "c") {
+                    document.getElementById("qset3a").style.visibility = "hidden";
+                    document.getElementById("qset3b").style.visibility = "hidden";
+                    document.getElementById("qset3c").style.visibility = "visible";
+                    document.getElementById("qset3a").style.display = "none";
+                    document.getElementById("qset3b").style.display = "none";
+                    document.getElementById("qset3c").style.display = "block";
+                }
+                document.getElementById("efficacy").style.display = "block";
+            }
+
+        </script>
+
 	</div>
 
 	<div id="body">
 		<div id="content">
-			<%= form_tag 'p007' do -%>
+			<%= form_tag 'p007', :id => 'frm' do -%>
 			<h3>Ideology and Party ID</h3>
+            <div id="errorText" style="color:#ff0000;font-style:italic;"></div><br/>
 			<div class="question">
 					<p>1. Where would you place yourself on this scale, or haven't you thought much about this?</p>
 					<input type="radio" name="q01" value="0" id="q01_0" />
@@ -30,17 +105,17 @@
 
 			<div class="question">
 				<p>2. Generally speaking, to you consider yourself a Democrat, a Republican, an Independent, or what?</p>
-					<input type="radio" name="q02" value="0" id="q02_0" />
+					<input type="radio" name="q02" value="0" id="q02_0" onclick="setHiddenFields('a')" />
 					<label for="q02_0">Democrat</label><br>
-					<input type="radio" name="q02" value="1" id="q02_1" />
+					<input type="radio" name="q02" value="1" id="q02_1" onclick="setHiddenFields('b')" />
 					<label for="q02_1">Republican</label><br>
-					<input type="radio" name="q02" value="2" id="q02_2" />
+					<input type="radio" name="q02" value="2" id="q02_2" onclick="setHiddenFields('c')" />
 					<label for="q02_2">Independent</label><br>
-					<input type="radio" name="q02" value="3" id="q02_3" />
+					<input type="radio" name="q02" value="3" id="q02_3" onclick="setHiddenFields('c')" />
 					<label for="q02_3">Other</label><br>
 			</div>
 
-			<div class="question">
+			<div class="question" id="qset3a" style="visibility:hidden; display:none;">
 				<p>3. Would you condsider yourself a strong democrat?</p>
 					<input type="radio" name="q03" value="0" id="q03_0" />
 					<label for="q03_0">Strong</label><br>
@@ -48,7 +123,7 @@
 					<label for="q03_1">Not very strong</label><br>
 			</div>
 
-			<div class="question">
+			<div class="question" id="qset3b" style="visibility:hidden; display:none;">
 				<p>3. Would you condsider yourself a strong republican?</p>
 					<input type="radio" name="q03" value="0" id="q03_0" />
 					<label for="q03_0">Strong</label><br>
@@ -56,7 +131,7 @@
 					<label for="q03_1">Not very strong</label><br>
 			</div>
 
-			<div class="question">
+			<div class="question" id="qset3c" style="visibility:hidden; display:none;">
 				<p>3. In general, do you think fo yourself as closer to the Democrat or Republican party?</p>
 					<input type="radio" name="q03" value="0" id="q03_0" />
 					<label for="q03_0">Democrat</label><br>
@@ -66,7 +141,7 @@
 					<label for="q03_2">Neither</label><br>
 			</div>
 
-
+            <div id="efficacy" style="display:none;">
 			<h3>Efficacy and Trust</h3>
 
 			<div class="question">
@@ -100,9 +175,10 @@
 					<input type="radio" name="q06" value="3" id="q06_3" />
 					<label for="q06_3">Not satisfied at all</label><br>
 			</div>
-
-			<%= submit_tag "Continue" %>
+<br/>
+			<input type="button" name="commit" onclick="validatePage()" value="Continue" />
 			<% end %>
+            </div>
 			<%= @vote %>
 		</div>
 	</div>
