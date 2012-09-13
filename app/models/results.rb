@@ -45,7 +45,11 @@ class Results < ActiveRecord::Base
     attr_accessible :q19
     attr_accessible :q20
     attr_accessible :q21
-    attr_accessible :q22
+    attr_accessible :q22a
+    attr_accessible :q22b
+    attr_accessible :q22c
+    attr_accessible :q22d
+    attr_accessible :q22e
     attr_accessible :q23
     attr_accessible :q24
     attr_accessible :q25
@@ -54,6 +58,8 @@ class Results < ActiveRecord::Base
     attr_accessible :q28
     attr_accessible :q29
     attr_accessible :q30
+    attr_accessible :q30a
     attr_accessible :q31
     attr_accessible :q32
+    attr_accessible :q32a
 end
