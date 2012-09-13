@@ -2,6 +2,12 @@ class AdminController < ApplicationController
   def new
   end
 
+  def panel
+    unless @current_user && @current_user.admin?
+      redirect_to 'root'
+    end
+  end
+
   def output_results
     results = Result.all
 
