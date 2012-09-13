@@ -1,5 +1,10 @@
 PolySurvey::Application.routes.draw do
 
+  resources :sessions, only: [:new, :create, :destroy]
+
+  match '/admin_signin',  to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', :via => :delete
+
   root :to => 'survey#p001'
 
   #get "survey/p001"
