@@ -6,9 +6,6 @@
 	</div>
 
 	<div id="body">
-
-		<center><a>Your results: <%= @name0[0] %> - <%= @name0[1] %>; <%= @name1[0] %> - <%= @name1[1] %>; <%= @name2[0] %> - <%= @name2[1] %></a></center>
-		<hr size="1">
 		
 		<div id="content">
             <h3>For context, please read this short news blurb about the candidates and vote below:</h3>
@@ -17,8 +14,7 @@
                 <table>
                     <tr>
                         <td class="news_header">
-
-                            Election Stuff
+                            Election Watch
                         </td>
                         <td class="news_content">
                             <% if @group == 0 %>
@@ -35,12 +31,21 @@
                 </table>
             </div>
 
+            <br><br>
 
+            <center>
+            <div id="results">
+                Your percentage match to the candidates:</br>
+                <%= @name0[0] %> - <%= @name0[1] %><br>
+                <%= @name1[0] %> - <%= @name1[1] %><br>
+                <%= @name2[0] %> - <%= @name2[1] %>
+            </div>
+            </center>
 
             <%= form_tag 'p006' do -%>
 
             <div id="question">
-                <p>Who will you vote for?</p>
+                <h3>Considering this news story and your results from the quiz, who will you vote for?</h3>
 
                 <input type="radio" name="vote" value="0" id="vote_0" />
                 <label for="vote_0"><%= @name0[0] %></label><br>
