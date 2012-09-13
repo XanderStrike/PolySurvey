@@ -188,7 +188,8 @@ class SurveyController < ApplicationController
   def p013
     @results = restrict_hash(params, 2)
     @results["time5"] = Time.now
-    if Results.find_by_time1(@results['time1'])
+
+    unless Results.find_by_time1(@results['time1'])
       new_result = Results.create(@results)
     end
 
