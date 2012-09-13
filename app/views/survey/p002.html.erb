@@ -2,13 +2,63 @@
 	<div id="header">
 		<h1>Survey</h1>
 		<hr size="1">
+
+        <script type="text/javascript">
+            function validatePage() {
+                var isValid = true;
+                var error = "";
+
+                //Loop through to see if there are any errors, going in reverse
+                //Question 1
+                if(!isRadioSelected("n15")){ isValid = false; error = getErrorText(15); }
+                if(!isRadioSelected("n14")){ isValid = false; error = getErrorText(14); }
+                if(!isRadioSelected("n13")){ isValid = false; error = getErrorText(13); }
+                if(!isRadioSelected("n12")){ isValid = false; error = getErrorText(12); }
+                if(!isRadioSelected("n11")){ isValid = false; error = getErrorText(11); }
+                if(!isRadioSelected("n10")){ isValid = false; error = getErrorText(10); }
+                if(!isRadioSelected("n09")){ isValid = false; error = getErrorText(9); }
+                if(!isRadioSelected("n08")){ isValid = false; error = getErrorText(8); }
+                if(!isRadioSelected("n07")){ isValid = false; error = getErrorText(7); }
+                if(!isRadioSelected("n06")){ isValid = false; error = getErrorText(6); }
+                if(!isRadioSelected("n05")){ isValid = false; error = getErrorText(5); }
+                if(!isRadioSelected("n04")){ isValid = false; error = getErrorText(4); }
+                if(!isRadioSelected("n03")){ isValid = false; error = getErrorText(3); }
+                if(!isRadioSelected("n02")){ isValid = false; error = getErrorText(2); }
+                if(!isRadioSelected("n01")){ isValid = false; error = getErrorText(1); }
+
+                if (isValid == true) {
+                    frm.submit();
+                } else {
+                    document.getElementById("errorText").innerHTML = error;
+                    alert(error);
+                }
+            }
+
+            function isRadioSelected(nme) {
+                var isChecked = false;
+                for(var i = 0; i < document.getElementsByName(nme).length; i++)
+                {
+                    if(document.getElementsByName(nme)[i].checked == true){ return true; }
+                }
+                return false;
+            }
+
+            function getErrorText(question)
+            {
+                return "Question " + question + " has not been answered yet.";
+            }
+
+        </script>
+
 	</div>
 
 	<div id="body">
 		<div id="content">
 			<h3>There are a number of important issues in any election.  Please tell us your opinion on the following 15 hot-button issues.  On many questions, people are torn between two options.  If you find yourself torn between two choices, try to select the option <i>closest</i> to your opinion.  </h3>
 
-			<%= form_tag 'p003' do -%>
+			<%= form_tag 'p003', :id => 'frm' do -%>
+
+            <div id="errorText" style="color:#ff0000;font-style:italic;"></div><br/>
 
 			<div class="question">
 					<p>1. Do you think that we should increase our spending on national defense, keep it about the same, or cut it back?</p>
@@ -152,7 +202,7 @@
 
 			<br><br>
 
-			<button type="submit">Continue</button>
+			<button type="button" onclick="validatePage()">Continue</button>
 
 			<% end %>
 		</div>

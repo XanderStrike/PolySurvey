@@ -1,15 +1,10 @@
 PolySurvey::Application.routes.draw do
 
-  root :to => 'survey#p000'
+  root :to => 'survey#p001'
 
-  get "survey/p000m"
-  
-  get "survey/p000s"
-  
-  get "survey/p001"
+  #get "survey/p001"
 
   get "survey/p002"
-  post "survey/p002"
 
   get "survey/p003"
   post "survey/p003"
@@ -22,27 +17,6 @@ PolySurvey::Application.routes.draw do
 
   get "survey/p006"
   post "survey/p006"
-
-  get "survey/p007"
-  post "survey/p007"
-
-  get "survey/p008"
-  post "survey/p008"
-
-  get "survey/p009"
-  post "survey/p009"
-
-  get "survey/p010"
-  post "survey/p010"
-
-get "survey/p011"
-  post "survey/p011"
-
-get "survey/p012"
-  post "survey/p012"
-
- get "survey/p013"
-  post "survey/p013"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
