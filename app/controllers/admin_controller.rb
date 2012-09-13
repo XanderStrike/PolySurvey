@@ -1,4 +1,7 @@
 class AdminController < ApplicationController
+
+  require 'csv'
+  
   def new
   end
 
@@ -6,14 +9,16 @@ class AdminController < ApplicationController
   end
 
   def output_results
-    results = Result.all
+    results = ActiveRecord::Results.all
 
-    user_csv = FasterCSV.generate do |csv|
-      # header row
-      csv << results.first.columns.map(&:name)
-      # data row
-      results.each do |result|
-        csv << result.columns.map(&:value)
+    unless results.empty?
+      user_csv = CSV.generate do |csv|
+        # header row
+        csv << results.first.columns.map(&:name)
+        # data row
+        results.each do |result|
+          csv << result.columns.map(&:value)
+        end
       end
     end
 
