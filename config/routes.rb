@@ -28,17 +28,17 @@ PolySurvey::Application.routes.draw do
   get "survey/p009"
   post "survey/p009"
 
-  get "survey/p0010"
-  post "survey/p0010"
+  get "survey/p010"
+  post "survey/p010"
 
-get "survey/p0011"
-  post "survey/p0011"
+get "survey/p011"
+  post "survey/p011"
 
-get "survey/p0012"
-  post "survey/p0012"
+get "survey/p012"
+  post "survey/p012"
 
- get "survey/poo13"
-  post "survey/p0013"
+ get "survey/p013"
+  post "survey/p013"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
