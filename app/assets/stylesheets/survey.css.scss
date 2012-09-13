@@ -126,3 +126,28 @@ a:visited
 	width: 400px;
 	
 }
+
+// ------------------- API NEWS ARTICLE ------------------------
+.news {
+  background-image: url(image_path('news_back.jpg'));
+  background-repeat: no-repeat;
+  width: 800px;
+  height: 509px;
+
+  padding-top: 200px;
+  padding-left: 64px;
+}
+
+.news_header {
+  font-size: 45px;
+  font-weight: bold;
+  width: 429px;
+  vertical-align: top;
+}
+
+.news_content {
+  margin-left: 35px;
+  width: 200px;
+  max-height: 297px;
+  vertical-align: top;
+}
