@@ -1,8 +1,12 @@
 PolySurvey::Application.routes.draw do
 
-  root :to => 'survey#p001'
+  root :to => 'survey#p000'
 
-  #get "survey/p001"
+  get "survey/p000m"
+  
+  get "survey/p000s"
+  
+  get "survey/p001"
 
   get "survey/p002"
 
