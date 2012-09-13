@@ -1,3 +1,2 @@
-A total of <%= User.all.size %> users have taken the survey.
-There are <%= Results.all.size %> results saved in the database.
+A total of <%= Results.all.size %> users have taken the survey.
 <%= button_to "Output results to file", {:controller => "admin", :action => "output_results"}, :remote => true %>

@@ -6,22 +6,22 @@ class AdminController < ApplicationController
   end
 
   def output_results
-    results = ActiveRecord::Results.all
+    results = Results.all
 
-    user_csv = CSV.generate do |csv|
-    unless results.empty?
-      
+    CSV.open("political_survey_results.csv", "w") do |csv|
+    unless results.empty?    
         # header row
-        csv << results.first.columns.map(&:name)
+        csv << results.first.attributes.keys
         # data row
         results.each do |result|
-          csv << result.columns.map(&:value)
+          puts "result.attributes.values.inspect: #{result.attributes.values.inspect}"
+          csv << result.attributes.values
         end
       end
-#    end
-
-    csv << ['header1', 'header2', 'header3']
     end
-    send_data(user_csv, :type => 'test/csv', :filename => 'user_records.csv')
+
+#    send_file "political_survey_results.csv", :type => "application/csv", :x_sendfile => true
+
+    render show
   end
 end
