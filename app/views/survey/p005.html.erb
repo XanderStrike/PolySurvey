@@ -42,7 +42,9 @@
 				</div>
 
 				<br>
-				<%= hidden_field_tag :results, @data_new %>
+				<% @results.each do |k, v| -%>
+					<%= hidden_field_tag k, v %>
+				<% end %>
 				<%= submit_tag "Vote!" %>
 			<% end %>
 
