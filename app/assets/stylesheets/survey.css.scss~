@@ -66,6 +66,12 @@ a:visited
 	margin:auto;
 }
 
+#res
+{
+	float: right;
+	width: 800px;
+}
+
 #imglink
 {
 	padding:50;
@@ -123,6 +129,5 @@ a:visited
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-bottom: 50px;
-	width: 400px;
-	
+	width: 400px;	
 }
