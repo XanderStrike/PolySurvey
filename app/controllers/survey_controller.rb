@@ -11,6 +11,7 @@ class SurveyController < ApplicationController
       'match0' => 1,
       'match1' => 1,
       'match2' => 1,
+      'vote' => 2,
     }
     for i in 1..15
       valid['n%02d' % i] = 2
