@@ -181,6 +181,7 @@ class SurveyController < ApplicationController
     
     if Results.find_by_time1(@results['time1']).empty?
       new_result = Results.create(@results)
+    end
 
   end
 end
