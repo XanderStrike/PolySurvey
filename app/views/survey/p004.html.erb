@@ -10,6 +10,9 @@
 		<hr size="1">
 		
 		<div id="content">
+		<table>
+		<tr>
+		<td>
 			<h3>For context, please read this short news blurb about the candidates:</h3>
 
             <div class="news">
@@ -33,7 +36,21 @@
                     </tr>
                 </table>
             </div>
-
+			</table>
+			</td>
+			<td>
+			<center>
+				<div style="width:250px;border:3px solid black;padding-left:25px;padding-right:25px;">
+					<p>The candidate match your political profile by the following percentages:</p>
+					<p><%= @name0[0] %> - <%= @name0[1] %></p>
+					<p><%= @name1[0] %> - <%= @name1[1] %></p>
+					<p><%= @name2[0] %> - <%= @name2[1] %></p>
+				</div>
+			</center>
+			</td>
+			</tr>
+			</table>
+			<br>
             <center>
 			<%= form_tag 'p005' do -%>
 				<%= hidden_field_tag :results, @data_new %>
