@@ -21,12 +21,11 @@ class SurveyController < ApplicationController
     end
 
     # Randomly generate three names
-    first_names = %w[James John Robert Michael William David Richard Charles Joseph Thomas Christopher Daniel Paul Mark Donald George Kenneth Steven Edward Brian Ronald Anthony Kevin Jason Jeff]
-    last_names = %w[Smith Johnson Williams Jones Brown Davis Miller Wilson Moore Taylor Anderson Thomas Jackson White Harris Martin Thompson Robinson Clark Lewis Lee Walker Hall Allen Young King]
+    names = ["Michael Jones", "Joseph Taylor", "Charles Thompson", "Jeffrey Smith", "Charles Johnston", "Steve Brooks"].shuffle
 
-    @name0 = ["#{first_names[rand(first_names.size)]} #{last_names[rand(last_names.size)]}"]
-    @name1 = ["#{first_names[rand(first_names.size)]} #{last_names[rand(last_names.size)]}"]
-    @name2 = ["#{first_names[rand(first_names.size)]} #{last_names[rand(last_names.size)]}"]
+    @name0 = [names[0]]
+    @name1 = [names[1]]
+    @name2 = [names[2]]
 
     # Determine in which way the candidates are displayed (assign them to groups 1-6)
     group = rand(6)
@@ -36,14 +35,23 @@ class SurveyController < ApplicationController
       @name1 += ["40%"]
       @name2 += ["10%"]
     when 1
-      if result > 0
+      if result > 5
         @name0 = ["#{@name0[0]} (Libertarian)", "90%"]
         @name1 = ["#{@name1[0]} (Republican)", "40%"]
         @name2 = ["#{@name2[0]} (Democrat)", "10%"]
-      else
+      elsif result < -5
         @name0 = ["#{@name0[0]} (Green)", "90%"]
         @name1 = ["#{@name1[0]} (Democrat)", "40%"]
         @name2 = ["#{@name2[0]} (Republican)", "10%"]
+      else
+        @name0 = ["#{@name0[0]} (Reform)", "90%"]
+        if result > 0
+          @name1 = ["#{@name1[0]} (Republican)", "40%"]
+          @name2 = ["#{@name2[0]} (Democrat)", "10%"]
+        else
+          @name1 = ["#{@name1[0]} (Democrat)", "40%"]
+          @name2 = ["#{@name2[0]} (Republican)", "10%"]
+        end
       end
     when 2
       @name0 += ["90%"]
@@ -63,15 +71,15 @@ class SurveyController < ApplicationController
       @name2 += ["10%"]
     end
 
-    @data = results.join(',') + ",#{result},#{@name0.join(',')},#{@name1.join(',')},#{@name2.join(',')},#{group}"
+    @data = params["origin"] + "," + results.join(',') + ",#{result},#{@name0.join(',')},#{@name1.join(',')},#{@name2.join(',')},#{group}"
 
   end
 
   def p004
     @data = params["results"].split(',')
-    @name0 = ["#{@data[16]}", "#{@data[17]}"]
-    @name1 = ["#{@data[18]}", "#{@data[19]}"]
-    @name2 = ["#{@data[20]}", "#{@data[21]}"]
+    @name0 = ["#{@data[17]}", "#{@data[18]}"]
+    @name1 = ["#{@data[19]}", "#{@data[20]}"]
+    @name2 = ["#{@data[21]}", "#{@data[22]}"]
 
     # Determine which group, close election or blowout election they are part of
     @group = rand(4)
@@ -81,30 +89,55 @@ class SurveyController < ApplicationController
 
   def p005
     @data = params["results"].split(',')
-    @name0 = ["#{@data[16]}", "#{@data[17]}"]
-    @name1 = ["#{@data[18]}", "#{@data[19]}"]
-    @name2 = ["#{@data[20]}", "#{@data[21]}"]
+    @name0 = ["#{@data[17]}", "#{@data[18]}"]
+    @name1 = ["#{@data[19]}", "#{@data[20]}"]
+    @name2 = ["#{@data[21]}", "#{@data[22]}"]
 
-    @group = @data[23]
+    @group = @data[24]
 
-    @debug = params["results"]
+    @data_new = params["results"]
   end
 
   def p006
-    @data = params["results"].split(',')
-
-    @params = params.to_s
-
-    @vote = params[:vote]
+    @data = params["results"] + ",#{params[:vote]}"
   end
 
+  def p007
+    @data = params["results"] + ",#{params[:q01]},#{params[:q02]},#{params[:q03]},#{params[:q04]},#{params[:q05]},#{params[:q06]}"
+  end
 
+  def p008
+    @data = params["results"] + ",#{params[:q07]},#{params[:q08]},#{params[:q09]},#{params[:q10]}"
+  end
+
+  def p009
+    @data = params["results"] + ",#{params[:q11]}"
+  end
+
+  def p010
+    @data = params["results"] + ",#{params[:q12]},#{params[:q13]},#{params[:q14]},#{params[:q15]},#{params[:q16]},#{params[:q17]}"
+  end
+
+  def p011
+    @data = params["results"] + ",#{params[:q18]},#{params[:q19]},#{params[:q20]},#{params[:q21]}"
+  end
+
+  def p012
+    @data = params["results"] + ",#{params[:q22a]},#{params[:q22b]},#{params[:q22c]},#{params[:q22d]},#{params[:q22e]},#{params[:q23]},#{params[:q24]},#{params[:q25]},#{params[:q26]}"
+  end
+
+  def p013
+    @data = params["results"] + ",#{params[:q27]},#{params[:q28]},#{params[:q29]},#{params[:q30]},#{params[:q31]}"
+
+    @array = @data.split(',')
+  end
 end
 
 # The form of "data"
-#   0-14 - Political alignment questions
-#   15 - Political alignment
-#   16, 18, 20 - Candidate names, most to least
-#   17, 19, 21 - Percentages
-#   22 - Group for candidate display (0-5)
-#   23 - Group for news blurb display (0-3)
+#   0 - Origin of respondent (mturk, Westmont, UCSB, etc.)
+#   1-15 - Political alignment questions
+#   16 - Political alignment
+#   17, 19, 21 - Candidate names, most to least
+#   18, 20, 22 - Percentages
+#   23 - Group for candidate display (0-5)
+#   24 - Group for news blurb display (0-3)

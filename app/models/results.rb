@@ -2,7 +2,7 @@ class Results < ActiveRecord::Base
   attr_accessible :q1
   attr_accessible :q2
   attr_accessible :q3
-  attr_accessible :q4  
+  attr_accessible :q4
   attr_accessible :q5
   attr_accessible :q6
   attr_accessible :q7

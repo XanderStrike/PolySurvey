@@ -1,0 +1,87 @@
+<div id="header">
+		<h1>Survey</h1>
+		<hr size="1">
+	</div>
+
+	<div id="body">
+		<div id="content">
+
+		<%= form_tag 'p010' do -%>
+
+		<h3>Importance of Vote</h3>
+
+			<div class="question">
+				<p>12. Generally speaking, do you believe that you have a duty to vote in every national election,or do you believe that you do not have a duty to vote in every national election?</h3><br>
+					<input type="radio" name="q12" value="0" id="q12_0" />
+					<label for="q12_0">Yes, have a duty</label><br>
+
+					<input type="radio" name="q12" value="1" id="q12_1" />
+					<label for="q12_1">No, do not have a duty</label><br>
+			</div>
+
+
+			<div class="question">
+				<p>13. For you personally, is voting mainly a duty, a choice, or neither a duty nor a choice?</h3><br>
+					<input type="radio" name="q13" value="0" id="q13_0" />
+					<label for="q13_0">A duty</label><br>
+					<input type="radio" name="q13" value="1" id="q13_1" />
+					<label for="q13_1">A choice</label><br>
+					<input type="radio" name="q13" value="1" id="q13_2" />
+					<label for="q13_2">Neither a duty or a choice</label><br>
+			</div>
+
+
+			(if answer to 13 is a, then)
+
+			<div class="question">
+				<p>14. How strongly do you feel that voting is a duty?</p>
+					<input type="radio" name="q14" value="0" id="q14_0" />
+					<label for="q14_0">Very strongly</label><br>
+					<input type="radio" name="q14" value="1" id="q14_1" />
+					<label for="q14_1">Moderately strongly</label><br>
+					<input type="radio" name="q14" value="2" id="q14_2" />
+					<label for="q14_2">A little strongly</label><br>
+			</div>
+
+			(if answer to 13 is b, then)
+			<div class="question">
+				<p>15. How strongly do you feel that voting is a choice?</p>
+					<input type="radio" name="q15" value="0" id="q15_0" />
+					<label for="q15_0">Very strongly</label><br>
+					<input type="radio" name="q15" value="1" id="q15_1" />
+					<label for="q15_1">Moderately strongly</label><br>
+					<input type="radio" name="q15" value="2" id="q15_2" />
+					<label for="q15_2">A little strongly</label><br>
+			</div>
+
+
+
+			<div class="question">
+				<p>16. How much do you feel that having elections makes the government pay attention to what the people think?</p>
+					<input type="radio" name="q16" value="0" id="q16_0" />
+					<label for="q16_0">A good deal</label><br>
+					<input type="radio" name="q16" value="1" id="q16_1" />
+					<label for="q16_1">Some</label><br>
+					<input type="radio" name="q16" value="2" id="q16_2" />
+					<label for="q16_2">Not much</label><br>
+			</div>
+
+			<div class="question">
+				<p>17. Some people say that no matter who people vote for, it won't make any difference to what happens. Others say that who people vote for can make a difference to what happens. What do you think?</p>
+					<input type="radio" name="q17" value="0" id="q17_0" />
+					<label for="q17_0">Who you vote for won’t make any difference</label><br>
+					<input type="radio" name="q17" value="1" id="q17_1" />
+					<label for="q17_1">Who you vote for will make a difference</label><br>
+			</div>
+
+			<br><br>
+			<%= hidden_field_tag :results, @data %>
+
+			<%= submit_tag "Continue" %>
+
+			<% end %>
+<%= @data %>
+
+		</div>
+
+	</div>

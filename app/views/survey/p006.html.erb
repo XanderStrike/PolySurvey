@@ -2,11 +2,87 @@
 	<div id="header">
 		<h1>Survey</h1>
 		<hr size="1">
+
+        <script type="text/javascript">
+            function validatePage() {
+                var isValid = true;
+                var error = "";
+
+                //Loop through to see if there are any errors, going in reverse
+                if(!isRadioSelected("q06")){ isValid = false; error = getErrorText(6); }
+                if(!isRadioSelected("q05")){ isValid = false; error = getErrorText(5); }
+                if(!isRadioSelected("q04")){ isValid = false; error = getErrorText(4); }
+                if(!isRadioSelected("q03")){ isValid = false; error = getErrorText(3); }
+                if(!isRadioSelected("q02")){ isValid = false; error = getErrorText(2); }
+                if(!isRadioSelected("q01")){ isValid = false; error = getErrorText(1); }
+
+                if (isValid == true) {
+                    frm.submit();
+                } else {
+                    document.getElementById("errorText").innerHTML = error;
+                    alert(error);
+                }
+            }
+
+            function isRadioSelected(nme) {
+                var isChecked = false;
+                for(var i = 0; i < document.getElementsByName(nme).length; i++)
+                {
+                    if(document.getElementsByName(nme)[i].checked == true){ return true; }
+                }
+                return false;
+            }
+
+            function getErrorText(question)
+            {
+                return "Question " + question + " has not been answered yet.";
+            }
+
+            function setHiddenFields(field){
+
+                //Clear everything
+                for(var i = 0; i < document.getElementsByName("q03").length; i++)
+                {
+                    document.getElementsByName("q03")[i].checked = false;
+                }
+
+                //Show the appropriate field
+                if (field == "a") {
+                    document.getElementById("qset3a").style.visibility = "visible";
+                    document.getElementById("qset3b").style.visibility = "hidden";
+                    document.getElementById("qset3c").style.visibility = "hidden";
+                    document.getElementById("qset3a").style.display = "block";
+                    document.getElementById("qset3b").style.display = "none";
+                    document.getElementById("qset3c").style.display = "none";
+                }
+                else if (field == "b") {
+                    document.getElementById("qset3a").style.visibility = "hidden";
+                    document.getElementById("qset3b").style.visibility = "visible";
+                    document.getElementById("qset3c").style.visibility = "hidden";
+                    document.getElementById("qset3a").style.display = "none";
+                    document.getElementById("qset3b").style.display = "block";
+                    document.getElementById("qset3c").style.display = "none";
+                }
+                else if (field == "c") {
+                    document.getElementById("qset3a").style.visibility = "hidden";
+                    document.getElementById("qset3b").style.visibility = "hidden";
+                    document.getElementById("qset3c").style.visibility = "visible";
+                    document.getElementById("qset3a").style.display = "none";
+                    document.getElementById("qset3b").style.display = "none";
+                    document.getElementById("qset3c").style.display = "block";
+                }
+                document.getElementById("efficacy").style.display = "block";
+            }
+
+        </script>
+
 	</div>
 
 	<div id="body">
 		<div id="content">
+			<%= form_tag 'p007', :id => 'frm' do -%>
 			<h3>Ideology and Party ID</h3>
+            <div id="errorText" style="color:#ff0000;font-style:italic;"></div><br/>
 			<div class="question">
 					<p>1. Where would you place yourself on this scale, or haven't you thought much about this?</p>
 					<input type="radio" name="q01" value="0" id="q01_0" />
@@ -29,17 +105,17 @@
 
 			<div class="question">
 				<p>2. Generally speaking, to you consider yourself a Democrat, a Republican, an Independent, or what?</p>
-					<input type="radio" name="q02" value="0" id="q02_0" />
+					<input type="radio" name="q02" value="0" id="q02_0" onclick="setHiddenFields('a')" />
 					<label for="q02_0">Democrat</label><br>
-					<input type="radio" name="q02" value="1" id="q02_1" />
+					<input type="radio" name="q02" value="1" id="q02_1" onclick="setHiddenFields('b')" />
 					<label for="q02_1">Republican</label><br>
-					<input type="radio" name="q02" value="2" id="q02_2" />
+					<input type="radio" name="q02" value="2" id="q02_2" onclick="setHiddenFields('c')" />
 					<label for="q02_2">Independent</label><br>
-					<input type="radio" name="q02" value="3" id="q02_3" />
+					<input type="radio" name="q02" value="3" id="q02_3" onclick="setHiddenFields('c')" />
 					<label for="q02_3">Other</label><br>
 			</div>
 
-			<div class="question">
+			<div class="question" id="qset3a" style="visibility:hidden; display:none;">
 				<p>3. Would you condsider yourself a strong democrat?</p>
 					<input type="radio" name="q03" value="0" id="q03_0" />
 					<label for="q03_0">Strong</label><br>
@@ -47,7 +123,7 @@
 					<label for="q03_1">Not very strong</label><br>
 			</div>
 
-			<div class="question">
+			<div class="question" id="qset3b" style="visibility:hidden; display:none;">
 				<p>3. Would you condsider yourself a strong republican?</p>
 					<input type="radio" name="q03" value="0" id="q03_0" />
 					<label for="q03_0">Strong</label><br>
@@ -55,17 +131,17 @@
 					<label for="q03_1">Not very strong</label><br>
 			</div>
 
-			<div class="question">
+			<div class="question" id="qset3c" style="visibility:hidden; display:none;">
 				<p>3. In general, do you think fo yourself as closer to the Democrat or Republican party?</p>
-					<input type="radio" name="q03" value="0" id="q03_0" />
-					<label for="q03_0">Democrat</label><br>
-					<input type="radio" name="q03" value="1" id="q03_1" />
-					<label for="q03_1">Republican</label><br>
 					<input type="radio" name="q03" value="2" id="q03_2" />
-					<label for="q03_2">Neither</label><br>
+					<label for="q03_2">Democrat</label><br>
+					<input type="radio" name="q03" value="3" id="q03_3" />
+					<label for="q03_3">Republican</label><br>
+					<input type="radio" name="q03" value="4" id="q03_4" />
+					<label for="q03_4">Neither</label><br>
 			</div>
 
-
+            <div id="efficacy" style="display:none;">
 			<h3>Efficacy and Trust</h3>
 
 			<div class="question">
@@ -99,231 +175,11 @@
 					<input type="radio" name="q06" value="3" id="q06_3" />
 					<label for="q06_3">Not satisfied at all</label><br>
 			</div>
-
-			<h3>Consider the following statements about public life. Please tell me how strongly you agree or disagree with each of them.</h3>
-
-			<div class="question">
-				<p>7. 'Sometimes, politics and government seem so complicated that a person like me can't really understand what's going on.’</p>
-					<input type="radio" name="q07" value="0" id="q07_0" />
-					<label for="q07_0">Agree strongly</label><br>
-					<input type="radio" name="q07" value="1" id="q07_1" />
-					<label for="q07_1">Agree somewhat</label><br>
-					<input type="radio" name="q07" value="2" id="q07_2" />
-					<label for="q07_2">Neither agree nor disagree</label><br>
-					<input type="radio" name="q07" value="3" id="q07_3" />
-					<label for="q07_3">Disagree somewhat</label><br>
-					<input type="radio" name="q07" value="4" id="q07_4" />
-					<label for="q07_4">Disagree strongly</label><br>
-			</div>
-
-			<div class="question">
-				<p>8. 'I feel that I have a pretty good understanding of the important political issues facing our country.'</p>
-					<input type="radio" name="q08" value="0" id="q08_0" />
-					<label for="q08_0">Agree strongly</label><br>
-					<input type="radio" name="q08" value="1" id="q08_1" />
-					<label for="q08_1">Agree somewhat</label><br>
-					<input type="radio" name="q08" value="2" id="q08_2" />
-					<label for="q08_2">Neither agree nor disagree</label><br>
-					<input type="radio" name="q08" value="3" id="q08_3" />
-					<label for="q08_3">Disagree somewhat</label><br>
-					<input type="radio" name="q08" value="4" id="q08_4" />
-					<label for="q08_4">Disagree strongly</label><br>
-			</div>
-
-			<div class="question">
-				<p>9. “Public officials don’t care about what people think.”</p>
-					<input type="radio" name="q09" value="0" id="q09_0" />
-					<label for="q09_0">Agree strongly</label><br>
-					<input type="radio" name="q09" value="1" id="q09_1" />
-					<label for="q09_1">Agree somewhat</label><br>
-					<input type="radio" name="q09" value="2" id="q09_2" />
-					<label for="q09_2">Neither agree nor disagree</label><br>
-					<input type="radio" name="q09" value="3" id="q09_3" />
-					<label for="q09_3">Disagree somewhat</label><br>
-					<input type="radio" name="q09" value="4" id="q09_4" />
-					<label for="q09_4">Disagree strongly</label><br>
-			</div>
-
-			<div class="question">
-				<p>10. “People like me don’t have any say about what the government does.” </p>
-					<input type="radio" name="q10" value="0" id="q10_0" />
-					<label for="q10_0">Agree strongly</label><br>
-					<input type="radio" name="q10" value="1" id="q10_1" />
-					<label for="q10_1">Agree somewhat</label><br>
-					<input type="radio" name="q10" value="2" id="q10_2" />
-					<label for="q10_2">Neither agree nor disagree</label><br>
-					<input type="radio" name="q10" value="3" id="q10_3" />
-					<label for="q10_3">Disagree somewhat</label><br>
-					<input type="radio" name="q10" value="4" id="q10_4" />
-					<label for="q10_4">Disagree strongly</label><br>
-			</div>
-
-			<h3>Interest and Knowledge</h3>
-
-			<div class="question">
-				<p>11. How interested are you in information about what's going on in government and politics?</p>
-					<input type="radio" name="q11" value="0" id="q11_0" />
-					<label for="q11_0">Extremely interested</label><br>
-					<input type="radio" name="q11" value="1" id="q11_1" />
-					<label for="q11_1">Very interested</label><br>
-					<input type="radio" name="q11" value="2" id="q11_2" />
-					<label for="q11_2">Moderately interested</label><br>
-					<input type="radio" name="q11" value="3" id="q11_3" />
-					<label for="q11_3">Slightly interested</label><br>
-					<input type="radio" name="q11" value="4" id="q11_4" />
-					<label for="q11_4">Not interested at all</label><br>
-			</div>
-
-			<h3>Importance of Vote</h3>
-
-			<div class="question">
-				<p>12. Generally speaking, do you believe that you have a duty to vote in every national election, or do you believe that you do not have a duty to vote in every national election?</h3>
-					<input type="radio" name="q12" value="0" id="q12_0" />
-					<label for="q12_0">Yes, have a duty</label><br>
-					<input type="radio" name="q12" value="1" id="q12_1" />
-					<label for="q12_1">No, do not have a duty</label><br>
-			</div>
-
-			<div class="question">
-				<p>13. Which of the following statements comes closest to your view?</p>
-					<input type="radio" name="q13" value="0" id="q13_0" />
-					<label for="q13_0">I use my vote to help elect a candidate for office</label><br>
-					<input type="radio" name="q13" value="1" id="q13_1" />
-					<label for="q13_1">I use my vote to express my political preference</label><br>
-			</div>
-			<div class="question">
-				<p>14. How much do you feel that having elections makes the government pay attention to what the people think?</p>
-					<input type="radio" name="q14" value="0" id="q14_0" />
-					<label for="q14_0">A good deal</label><br>
-					<input type="radio" name="q14" value="1" id="q14_1" />
-					<label for="q14_1">Some</label><br>
-					<input type="radio" name="q14" value="2" id="q14_2" />
-					<label for="q14_2">Not Much</label><br>
-			</div>
-
-17. Some people say that no matter who people vote for, it won't make any difference to what happens. Others say that who people vote for can make a difference to what happens. What do you think?
-a. Who you vote for won’t make any difference
-b. Who you vote for will make a difference
-
-Consider the following statements about voting. Please tell me how strongly you agree or disagree with each of them.  
-
-18.  “It is important to vote in elections, because if I didn’t, things might be turn out for the worse.”
-a. Agree strongly
-b. Agree somewhat
-c. Neither agree nor disagree
-d. Disagree somewhat
-e. Disagree strongly
-
-19.  “So many other people vote in the national elections that it doesn't matter much to me whether I vote or not.”
-a. Agree strongly
-b. Agree somewhat
-c. Neither agree nor disagree
-d. Disagree somewhat
-e. Disagree strongly
-
-20. “If a person doesn’t care how an election comes out, he shouldn’t vote.”
-a. Agree strongly
-b. Agree somewhat
-c. Neither agree nor disagree
-d. Disagree somewhat
-e. Disagree strongly
-
-21. “It doesn’t make sense to vote for a third party candidate in America because they have no chance of winning.” 
-a. Agree strongly
-b. Agree somewhat
-c. Neither agree nor disagree
-d. Disagree somewhat
-e. Disagree strongly
-
-Party System.
-
-Think of a scale ranging from 0 (strongly dislike) to 100 (strongly like).  How would you rate…
-
-22. The Democratic Party
-a. [write in]
-
-23. The Republican Party 
-a. [write in]
-
-24. The Green Party
-a. [write in]
-
-25. The Reform Party
-a. [write in]
-
-26. The Libertarian Party
-a. [write in]
-
-27. Do you think there are any important differences in what the Republicans and Democrats stand for?
-a. Yes, there are important differences
-b. No, there are not important differences
-
-28. Would you say that any of the parties in the United States represent your views reasonably well?
-a. Yes
-b. No
-
-29. [If 24 = a, then…] Which party represents your view best?
-a. Democratic Party
-b. Republican Party
-c. Other party [specify]
-
-30. Some people say we should have a third major political party in this country in addition to the Democrats and Republicans. Do you agree or disagree?
-a. Agree
-b. Disagree
-
-31. Which of the following statements is closest to your own view of the two-party system today, in terms of how well it defines issues and provides choices for voters?...The two-party system works fairly well. The two-party system has real problems, but with some improvements it can still work well. The two-party system is seriously broken, and the country needs a third party.
-a. The two-party system works fairly well
-b. The two-party system has real problems, but with some improvements it can still work well
-c. The two-party system is seriously broken, and the country needs a third party.
-
-32. Do you think a qualified third party independent candidate has a reasonable chance of winning a presidential election or not?
-a. Yes
-b. No
-
-33. For you personally, is voting mainly a duty, a choice, or neither a duty nor a choice?
-a. A duty
-b. A choice
-c. Neither a duty nor a choice
-
-34. [If 30 = a, then ] How strongly do you feel that voting is a duty?
-a. Very strongly
-b. Moderately strongly
-c. A little strongly
-
-35. [If 30 = b, then ] How strongly do you feel that voting is a duty?
-a. Very strongly
-b. Moderately strongly
-c. A little strongly
-
-MIP
-
-36. What is the most important political issue for you personally?
-a. Write in
-
-37. Thinking of your most important issue: which party do you think best deals with it?
-a. Democratic
-b. Republican
-c. Other [write in]
-
-Demographics
-
-38. How old are you?
-a. Write in
-
-39. Are you…
-a. Male 
-b. Female
-
-40. What is the highest level of education you have earned?
-a. Did not graduate high school
-b. High school diploma (including AA)
-c. I am currently in college
-d. I have completed my undergraduate degree (BS or BA)
-e. I am currently in graduate school
-f. I have completed an advanced degree (e.g., Masters, Doctorate, MBA, MD, JD, etc.)
-g. Other [write in]
-
-41. What state do you live in?
-			<%= @vote %>
+<br/>
+			<%= hidden_field_tag :results, @data %>
+			<input type="button" name="commit" onclick="validatePage()" value="Continue" />
+			<% end %>
+            </div>
+            <%= @data %>
 		</div>
 	</div>

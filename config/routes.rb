@@ -1,6 +1,16 @@
 PolySurvey::Application.routes.draw do
 
+<<<<<<< HEAD
   root :to => 'survey#p000'
+=======
+  resources :sessions, only: [:new, :create, :destroy]
+
+  match '/admin_signin',  to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', :via => :delete
+  match '/admin/', to: 'admin#panel', :via => :get
+
+  root :to => 'survey#p001'
+>>>>>>> ee5f66472bfe54270b6316e2eb93be11134e3d21
 
   get "survey/p000m"
   
@@ -8,19 +18,43 @@ PolySurvey::Application.routes.draw do
   
   get "survey/p001"
 
-  get "survey/p002"
+  #get "survey/p002"
+  post "survey/p002"
 
-  get "survey/p003"
+  #get "survey/p003"
   post "survey/p003"
 
-  get "survey/p004"
+  #get "survey/p004"
   post "survey/p004"
 
-  get "survey/p005"
+  #get "survey/p005"
   post "survey/p005"
 
-  get "survey/p006"
+  #get "survey/p006"
   post "survey/p006"
+
+  #get "survey/p007"
+  post "survey/p007"
+
+  #get "survey/p008"
+  post "survey/p008"
+
+  #get "survey/p009"
+  post "survey/p009"
+
+  #get "survey/p010"
+  post "survey/p010"
+
+  #get "survey/p011"
+  post "survey/p011"
+
+  #get "survey/p012"
+  post "survey/p012"
+
+  #get "survey/p013"
+  post "survey/p013"
+
+  post "admin/output_results"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
