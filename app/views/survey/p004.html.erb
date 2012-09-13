@@ -5,44 +5,42 @@
 	</div>
 
 	<div id="body">
+
+		<center><a>Your results: <%= @name0[0] %> - <%= @name0[1] %>; <%= @name1[0] %> - <%= @name1[1] %>; <%= @name2[0] %> - <%= @name2[1] %></a></center>
+		<hr size="1">
 		
 		<div id="content">
-			<table>
-			<tr>
-			<td>
-			<h3 style="text-align:center;">For context, please read this short news blurb about the candidates:</h3>
+			<h3>For context, please read this short news blurb about the candidates:</h3>
 
-			<center>
-			<div id="blurb">
-				<% if @group == 0 %>
-					<p>"The presidential election is coming down to the wire and the candidates are neck-and-neck.  The latest polls show a statistical dead heat, with <%= @name1[0] %> receiving 49 percent support, <%= @name2[0] %> 48 percent, and third party challenger <%= @name0[0] %> just a mere 3 percent.  Both the <%= @name1[0].split(' ')[1] %> and <%= @name2[0].split(' ')[1] %> camps are busy…"<br><br>-API</p>
-				<% elsif @group == 1 %>
-					<p>"The presidential election is coming down to the wire and the candidates are neck-and-neck.  The latest polls show a statistical dead heat, with <%= @name2[0] %> receiving 49 percent support, <%= @name1[0] %> 48 percent, and third party challenger <%= @name0[0] %> just a mere 3 percent.  Both the <%= @name1[0].split(' ')[1] %> and <%= @name2[0].split(' ')[1] %> camps are busy…"<br><br>-API</p>
-				<% elsif @group == 2 %>
-					<p>"With election day around the corner, we may already know who our next president is. <%= @name1[0] %> is leading with at an unprecidented 86 percent, with <%= @name2[0] %> trailing at 20 percent, and third party challenger <%= @name0[0] %> at 4 percent."<br><br>-API</p>
-				<% else @group == 3 %>
-					<p>"With election day around the corner, we may already know who our next president is. <%= @name2[0] %> is leading with at an unprecidented 86 percent, with <%= @name1[0] %> trailing at 20 percent, and third party challenger <%= @name0[0] %> at 4 percent."<br><br>-API</p>
-				<% end %>
-			</div>
-		</center>
-		</td>
-		<td>
-		<div style="width:250px;border:3px solid black;padding-left:25px;padding-right:25px;">
-		<p>The candidate match your political profile by the following percentages:</p>
-			<p><%= @name0[0] %> - <%= @name0[1] %></p>
-			<p><%= @name1[0] %> - <%= @name1[1] %></p>
-			<p><%= @name2[0] %> - <%= @name2[1] %></p>
-		</div>
-		</td>
-		</tr>
-		</table>
-		
+            <div class="news">
+                <table>
+                    <tr>
+                        <td class="news_header">
+
+                            NEWS STUFF
+                        </td>
+                        <td class="news_content">
+                            <% if @group == 0 %>
+                            <p>"The presidential election is coming down to the wire and the candidates are neck-and-neck.  The latest polls show a statistical dead heat, with <%= @name1[0] %> receiving 49 percent support, <%= @name2[0] %> 48 percent, and third party challenger <%= @name0[0] %> just a mere 3 percent.  Both the <%= @name1[0].split(' ')[1] %> and <%= @name2[0].split(' ')[1] %> camps are busy…"<br><br>-API</p>
+                            <% elsif @group == 1 %>
+                            <p>"The presidential election is coming down to the wire and the candidates are neck-and-neck.  The latest polls show a statistical dead heat, with <%= @name2[0] %> receiving 49 percent support, <%= @name1[0] %> 48 percent, and third party challenger <%= @name0[0] %> just a mere 3 percent.  Both the <%= @name1[0].split(' ')[1] %> and <%= @name2[0].split(' ')[1] %> camps are busy…"<br><br>-API</p>
+                            <% elsif @group == 2 %>
+                            <p>"With election day around the corner, we may already know who our next president is. <%= @name1[0] %> is leading with at an unprecidented 86 percent, with <%= @name2[0] %> trailing at 20 percent, and third party challenger <%= @name0[0] %> at 4 percent."<br><br>-API</p>
+                            <% else @group == 3 %>
+                            <p>"With election day around the corner, we may already know who our next president is. <%= @name2[0] %> is leading with at an unprecidented 86 percent, with <%= @name1[0] %> trailing at 20 percent, and third party challenger <%= @name0[0] %> at 4 percent."<br><br>-API</p>
+                            <% end %>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <center>
 			<%= form_tag 'p005' do -%>
 				<%= hidden_field_tag :results, @data_new %>
 				<%= submit_tag "Continue" %>
 			<% end %>
 
 			<br><br><%= @data_new %>
-
+            </center>
 		</div>
 	</div>
