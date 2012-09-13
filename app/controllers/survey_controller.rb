@@ -106,6 +106,27 @@ class SurveyController < ApplicationController
     @vote = params[:vote]
   end
 
+  def p007
+  end
+
+  def p008
+  end
+
+  def p009
+  end
+
+  def p010
+  end
+
+  def p011
+  end
+
+  def p012
+  end
+
+  def p013
+  end
+
 
 end
 
