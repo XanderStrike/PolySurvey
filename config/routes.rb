@@ -1,6 +1,5 @@
 PolySurvey::Application.routes.draw do
 
-  root :to => 'survey#p001'
   
   get "survey/p001"
 
