@@ -1,6 +1,7 @@
 class SurveyController < ApplicationController
 
   def p001
+    @origin = params["origin"]
   end
 
   def p002
