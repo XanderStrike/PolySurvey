@@ -12,16 +12,16 @@
 			<div class="question">
 				<p>22. Think of a scale ranging from 0 (strongly dislike) to 100 (strongly like).  How would you rate…</p>
 					 
-					<label for="q22_0">The Democratic Party</label>
-					<input type="text" name="q22" value="0" id="q22_0" /> <br>					 
-					<label for="q22_1">The Republican Party</label>
-					<input type="text" name="q22" value="0" id="q22_1" /> <br>
-					<label for="q22_2">The Green Party</label>
-					<input type="text" name="q22" value="0" id="q22_2" /> <br>					 
-					<label for="q22_3">The Reform Party</label>
-					<input type="text" name="q22" value="0" id="q22_3" /> <br>
-					<label for="q22_4">The Libertarian Party</label>
-					<input type="text" name="q22" value="0" id="q22_4" /> <br>
+					<label for="q22a_0">The Democratic Party</label>
+					<input type="text" name="q22a" value="0" id="q22a_0" /> <br>					 
+					<label for="q22b_1">The Republican Party</label>
+					<input type="text" name="q22b" value="0" id="q22b_1" /> <br>
+					<label for="q22c_2">The Green Party</label>
+					<input type="text" name="q22c" value="0" id="q22c_2" /> <br>					 
+					<label for="q22d_3">The Reform Party</label>
+					<input type="text" name="q22d" value="0" id="q22d_3" /> <br>
+					<label for="q22e_4">The Libertarian Party</label>
+					<input type="text" name="q22e" value="0" id="q22e_4" /> <br>
 			</div>
 
 
@@ -81,10 +81,11 @@
 
 
 			<br><br>
+			<%= hidden_field_tag :results, @data %>
 
 			<%= submit_tag "Continue" %>
 
 			<% end %>
-
+<%= @data %>
 		</div>
 	</div>

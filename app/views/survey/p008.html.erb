@@ -57,11 +57,12 @@
 			</div>
 
 			<br><br>
+			<%= hidden_field_tag :results, @data %>	
 
             <input type="button" name="commit" onclick="validatePage()" value="Continue" />
 
 			<% end %>
-
+<%= @data %>
 
 		</div>
 	</div>

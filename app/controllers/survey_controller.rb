@@ -95,39 +95,42 @@ class SurveyController < ApplicationController
 
     @group = @data[24]
 
-    @debug = params["results"]
+    @data_new = params["results"]
   end
 
   def p006
-    @data = params["results"].split(',')
-
-    @params = params.to_s
-
-    @vote = params[:vote]
+    @data = params["results"] + ",#{params[:vote]}"
   end
 
   def p007
+    @data = params["results"] + ",#{params[:q01]},#{params[:q02]},#{params[:q03]},#{params[:q04]},#{params[:q05]},#{params[:q06]}"
   end
 
   def p008
+    @data = params["results"] + ",#{params[:q07]},#{params[:q08]},#{params[:q09]},#{params[:q10]}"
   end
 
   def p009
+    @data = params["results"] + ",#{params[:q11]}"
   end
 
   def p010
+    @data = params["results"] + ",#{params[:q12]},#{params[:q13]},#{params[:q14]},#{params[:q15]},#{params[:q16]},#{params[:q17]}"
   end
 
   def p011
+    @data = params["results"] + ",#{params[:q18]},#{params[:q19]},#{params[:q20]},#{params[:q21]}"
   end
 
   def p012
+    @data = params["results"] + ",#{params[:q22a]},#{params[:q22b]},#{params[:q22c]},#{params[:q22d]},#{params[:q22e]},#{params[:q23]},#{params[:q24]},#{params[:q25]},#{params[:q26]}"
   end
 
   def p013
+    @data = params["results"] + ",#{params[:q27]},#{params[:q28]},#{params[:q29]},#{params[:q30]},#{params[:q31]}"
+
+    @array = @data.split(',')
   end
-
-
 end
 
 # The form of "data"
