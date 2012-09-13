@@ -1,0 +1,6 @@
+<% if @current_user && @current_user.admin? %>
+  Welcome, Admin!
+  <%= button_to "Output results to file", {:controller => "admin", :action => "output_results"}, :remote => true %>
+<% else %>
+  Sorry, you don't have permission to access this page.
+<% end %>
