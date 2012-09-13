@@ -38,6 +38,7 @@ class SurveyController < ApplicationController
 
 
   def p001
+    @results = restrict_hash(params, 1)
     @results["time1"] = Time.now
   end
 
