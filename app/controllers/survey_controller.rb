@@ -169,7 +169,6 @@ class SurveyController < ApplicationController
     @results = restrict_hash(params, 2)
     
     new_result = Results.new(@results)
-    new_results.save
 
   end
 end
