@@ -5,7 +5,7 @@ X verify random names as not siblings and not real people
   data download, sort by condition
 X subjects identified as moderate in party ID condition should be associated with the 3rd party ID: 'Reformed'
 X p002: question has 2011 --> should be 2012; remove ellipses; 11 change; 14: change order of options;
-  we need to record where users come from: mturk, Westmont, UCSB, ...
+½ we need to record where users come from: mturk, Westmont, UCSB, ...
   post-survey: under demographics, add which state you live in
   after post-survey, conditional page (based on mturk or not) for entering raffle and (in either case) debrief information
   add timestamp recording to queston pages
