@@ -115,4 +115,5 @@ end
 #   16, 18, 20 - Candidate names, most to least
 #   17, 19, 21 - Percentages
 #   22 - Group for candidate display (0-5)
-#   23 - Group for news blurb display (0-3) 
+#   23 - Origin of respondent (mturk, Westmont, UCSB, etc.)
+#   24 - Group for news blurb display (0-3) 
