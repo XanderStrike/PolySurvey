@@ -1,0 +1,37 @@
+<div id="header">
+		<h1>Survey</h1>
+		<hr size="1">
+	</div>
+
+	<div id="body">
+		<div id="content">
+
+		<%= form_tag 'p008' do -%>
+
+		<h3>Interest and Knowledge</h3>
+
+			<div class="question">
+				<p>11. How interested are you in information about what's going on in government and politics?</p>
+					<input type="radio" name="q11" value="0" id="q11_0" />
+					<label for="q11_0">Extremely interested</label><br>
+					<input type="radio" name="q11" value="1" id="q11_1" />
+					<label for="q11_1">Very interested</label><br>
+					<input type="radio" name="q11" value="2" id="q11_2" />
+					<label for="q11_2">Moderately interested</label><br>
+					<input type="radio" name="q11" value="3" id="q11_3" />
+					<label for="q11_3">Slightly interested</label><br>
+					<input type="radio" name="q11" value="4" id="q11_4" />
+					<label for="q11_4">Not interested at all</label><br>
+			</div>
+
+
+			<br><br>
+
+			<button type="submit">Continue</button>
+
+			<% end %>
+
+
+		</div>
+	</div>
+
