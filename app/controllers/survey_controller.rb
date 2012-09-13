@@ -75,7 +75,7 @@ class SurveyController < ApplicationController
     end
 
     # Randomly generate three names
-    names = ["Michael Jones", "Joseph Taylor", "Charles Thompson", "Jeffrey Smith", "Charles Johnston", "Steve Brooks"].shuffle
+    names = ["Michael Jones", "Joseph Taylor", "Charles Thompson", "Jeffrey Smith", "Alexander Johnston", "Steve Brooks"].shuffle
 
     @name0 = [names[0]]
     @name1 = [names[1]]
@@ -188,7 +188,8 @@ class SurveyController < ApplicationController
   def p013
     @results = restrict_hash(params, 2)
     @results["time5"] = Time.now
-    if Results.find_by_time1(@results['time1'])
+
+    unless Results.find_by_time1(@results['time1'])
       new_result = Results.create(@results)
     end
 

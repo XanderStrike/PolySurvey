@@ -15,6 +15,7 @@ class AdminController < ApplicationController
         # data row
         results.each do |result|
           puts "result.attributes.values.inspect: #{result.attributes.values.inspect}"
+
           csv << result.attributes.values
         end
       end
