@@ -1,15 +1,50 @@
 class SurveyController < ApplicationController
 
+  def restrict_hash (h, level)
+    valid = {
+      'origin' => 2,
+      'match_scenario' => 2,
+      'poll_scenario' => 2,
+      'name0' => 1,
+      'name1' => 1,
+      'name2' => 1,
+      'match0' => 1,
+      'match1' => 1,
+      'match2' => 1,
+      'vote' => 2,
+    }
+    for i in 1..15
+      valid['n%02d' % i] = 2
+    end
+    for i in 1..32
+      valid['q%02d' % i] = 2
+    end
+
+    r = h
+    r.each_key do | k |
+      unless valid[k] and valid[k] >= level
+        r.delete(k)
+      end
+    end
+    return r
+  end
+
+
   def p001
   end
 
   def p002
+    @results = restrict_hash(params, 1)
   end
 
   def p003
-  	results = [params["n01"].to_i, params["n02"].to_i, params["n03"].to_i, params["n04"].to_i, params["n05"].to_i, params["n06"].to_i, params["n07"].to_i, params["n08"].to_i, params["n09"].to_i, params["n10"].to_i, params["n11"].to_i, params["n12"].to_i, params["n13"].to_i, params["n14"].to_i, params["n15"].to_i]
 
-    result = results.inject(0){|sum,item| sum + item}
+    @results = restrict_hash(params, 1)
+
+    result = 0
+    for i in 1..15
+      result += @results['n%02d' % i].to_i
+    end
 
   	# Determine affiliation
   	if result > 5
@@ -70,74 +105,72 @@ class SurveyController < ApplicationController
       @name1 += ["70%"]
       @name2 += ["10%"]
     end
-
-    @data = params["origin"] + "," + results.join(',') + ",#{result},#{@name0.join(',')},#{@name1.join(',')},#{@name2.join(',')},#{group}"
+    @results['name0'] = @name0[0]
+    @results['match0'] = @name0[1]
+    @results['name1'] = @name1[0]
+    @results['match1'] = @name1[1]
+    @results['name2'] = @name2[0]
+    @results['match2'] = @name2[1]
+    @results['match_scenario'] = group
 
   end
 
   def p004
-    @data = params["results"].split(',')
-    @name0 = ["#{@data[17]}", "#{@data[18]}"]
-    @name1 = ["#{@data[19]}", "#{@data[20]}"]
-    @name2 = ["#{@data[21]}", "#{@data[22]}"]
+    @results = restrict_hash(params, 1)
+    @name0 = [@results['name0'], @results['match0']]
+    @name1 = [@results['name1'], @results['match1']]
+    @name2 = [@results['name2'], @results['match2']]
 
     # Determine which group, close election or blowout election they are part of
     @group = rand(4)
 
-    @data_new = params["results"] + ",#{@group}"
+    @results['poll_scenario'] = @group
   end
 
   def p005
-    @data = params["results"].split(',')
-    @name0 = ["#{@data[17]}", "#{@data[18]}"]
-    @name1 = ["#{@data[19]}", "#{@data[20]}"]
-    @name2 = ["#{@data[21]}", "#{@data[22]}"]
+    @results = restrict_hash(params, 1)
+    @name0 = [@results['name0'], @results['match0']]
+    @name1 = [@results['name1'], @results['match1']]
+    @name2 = [@results['name2'], @results['match2']]
 
-    @group = @data[24]
+    @group = @results['poll_scenario']
 
-    @data_new = params["results"]
   end
 
   def p006
-    @data = params["results"] + ",#{params[:vote]}"
+    @results = restrict_hash(params, 1)
   end
 
   def p007
-    @data = params["results"] + ",#{params[:q01]},#{params[:q02]},#{params[:q03]},#{params[:q04]},#{params[:q05]},#{params[:q06]}"
+    @results = restrict_hash(params, 1)
   end
 
   def p008
-    @data = params["results"] + ",#{params[:q07]},#{params[:q08]},#{params[:q09]},#{params[:q10]}"
+    @results = restrict_hash(params, 1)
   end
 
   def p009
-    @data = params["results"] + ",#{params[:q11]}"
+    @results = restrict_hash(params, 1)
   end
 
   def p010
-    @data = params["results"] + ",#{params[:q12]},#{params[:q13]},#{params[:q14]},#{params[:q15]},#{params[:q16]},#{params[:q17]}"
+    @results = restrict_hash(params, 1)
   end
 
   def p011
-    @data = params["results"] + ",#{params[:q18]},#{params[:q19]},#{params[:q20]},#{params[:q21]}"
+    @results = restrict_hash(params, 1)
   end
 
   def p012
-    @data = params["results"] + ",#{params[:q22a]},#{params[:q22b]},#{params[:q22c]},#{params[:q22d]},#{params[:q22e]},#{params[:q23]},#{params[:q24]},#{params[:q25]},#{params[:q26]}"
+    @results = restrict_hash(params, 1)
   end
 
   def p013
-    @data = params["results"] + ",#{params[:q27]},#{params[:q28]},#{params[:q29]},#{params[:q30]},#{params[:q31]}"
+    @results = restrict_hash(params, 2)
+    
+    new_result = Results.new(@results)
+    new_results.save
 
-    @array = @data.split(',')
   end
 end
 
-# The form of "data"
-#   0 - Origin of respondent (mturk, Westmont, UCSB, etc.)
-#   1-15 - Political alignment questions
-#   16 - Political alignment
-#   17, 19, 21 - Candidate names, most to least
-#   18, 20, 22 - Percentages
-#   23 - Group for candidate display (0-5)
-#   24 - Group for news blurb display (0-3)

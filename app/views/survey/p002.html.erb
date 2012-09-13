@@ -201,7 +201,9 @@
 			</div>
 
 			<br><br>
-			<%= hidden_field_tag :origin, params["origin"] %>
+			<% @results.each do |k, v| -%>
+				<%= hidden_field_tag k, v %>
+			<% end %>
 			<button type="button" onclick="validatePage()">Continue</button>
 
 			<% end %>
