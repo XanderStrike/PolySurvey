@@ -21,12 +21,11 @@ class SurveyController < ApplicationController
     end
 
     # Randomly generate three names
-    first_names = %w[James John Robert Michael William David Richard Charles Joseph Thomas Christopher Daniel Paul Mark Donald George Kenneth Steven Edward Brian Ronald Anthony Kevin Jason Jeff]
-    last_names = %w[Smith Johnson Williams Jones Brown Davis Miller Wilson Moore Taylor Anderson Thomas Jackson White Harris Martin Thompson Robinson Clark Lewis Lee Walker Hall Allen Young King]
+    names = ["Michael Jones", "Joseph Taylor", "Charles Thompson", "Jeffrey Smith", "Mike Jones", "Steve Brooks"].shuffle
 
-    @name0 = ["#{first_names[rand(first_names.size)]} #{last_names[rand(last_names.size)]}"]
-    @name1 = ["#{first_names[rand(first_names.size)]} #{last_names[rand(last_names.size)]}"]
-    @name2 = ["#{first_names[rand(first_names.size)]} #{last_names[rand(last_names.size)]}"]
+    @name0 = [names[0]]
+    @name1 = [names[1]]
+    @name2 = [names[2]]
 
     # Determine in which way the candidates are displayed (assign them to groups 1-6)
     group = rand(6)
@@ -116,4 +115,4 @@ end
 #   16, 18, 20 - Candidate names, most to least
 #   17, 19, 21 - Percentages
 #   22 - Group for candidate display (0-5)
-#   23 - Group for news blurb display (0-3)
+#   23 - Group for news blurb display (0-3) 
