@@ -18,13 +18,22 @@ class SurveyController < ApplicationController
       'time4' => 2,
       'time5' => 2,
       'time6' => 2,
+      'q22a' => 2,
+      'q22b' => 2,
+      'q22c' => 2,
+      'q22d' => 2,
+      'q22e' => 2,
+      'q30a' => 1,
+      'q32a' => 1,
 
     }
     for i in 1..15
       valid['n%02d' % i] = 2
     end
     for i in 1..32
-      valid['q%02d' % i] = 2
+      unless i == 22
+        valid['q%02d' % i] = 2
+      end
     end
 
     r = h
@@ -179,8 +188,9 @@ class SurveyController < ApplicationController
   def p013
     @results = restrict_hash(params, 2)
     @results["time5"] = Time.now
-    
-    new_result = Results.create(@results)
+    if Results.find_by_time1(@results['time1'])
+      new_result = Results.create(@results)
+    end
 
   end
 end
