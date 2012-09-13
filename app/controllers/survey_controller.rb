@@ -75,7 +75,7 @@ class SurveyController < ApplicationController
     end
 
     # Randomly generate three names
-    names = ["Michael Jones", "Joseph Taylor", "Charles Thompson", "Jeffrey Smith", "Charles Johnston", "Steve Brooks"].shuffle
+    names = ["Michael Jones", "Joseph Taylor", "Charles Thompson", "Jeffrey Smith", "Alexander Johnston", "Steve Brooks"].shuffle
 
     @name0 = [names[0]]
     @name1 = [names[1]]
