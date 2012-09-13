@@ -10,11 +10,11 @@ function isRadioSelected(nme) {
 function isTextBoxRangeValid(nme) {
     //Check to make sure that they are numbers
     var txt = document.getElementsByName(nme)[0].value;
-    /*
+
     if (txt == "") {
         return false;
     }
-    */
+
     if (isNaN(txt)){
         return false;
     } else {
