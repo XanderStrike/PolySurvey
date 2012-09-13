@@ -12,6 +12,13 @@ class SurveyController < ApplicationController
       'match1' => 1,
       'match2' => 1,
       'vote' => 2,
+      'time1' => 2,
+      'time2' => 2,
+      'time3' => 2,
+      'time4' => 2,
+      'time5' => 2,
+      'time6' => 2,
+
     }
     for i in 1..15
       valid['n%02d' % i] = 2
@@ -35,6 +42,7 @@ class SurveyController < ApplicationController
 
   def p002
     @results = restrict_hash(params, 1)
+    @results["time1"] = Time.now
   end
 
   def p003
@@ -117,6 +125,7 @@ class SurveyController < ApplicationController
 
   def p004
     @results = restrict_hash(params, 1)
+    @results["time2"] = Time.now
     @name0 = [@results['name0'], @results['match0']]
     @name1 = [@results['name1'], @results['match1']]
     @name2 = [@results['name2'], @results['match2']]
@@ -134,7 +143,7 @@ class SurveyController < ApplicationController
     @name2 = [@results['name2'], @results['match2']]
 
     @group = @results['poll_scenario']
-
+    @results["time3"] = Time.now
   end
 
   def p006
@@ -167,9 +176,11 @@ class SurveyController < ApplicationController
 
   def p013
     @results = restrict_hash(params, 2)
+    @results["time4"] = Time.now
+
     
     new_result = Results.new(@results)
-
+    new_results.save
   end
 end
 
