@@ -1,18 +1,16 @@
 class AdminController < ApplicationController
 
   require 'csv'
-  
-  def new
-  end
-
+ 
   def show
   end
 
   def output_results
     results = ActiveRecord::Results.all
 
+    user_csv = CSV.generate do |csv|
     unless results.empty?
-      user_csv = CSV.generate do |csv|
+      
         # header row
         csv << results.first.columns.map(&:name)
         # data row
@@ -20,8 +18,10 @@ class AdminController < ApplicationController
           csv << result.columns.map(&:value)
         end
       end
-    end
+#    end
 
+    csv << ['header1', 'header2', 'header3']
+    end
     send_data(user_csv, :type => 'test/csv', :filename => 'user_records.csv')
   end
 end
