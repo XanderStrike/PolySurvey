@@ -179,8 +179,7 @@ class SurveyController < ApplicationController
     @results["time4"] = Time.now
 
     
-    new_result = Results.new(@results)
-    new_results.save
+    new_result = Results.create(@results)
   end
 end
 
