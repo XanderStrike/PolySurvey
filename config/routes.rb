@@ -1,8 +1,6 @@
 PolySurvey::Application.routes.draw do
 
-<<<<<<< HEAD
   root :to => 'survey#p000'
-=======
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/admin_signin',  to: 'sessions#new'
@@ -10,7 +8,6 @@ PolySurvey::Application.routes.draw do
   match '/admin/', to: 'admin#panel', :via => :get
 
   root :to => 'survey#p001'
->>>>>>> ee5f66472bfe54270b6316e2eb93be11134e3d21
 
   get "survey/p000m"
   
@@ -18,7 +15,7 @@ PolySurvey::Application.routes.draw do
   
   get "survey/p001"
 
-  #get "survey/p002"
+  get "survey/p002"
   post "survey/p002"
 
   #get "survey/p003"
