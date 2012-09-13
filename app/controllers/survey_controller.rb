@@ -71,7 +71,7 @@ class SurveyController < ApplicationController
       @name2 += ["10%"]
     end
 
-    @data = results.join(',') + ",#{result},#{@name0.join(',')},#{@name1.join(',')},#{@name2.join(',')},#{group}"
+    @data = results.join(',') + ",#{result},#{@name0.join(',')},#{@name1.join(',')},#{@name2.join(',')},#{group},#{params["origin"]}"
 
   end
 
