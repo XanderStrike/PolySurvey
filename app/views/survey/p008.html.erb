@@ -1,14 +1,33 @@
 <div id="header">
 		<h1>Survey</h1>
 		<hr size="1">
+    <script type="text/javascript">
+        function validatePage() {
+            var isValid = true;
+            var error = "";
+
+            //Loop through to see if there are any errors, going in reverse
+            if(!isRadioSelected("q11")){ isValid = false; error = getErrorText(11); }
+
+            if (isValid == true) {
+                frm.submit();
+            } else {
+                document.getElementById("errorText").innerHTML = error;
+                alert(error);
+            }
+        }
+
+    </script>
 	</div>
 
 	<div id="body">
 		<div id="content">
 
-		<%= form_tag 'p009' do -%>
+		<%= form_tag 'p009', :id => 'frm' do -%>
 
 		<h3>Interest and Knowledge</h3>
+
+            <div id="errorText" style="color: red;"></div>
 
 			<div class="question">
 				<p>11. How interested are you in information about what's going on in government and politics?</p>
@@ -24,13 +43,15 @@
 					<label for="q11_4">Not interested at all</label><br>
 			</div>
 
-
 			<br><br>
-
-			<button type="submit">Continue</button>
-
+			<% @results.each do |k, v| -%>
+				<%= hidden_field_tag k, v %>
 			<% end %>
 
+            <input type="button" name="commit" onclick="validatePage()" value="Continue" />
+
+			<% end %>
+<%= @data %>
 
 		</div>
 	</div>

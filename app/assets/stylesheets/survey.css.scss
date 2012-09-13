@@ -116,13 +116,40 @@ a:visited
 	width:250px;
 }
 
-#blurb {
-	font:16px monospace;
+#results {
 	overflow: hidden;
-	float: center;
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-bottom: 50px;
-	width: 400px;
-	
+	padding: 15px;
+	width: 300px;
+	border: 1px solid #000000
+}
+
+// ------------------- API NEWS ARTICLE ------------------------
+.news {
+  background-image: url(image_path('news_back.jpg'));
+  background-repeat: no-repeat;
+  width: 800px;
+  height: 322px;
+
+  padding-top: 5px;
+  padding-left: 64px;
+
+  color: #3d3d3d;
+  font-family: "Century";
+}
+
+.news_header {
+  font-size: 45px;
+  font-weight: bold;
+  width: 429px;
+  vertical-align: top;
+}
+
+.news_content {
+  margin-left: 35px;
+  width: 200px;
+  max-height: 297px;
+  vertical-align: top;
 }

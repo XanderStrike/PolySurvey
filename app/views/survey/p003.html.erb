@@ -14,7 +14,9 @@
 				Candidate <%= @name2[0] %> - <%= @name2[1] %> match </p>
 
 			<%= form_tag 'p004' do -%>
-				<%= hidden_field_tag :results, @data %>
+				<% @results.each do |k, v| -%>
+					<%= hidden_field_tag k, v %>
+				<% end %>
 				<%= submit_tag "Continue" %>
 			<% end %>
 

@@ -1,15 +1,50 @@
 <div id="header">
 		<h1>Survey</h1>
 		<hr size="1">
+        <script type="text/javascript">
+            function validatePage() {
+                var isValid = true;
+                var error = "";
+
+                //Loop through to see if there are any errors, going in reverse
+                if(!isRadioSelected("q10")){ isValid = false; error = getErrorText(10); }
+                if(!isRadioSelected("q09")){ isValid = false; error = getErrorText(9); }
+                if(!isRadioSelected("q08")){ isValid = false; error = getErrorText(8); }
+                if(!isRadioSelected("q07")){ isValid = false; error = getErrorText(7); }
+
+                if (isValid == true) {
+                    frm.submit();
+                } else {
+                    document.getElementById("errorText").innerHTML = error;
+                    alert(error);
+                }
+            }
+
+            function isRadioSelected(nme) {
+                var isChecked = false;
+                for(var i = 0; i < document.getElementsByName(nme).length; i++)
+                {
+                    if(document.getElementsByName(nme)[i].checked == true){ return true; }
+                }
+                return false;
+            }
+
+            function getErrorText(question)
+            {
+                return "Question " + question + " has not been answered yet.";
+            }
+        </script>
 	</div>
 
 <div id="body">
 		<div id="content">
 
 
-	<%= form_tag 'p008' do -%>
+	<%= form_tag 'p008', :id => 'frm' do -%>
 
 	<h3>Consider the following statements about public life. Please tell me how strongly you agree or disagree with each of them.</h3>
+
+            <div id="errorText" style="color: #ff0000;"></div>
 
 			<div class="question">
 				<p>7. 'Sometimes, politics and government seem so complicated that a person like me can't really understand what's going on.’</p>
@@ -69,9 +104,14 @@
 
 			<br><br>
 
-			<button type="submit">Continue</button>
+			<% @results.each do |k, v| -%>
+				<%= hidden_field_tag k, v %>
+			<% end %>
+
+            <input type="button" name="commit" onclick="validatePage()" value="Continue" />
 
 			<% end %>
 
+<%= @data %>
 		</div>
 	</div>

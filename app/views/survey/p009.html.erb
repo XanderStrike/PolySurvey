@@ -1,14 +1,57 @@
 <div id="header">
 		<h1>Survey</h1>
 		<hr size="1">
-	</div>
+    <script type="text/javascript">
+        function validatePage() {
+            var isValid = true;
+            var error = "";
+
+            //Loop through to see if there are any errors, going in reverse
+            if(!isRadioSelected("q13")){ isValid = false; error = getErrorText(13); }
+            if(!isRadioSelected("q12")){ isValid = false; error = getErrorText(12); }
+            if(!isRadioSelected("q16")){ isValid = false; error = getErrorText(16); }
+            if(!isRadioSelected("q17")){ isValid = false; error = getErrorText(17); }
+            if (document.getElementsByName("q13")[0].checked == true) {
+                if(!isRadioSelected("q14")){ isValid = false; error = getErrorText(14); }
+            } else if (document.getElementsByName("q13")[1].checked == true)  {
+                if(!isRadioSelected("q15")){ isValid = false; error = getErrorText(15); }
+            }
+
+            if (isValid == true) {
+                frm.submit();
+            } else {
+                document.getElementById("errorText").innerHTML = error;
+                alert(error);
+            }
+        }
+
+        function getQuestion14(num) {
+            if (num == 1)
+            {
+                document.getElementById("q14ID").style.display = "block";
+                document.getElementById("q15ID").style.display = "none";
+            } else if (num == 2) {
+                document.getElementById("q14ID").style.display = "none";
+                document.getElementById("q15ID").style.display = "block";
+            } else {
+                document.getElementById("q14ID").style.display = "none";
+                document.getElementById("q15ID").style.display = "none";
+            }
+            document.getElementById("qREST").style.display = "block";
+        }
+    </script>
+
+</div>
 
 	<div id="body">
 		<div id="content">
 
-		<%= form_tag 'p0010' do -%>
+		<%= form_tag 'p010', :id => 'frm' do -%>
+
 
 		<h3>Importance of Vote</h3>
+
+            <div id="errorText" style="color: red;"></div><br/>
 
 			<div class="question">
 				<p>12. Generally speaking, do you believe that you have a duty to vote in every national election,or do you believe that you do not have a duty to vote in every national election?</h3><br>
@@ -22,18 +65,16 @@
 
 			<div class="question">
 				<p>13. For you personally, is voting mainly a duty, a choice, or neither a duty nor a choice?</h3><br>
-					<input type="radio" name="q13" value="0" id="q13_0" />
+					<input type="radio" name="q13" value="0" id="q13_0" onclick="getQuestion14(1)" />
 					<label for="q13_0">A duty</label><br>
-					<input type="radio" name="q13" value="1" id="q13_1" />
+					<input type="radio" name="q13" value="1" id="q13_1" onclick="getQuestion14(2)" />
 					<label for="q13_1">A choice</label><br>
-					<input type="radio" name="q13" value="1" id="q13_2" />
+					<input type="radio" name="q13" value="1" id="q13_2" onclick="getQuestion14(3)" />
 					<label for="q13_2">Neither a duty or a choice</label><br>
 			</div>
 
 
-			(if answer to 13 is a, then)
-
-			<div class="question">
+			<div class="question" id="q14ID" style="display: none;">
 				<p>14. How strongly do you feel that voting is a duty?</p>
 					<input type="radio" name="q14" value="0" id="q14_0" />
 					<label for="q14_0">Very strongly</label><br>
@@ -43,9 +84,8 @@
 					<label for="q14_2">A little strongly</label><br>
 			</div>
 
-			(if answer to 13 is b, then)
-			<div class="question">
-				<p>15. How strongly do you feel that voting is a choice?</p>
+			<div class="question" id="q15ID" style="display: none;">
+				<p>14. How strongly do you feel that voting is a choice?</p>
 					<input type="radio" name="q15" value="0" id="q15_0" />
 					<label for="q15_0">Very strongly</label><br>
 					<input type="radio" name="q15" value="1" id="q15_1" />
@@ -55,9 +95,9 @@
 			</div>
 
 
-
+            <div id="qREST" style="display: none;">
 			<div class="question">
-				<p>16. How much do you feel that having elections makes the government pay attention to what the people think?</p>
+				<p>15. How much do you feel that having elections makes the government pay attention to what the people think?</p>
 					<input type="radio" name="q16" value="0" id="q16_0" />
 					<label for="q16_0">A good deal</label><br>
 					<input type="radio" name="q16" value="1" id="q16_1" />
@@ -67,7 +107,7 @@
 			</div>
 
 			<div class="question">
-				<p>17. Some people say that no matter who people vote for, it won't make any difference to what happens. Others say that who people vote for can make a difference to what happens. What do you think?</p>
+				<p>16. Some people say that no matter who people vote for, it won't make any difference to what happens. Others say that who people vote for can make a difference to what happens. What do you think?</p>
 					<input type="radio" name="q17" value="0" id="q17_0" />
 					<label for="q17_0">Who you vote for won’t make any difference</label><br>
 					<input type="radio" name="q17" value="1" id="q17_1" />
@@ -75,11 +115,16 @@
 			</div>
 
 			<br><br>
-
-			<button type="submit">Continue</button>
-
+			<% @results.each do |k, v| -%>
+				<%= hidden_field_tag k, v %>
 			<% end %>
 
+            <input type="button" name="commit" onclick="validatePage()" value="Continue" />
+
+            </div>
+
+			<% end %>
+<%= @data %>
 
 		</div>
 

@@ -1,43 +1,47 @@
 PolySurvey::Application.routes.draw do
 
   root :to => 'survey#p001'
-
-  #get "survey/p001"
+  
+  get "survey/p001"
 
   get "survey/p002"
+  post "survey/p002"
 
-  get "survey/p003"
+  #get "survey/p003"
   post "survey/p003"
 
-  get "survey/p004"
+  #get "survey/p004"
   post "survey/p004"
 
-  get "survey/p005"
+  #get "survey/p005"
   post "survey/p005"
 
-  get "survey/p006"
+  #get "survey/p006"
   post "survey/p006"
 
-  get "survey/p007"
+  #get "survey/p007"
   post "survey/p007"
 
-  get "survey/p008"
+  #get "survey/p008"
   post "survey/p008"
 
-  get "survey/p009"
+  #get "survey/p009"
   post "survey/p009"
 
-  get "survey/p0010"
-  post "survey/p0010"
+  #get "survey/p010"
+  post "survey/p010"
 
-get "survey/p0011"
-  post "survey/p0011"
+  #get "survey/p011"
+  post "survey/p011"
 
-get "survey/p0012"
-  post "survey/p0012"
+  #get "survey/p012"
+  post "survey/p012"
 
- get "survey/poo13"
-  post "survey/p0013"
+  #get "survey/p013"
+  post "survey/p013"
+
+  match '/9290582968088875', to: 'admin#show'
+  post "admin/output_results"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,190 @@
+<div id="header">
+		<h1>Survey</h1>
+		<hr size="1">
+    <script type="text/javascript">
+        function validatePage() {
+            var isValid = true;
+            var error = "";
+
+            //Loop through to see if there are any errors, going in reverse
+            if(!isRadioSelected("q31")){ isValid = false; error = getErrorText(31); }
+            if(!isRadioSelected("q30")){ isValid = false; error = getErrorText(30); }
+            if(!isRadioSelected("q28")){ isValid = false; error = getErrorText(28); }
+
+            if (document.getElementsByName("q31")[0].checked == true) {
+                if(!isRadioSelected("q32")){ isValid = false; error = getErrorText(32); }
+            }
+
+            //Loop through the text boxes
+            if (!isTextBoxRangeValid("q27")){ isValid = false; error = "Date of birth valid number"; }
+
+            if (isValid == true) {
+                frm.submit();
+            } else {
+                document.getElementById("errorText").innerHTML = error;
+                alert(error);
+            }
+        }
+
+        function getQuestion32(show) {
+            for(var i = 0; i < document.getElementsByName("q32"); i++)
+            {
+                document.getElementsByName("q32")[i].checked = false;
+            }
+
+            if (show == true)
+            {
+                document.getElementById("q32ID").style.display = "block";
+            } else {
+                document.getElementById("q32ID").style.display = "none";
+            }
+        }
+    </script>
+	</div>
+
+	<div id="body">
+		<div id="content">
+
+		<%= form_tag 'p013', :id => 'frm' do -%>
+
+		<h3> Demographics</h3>
+
+            <div id="errorText" style="color: red;"></div>
+
+			<div class="question">
+				<p>27. How old are you?</p>
+					<input type="text" name="q27" value="" id="q27_0" />
+					<label for="q27_0"></label><br>
+
+			</div>
+
+			<div class="question">
+				<p>28. Are you Male or Female?</p>
+					<input type="radio" name="q28" value="0" id="q28_0" />
+					<label for="q28_0">Male</label><br>
+					<input type="radio" name="q28" value="0" id="q28_1" />
+					<label for="q28_1">Female</label><br>
+			</div>
+
+			<div class="question">
+				<p>29. What state do you live in?</p>
+
+                <select name="q29">
+                    <option value="AL">AL</option>
+                    <option value="AK">AK</option>
+                    <option value="AZ">AZ</option>
+                    <option value="AR">AR</option>
+                    <option value="CA">CA</option>
+                    <option value="CO">CO</option>
+                    <option value="CT">CT</option>
+                    <option value="DE">DE</option>
+                    <option value="DC">DC</option>
+                    <option value="FL">FL</option>
+                    <option value="GA">GA</option>
+                    <option value="HI">HI</option>
+                    <option value="ID">ID</option>
+                    <option value="IL">IL</option>
+                    <option value="IN">IN</option>
+                    <option value="IA">IA</option>
+                    <option value="KS">KS</option>
+                    <option value="KY">KY</option>
+                    <option value="LA">LA</option>
+                    <option value="ME">ME</option>
+                    <option value="MD">MD</option>
+                    <option value="MA">MA</option>
+                    <option value="MI">MI</option>
+                    <option value="MN">MN</option>
+                    <option value="MS">MS</option>
+                    <option value="MO">MO</option>
+                    <option value="MT">MT</option>
+                    <option value="NE">NE</option>
+                    <option value="NV">NV</option>
+                    <option value="NH">NH</option>
+                    <option value="NJ">NJ</option>
+                    <option value="NM">NM</option>
+                    <option value="NY">NY</option>
+                    <option value="NC">NC</option>
+                    <option value="ND">ND</option>
+                    <option value="OH">OH</option>
+                    <option value="OK">OK</option>
+                    <option value="OR">OR</option>
+                    <option value="PA">PA</option>
+                    <option value="RI">RI</option>
+                    <option value="SC">SC</option>
+                    <option value="SD">SD</option>
+                    <option value="TN">TN</option>
+                    <option value="TX">TX</option>
+                    <option value="UT">UT</option>
+                    <option value="VT">VT</option>
+                    <option value="VA">VA</option>
+                    <option value="WA">WA</option>
+                    <option value="WV">WV</option>
+                    <option value="WI">WI</option>
+                    <option value="WY">WY</option>
+                </select>
+
+                <br>
+            </div>
+
+
+			<div class="question">
+				<p>30. What is the highest level of education you have obtained?</p>
+					<input type="radio" name="q30" value="0" id="q30_0" />
+					<label for="q30_0">Did not graduate</label><br>
+					<input type="radio" name="q30" value="0" id="q30_1" />
+					<label for="q30_1">High school diploma (including AA)</label><br>
+					<input type="radio" name="q30" value="0" id="q30_2" />
+					<label for="q30_2">I am currently in college</label><br>
+					<input type="radio" name="q30" value="0" id="q30_3" />
+					<label for="q30_3">I have completed my undergraduate degree (MA or BA)</label><br>
+					<input type="radio" name="q30" value="0" id="q30_4" />
+					<label for="q30_4">I am currently in graduate school</label><br>
+					<input type="radio" name="q30" value="0" id="q30_5" />
+					<label for="q30_5">I have completed an advanced degree (e.g., Masters, Doctorate, MBA, MD, JD, etc.)</label><br>
+                    <input type="radio" name="q30" value="0" id="q30_6" />
+					<label for="q30_6">Other </label>
+					<input type="text" name="q30a" value="" id="q30_6a" />
+					<br>
+
+			</div>
+
+			<div class="question">
+				<p>31. Are you a college student?</p>
+					<input type="radio" name="q31" value="0" id="q31_0" onclick="getQuestion32(true)" />
+					<label for="q31_0">Yes</label><br>
+					<input type="radio" name="q31" value="0" id="q31_1" onclick="getQuestion32(false)" />
+					<label for="q31_1">No</label><br>
+
+			</div>
+
+			<div class="question" id="q32ID" style="display: none;">
+				<p>32. Where do you go to college?</p>
+					<input type="radio" name="q32" value="0" id="q32_0" />
+					<label for="q32_0">Westmont College</label><br>
+					<input type="radio" name="q32" value="0" id="q32_1" />
+					<label for="q32_1">UCSB</label><br>
+					<input type="radio" name="q32" value="0" id="q32_2" />
+					<label for="q32_2">SBCC</label><br>
+					<input type="radio" name="q32" value="0" id="q32_3" />
+					<label for="q32_3">University of Denver</label><br>
+					<input type="radio" name="q32" value="0" id="q32_4" />
+					<label for="q32_4">SUNY Postdam</label><br>
+                    <input type="radio" name="q32" value="0" id="q32_5" />
+					<label for="q32_5">Other</label>
+					<input type="text" name="q32a" value="" id="q32_5a" />
+					<br>
+
+			</div>
+
+
+			<br><br>
+            <% @results.each do |k, v| -%>
+                <%= hidden_field_tag k, v %>
+            <% end %>
+
+            <input type="button" name="commit" onclick="validatePage()" value="Continue" />
+
+			<% end %>
+<%= @data %>
+		</div>
+	</div>
