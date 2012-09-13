@@ -123,11 +123,11 @@ class SurveyController < ApplicationController
   end
 
   def p012
-    @data = params["results"] + ",#{params[:q22a]},#{params[:q22b]},#{params[:q22c]},#{params[:q22d]},#{params[:q22e]},#{params[:q23]},#{params[:q24]},#{params[:q25]},#{params[:q26]}"
+    @data = params.reject!{|k| k == "utf8"}
   end
 
   def p013
-    @data = params["results"] + ",#{params[:q27]},#{params[:q28]},#{params[:q29]},#{params[:q30]},#{params[:q31]}"
+    @data = params.to_s
 
     @array = @data.split(',')
   end
