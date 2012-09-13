@@ -1,17 +1,49 @@
 <div id="header">
 		<h1>Survey</h1>
 		<hr size="1">
+
+    <script type="text/javascript">
+        function validatePage() {
+            var isValid = true;
+            var error = "";
+
+            //Loop through to see if there are any errors, going in reverse
+            if(!isRadioSelected("q18")){ isValid = false; error = getErrorText(18); }
+            if(!isRadioSelected("q19")){ isValid = false; error = getErrorText(19); }
+            if(!isRadioSelected("q20")){ isValid = false; error = getErrorText(20); }
+            if (document.getElementsByName("q20")[2].checked == true) {
+                if(!isRadioSelected("q21")){ isValid = false; error = getErrorText(21); }
+            }
+
+            if (isValid == true) {
+                frm.submit();
+            } else {
+                document.getElementById("errorText").innerHTML = error;
+                alert(error);
+            }
+        }
+
+        function getQuestion21(show) {
+            if (show == true)
+            {
+                document.getElementById("q21ID").style.display = "block";
+            } else {
+                document.getElementById("q21ID").style.display = "none";
+            }
+        }
+    </script>
+
 	</div>
 
 	<div id="body">
 		<div id="content">
 
-<%= form_tag 'p011' do -%>
+<%= form_tag 'p011', :id => 'frm' do -%>
 
 <h3> Consider the following statements about voting. Please tell me how strongly you agree or disagree with each of them.</h3>
 
 
-
+            <div id="errorText" style="color:red"></div>
 
 			<div class="question">
 				<p>18. It is important to vote in elections, because if I didn’t, things might be turn out for the worse.</p>
@@ -44,17 +76,15 @@
 
 			<div class="question">
 				<p>20. Please read the following statements.  In general, which statement to you most agree with?</p>
-					<input type="radio" name="q20" value="0" id="q20_0" />
+					<input type="radio" name="q20" value="0" id="q20_0" onclick="getQuestion21(false)" />
 					<label for="q20_0">Elections are a selection process in which I use my vote to help elect a candidate for public office.</label><br>
-					<input type="radio" name="q20" value="1" id="q20_1" />
+					<input type="radio" name="q20" value="1" id="q20_1" onclick="getQuestion21(false)" />
 					<label for="q20_1">Elections are form of expression in which I use my vote to voice my opinion with government.</label><br>
-					<input type="radio" name="q20" value="2" id="q20_2" />
+					<input type="radio" name="q20" value="2" id="q20_2" onclick="getQuestion21(true)" />
 					<label for="q20_2">I agree with both statements.</label><br>
 			</div>
 
-
-	[If q23 = c] 
-			<div class="question">
+			<div class="question" id="q21ID" style="display: none;">
 				<p>21. A lot of people agree with both statements.  But if you had to pick the statement you agree with most, what would you say?</p>
 					<input type="radio" name="q21" value="0" id="q21_0" />
 					<label for="q21_0">Elections are a selection process in which I use my vote to help elect a candidate for public office.</label><br>
@@ -68,7 +98,7 @@
   			<br><br>
   			<%= hidden_field_tag :results, @data %>
 
-			<%= submit_tag "Continue" %>
+            <input type="button" name="commit" onclick="validatePage()" value="Continue" />
 
 			<% end %>
 <%= @data %>
