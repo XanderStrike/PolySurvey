@@ -7,10 +7,10 @@ class RemoveMisplacedAttrsFromResults < ActiveRecord::Migration
   end
 
   def down
-    add_column :results, :email
-    add_column :results, :password
-    add_column :results, :survey_finished
-    add_column :results, :admin
+    add_column :results, :email, :string
+    add_column :results, :password, :string
+    add_column :results, :survey_finished, :boolean
+    add_column :results, :admin, :boolean
   end
 
 end
