@@ -176,7 +176,9 @@
 					<label for="q06_3">Not satisfied at all</label><br>
 			</div>
 <br/>
-			<%= hidden_field_tag :results, @data %>
+			<% @results.each do |k, v| -%>
+				<%= hidden_field_tag k, v %>
+			<% end %>
 			<input type="button" name="commit" onclick="validatePage()" value="Continue" />
 			<% end %>
             </div>

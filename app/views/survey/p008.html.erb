@@ -17,19 +17,6 @@
             }
         }
 
-        function isRadioSelected(nme) {
-            var isChecked = false;
-            for(var i = 0; i < document.getElementsByName(nme).length; i++)
-            {
-                if(document.getElementsByName(nme)[i].checked == true){ return true; }
-            }
-            return false;
-        }
-
-        function getErrorText(question)
-        {
-            return "Question " + question + " has not been answered yet.";
-        }
     </script>
 	</div>
 
@@ -57,7 +44,9 @@
 			</div>
 
 			<br><br>
-			<%= hidden_field_tag :results, @data %>	
+			<% @results.each do |k, v| -%>
+				<%= hidden_field_tag k, v %>
+			<% end %>
 
             <input type="button" name="commit" onclick="validatePage()" value="Continue" />
 

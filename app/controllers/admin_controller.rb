@@ -1,25 +1,27 @@
 class AdminController < ApplicationController
+
+  require 'csv'
+  
   def new
   end
 
-  def panel
-    unless @current_user && @current_user.admin?
-      redirect_to 'root'
-    end
+  def show
   end
 
   def output_results
-    results = Result.all
+    results = ActiveRecord::Results.all
 
-    user_csv = FasterCSV.generate do |csv|
-      # header row
-      csv << results.first.columns.map(&:name)
-      # data row
-      results.each do |result|
-        csv << result.columns.map(&:value)
+    unless results.empty?
+      user_csv = CSV.generate do |csv|
+        # header row
+        csv << results.first.columns.map(&:name)
+        # data row
+        results.each do |result|
+          csv << result.columns.map(&:value)
+        end
       end
     end
 
-    send_data(user_csv, :type => 'test/csv', :filename => 'user_record.csv')
+    send_data(user_csv, :type => 'test/csv', :filename => 'user_records.csv')
   end
 end
