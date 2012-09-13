@@ -36,12 +36,16 @@ class SurveyController < ApplicationController
       @name1 += ["40%"]
       @name2 += ["10%"]
     when 1
-      if result > 0
+      if result > 5
         @name0 = ["#{@name0[0]} (Libertarian)", "90%"]
         @name1 = ["#{@name1[0]} (Republican)", "40%"]
         @name2 = ["#{@name2[0]} (Democrat)", "10%"]
-      else
+      elsif result < -5
         @name0 = ["#{@name0[0]} (Green)", "90%"]
+        @name1 = ["#{@name1[0]} (Democrat)", "40%"]
+        @name2 = ["#{@name2[0]} (Republican)", "10%"]
+      else
+        @name0 = ["#{@name0[0]} (Reform)", "90%"]
         @name1 = ["#{@name1[0]} (Democrat)", "40%"]
         @name2 = ["#{@name2[0]} (Republican)", "10%"]
       end
