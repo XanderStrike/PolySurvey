@@ -4,7 +4,7 @@ PolySurvey::Application.routes.draw do
 
   match '/admin_signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', :via => :delete
-  match '/admin/', to: 'admin#panel', :via => :get
+  match '/9290582968088875', to: 'admin#show'
 
   root :to => 'survey#p001'
 

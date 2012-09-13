@@ -2,10 +2,7 @@ class AdminController < ApplicationController
   def new
   end
 
-  def panel
-    unless @current_user && @current_user.admin?
-      redirect_to 'root'
-    end
+  def show
   end
 
   def output_results
@@ -20,6 +17,6 @@ class AdminController < ApplicationController
       end
     end
 
-    send_data(user_csv, :type => 'test/csv', :filename => 'user_record.csv')
+    send_data(user_csv, :type => 'test/csv', :filename => 'user_records.csv')
   end
 end
