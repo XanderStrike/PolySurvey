@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120913162744) do
+ActiveRecord::Schema.define(:version => 20120913163536) do
 
   create_table "results", :force => true do |t|
     t.datetime "created_at",     :null => false
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20120913162744) do
     t.string   "q30a"
     t.string   "q32a"
     t.string   "q25a"
+    t.string   "alignment"
   end
 
   create_table "users", :force => true do |t|

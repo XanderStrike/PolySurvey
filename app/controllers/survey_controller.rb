@@ -5,6 +5,7 @@ class SurveyController < ApplicationController
       'origin' => 2,
       'match_scenario' => 2,
       'poll_scenario' => 2,
+      'alignment' => 2,
       'name0' => 1,
       'name1' => 1,
       'name2' => 1,
@@ -131,6 +132,7 @@ class SurveyController < ApplicationController
     @results['name2'] = @name2[0]
     @results['match2'] = @name2[1]
     @results['match_scenario'] = group
+    @results['alignment'] = result
 
   end
 
