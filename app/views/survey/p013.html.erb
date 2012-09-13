@@ -9,11 +9,8 @@
 		<div id="content">
 			<h3>Thank you for participating in this study.  The purpose of this study is to see how people vote when they prefer a candidate with no chance of winning an election.  We artificially placed you in this scenario: no matter how you responded to the initial 15 questions, you would always be matched with a candidate who has no chance of winning the election.  Therefore, you should not take your “candidate match” as an indicator of true political preferences.  
 
-			Again, if you have any questions or concerns about this studxy, please contact Professor Tom Knecht at tknecht@westmont.edu or by phone at 805-565-6227.  If you have questions or concerns about the way you were treated in this study, please contact IRB Chair, Dr. Lesa Stern, at lstern@westmont.edu or by phone at 805-565-6138.
-
-			If you would like to be included for a raffle to win an Amazon gift card, please click this link.  There is no way to link your answers to you personally, so entering to win the raffle will not compromise confidentiality.   </h3>
-			<%= submit_tag "Continue" %>
+			Again, if you have any questions or concerns about this study, please contact Professor Tom Knecht at tknecht@westmont.edu or by phone at 805-565-6227.  If you have questions or concerns about the way you were treated in this study, please contact IRB Chair, Dr. Lesa Stern, at lstern@westmont.edu or by phone at 805-565-6138.</h3>
 		</div>
 	</div>
 
-	<%= @data %>
+	<%= @results.to_s %>
