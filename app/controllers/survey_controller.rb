@@ -7,7 +7,7 @@ class SurveyController < ApplicationController
   end
 
   def p003
-  	results = [params["n01"].to_i, params["n02"].to_i, params["n03"].to_i, params["n04"].to_i, params["n05"].to_i, params["n06"].to_i, params["n07"].to_i, params["n08"].to_i, params["n09"].to_i, params["n10"].to_i, params["n11"].to_i, params["n12"].to_i, params["n13"].to_i, params["n14"].to_i, params["n15"].to_i]
+  	results = [params["origin"], params["n01"].to_i, params["n02"].to_i, params["n03"].to_i, params["n04"].to_i, params["n05"].to_i, params["n06"].to_i, params["n07"].to_i, params["n08"].to_i, params["n09"].to_i, params["n10"].to_i, params["n11"].to_i, params["n12"].to_i, params["n13"].to_i, params["n14"].to_i, params["n15"].to_i]
 
     result = results.inject(0){|sum,item| sum + item}
 
@@ -110,9 +110,9 @@ class SurveyController < ApplicationController
 end
 
 # The form of "data"
-#   0-14 - Political alignment questions
-#   15 - Political alignment
-#   16, 18, 20 - Candidate names, most to least
-#   17, 19, 21 - Percentages
-#   22 - Group for candidate display (0-5)
-#   23 - Group for news blurb display (0-3) 
+#   1-15 - Political alignment questions
+#   16 - Political alignment
+#   17, 19, 21 - Candidate names, most to least
+#   18, 20, 22 - Percentages
+#   23 - Group for candidate display (0-5)
+#   24 - Group for news blurb display (0-3) 
