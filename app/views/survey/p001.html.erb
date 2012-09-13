@@ -13,6 +13,7 @@
 			<a href="/survey/p002">Continue</a>
 =======
 			<%= form_tag 'survey/p002' do -%>
+			<%= hidden_field_tag :origin, params["origin"] %>
 			<button type="submit">Begin survey</button>
 			<% end %>
 >>>>>>> 6aad45124243b3ff5806922678f2c904eda59d4e

@@ -83,10 +83,11 @@
 
 
 			<br><br>
+			<%= hidden_field_tag :results, @data %>
 
-			<button type="submit">Continue</button>
+			<%= submit_tag "Continue" %>
 
 			<% end %>
-
+<%= @data %>
 		</div>
 	</div>

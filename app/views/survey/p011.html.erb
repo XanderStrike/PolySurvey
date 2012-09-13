@@ -10,59 +10,49 @@
 			<h3> Party System.</h3>
 
 			<div class="question">
-				<p>21. Think of a scale ranging from 0 (strongly dislike) to 100 (strongly like).  How would you rate…</p>
+				<p>22. Think of a scale ranging from 0 (strongly dislike) to 100 (strongly like).  How would you rate…</p>
 					 
-					<label for="q21_0">The Democratic Party</label>
-					<input type="text" name="q21" value="0" id="q21_0" /> <br>
-
-					 
-					<label for="q21_1">The Republican Party</label>
-					<input type="text" name="q21" value="0" id="q21_1" /> <br>
-
-
-					 
-					<label for="q21_2">The Green Party</label>
-					<input type="text" name="q21" value="0" id="q21_2" /> <br>
-
-					 
-					<label for="q21_3">The Reform Party</label>
-					<input type="text" name="q21" value="0" id="q21_3" /> <br>
-
-					 
-					<label for="q21_4">The Libertarian Party</label>
-					<input type="text" name="q21" value="0" id="q21_4" /> <br>
+					<label for="q22a_0">The Democratic Party</label>
+					<input type="text" name="q22a" value="0" id="q22a_0" /> <br>					 
+					<label for="q22b_1">The Republican Party</label>
+					<input type="text" name="q22b" value="0" id="q22b_1" /> <br>
+					<label for="q22c_2">The Green Party</label>
+					<input type="text" name="q22c" value="0" id="q22c_2" /> <br>					 
+					<label for="q22d_3">The Reform Party</label>
+					<input type="text" name="q22d" value="0" id="q22d_3" /> <br>
+					<label for="q22e_4">The Libertarian Party</label>
+					<input type="text" name="q22e" value="0" id="q22e_4" /> <br>
 			</div>
 
 
 			<div class="question">
-				<p>22. Do you think there are any important differences in what the Republicans and Democrats stand for?</p>
-					<input type="radio" name="q22" value="0" id="q22_0" />
-					<label for="q22_0">Yes, there are important differences</label><br>
-					<input type="radio" name="q22" value="0" id="q22_1" />
-					<label for="q22_1">No, there are not important differences</label><br>
-
-			</div>
-
-			<div class="question">
-				<p>23.Would you say that any of the parties in the United States represent your views reasonably well?</p>
+				<p>23. Do you think there are any important differences in what the Republicans and Democrats stand for?</p>
 					<input type="radio" name="q23" value="0" id="q23_0" />
-					<label for="q23_0">Yes</label><br>
+					<label for="q23_0">Yes, there are important differences</label><br>
 					<input type="radio" name="q23" value="0" id="q23_1" />
-					<label for="q23_1">No</label><br>
+					<label for="q23_1">No, there are not important differences</label><br>
+
+			</div>
+
+			<div class="question">
+				<p>24.Would you say that any of the parties in the United States represent your views reasonably well?</p>
+					<input type="radio" name="q24" value="0" id="q24_0" />
+					<label for="q24_0">Yes</label><br>
+					<input type="radio" name="q24" value="0" id="q24_1" />
+					<label for="q24_1">No</label><br>
 
 			</div>
 
 
 			[If 24 = a, then…]
 			<div class="question">
-				<p>24.Which party represents your view best?</p>
-					<input type="radio" name="q24" value="0" id="q24_0" />
-					<label for="q24_0">Democrat Party</label><br>
-					<input type="radio" name="q24" value="0" id="q24_1" />
-					<label for="q24_1">Republican Party</label><br>
-
-					<input type="radio" name="q24" value="0" id="q24_2" />
-					<label for="q24_2">Other (Please Specify)</label><br>
+				<p>25.Which party represents your view best?</p>
+					<input type="radio" name="q25" value="0" id="q25_0" />
+					<label for="q25_0">Democrat Party</label><br>
+					<input type="radio" name="q25" value="0" id="q25_1" />
+					<label for="q25_1">Republican Party</label><br>
+					<input type="radio" name="q25" value="0" id="q25_2" />
+					<label for="q25_2">Other (Please Specify)</label><br>
 			</div>
 
 
@@ -91,10 +81,11 @@
 
 
 			<br><br>
+			<%= hidden_field_tag :results, @data %>
 
-			<button type="submit">Continue</button>
+			<%= submit_tag "Continue" %>
 
 			<% end %>
-
+<%= @data %>
 		</div>
 	</div>
