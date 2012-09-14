@@ -9,9 +9,7 @@
                 var error = "";
 
                 //Loop through to see if there are any errors, going in reverse
-                if(!isRadioSelected("q06")){ isValid = false; error = getErrorText(6); }
-                if(!isRadioSelected("q05")){ isValid = false; error = getErrorText(5); }
-                if(!isRadioSelected("q04")){ isValid = false; error = getErrorText(4); }
+                
                 if(!isRadioSelected("q03")){ isValid = false; error = getErrorText(3); }
                 if(!isRadioSelected("q02")){ isValid = false; error = getErrorText(2); }
                 if(!isRadioSelected("q01")){ isValid = false; error = getErrorText(1); }
@@ -81,7 +79,6 @@
 	<div id="body">
 		<div id="content">
 			<%= form_tag 'p007', :id => 'frm' do -%>
-			<h3>Ideology and Party ID</h3>
             <div id="errorText" style="color:#ff0000;font-style:italic;"></div><br/>
 			<div class="question">
 					<p>1. Where would you place yourself on this scale, or haven't you thought much about this?</p>
@@ -104,7 +101,7 @@
 			</div>
 
 			<div class="question">
-				<p>2. Generally speaking, to you consider yourself a Democrat, a Republican, an Independent, or what?</p>
+				<p>2. Generally speaking, do you consider yourself a Democrat, a Republican, an Independent, or what?</p>
 					<input type="radio" name="q02" value="0" id="q02_0" onclick="setHiddenFields('a')" />
 					<label for="q02_0">Democrat</label><br>
 					<input type="radio" name="q02" value="1" id="q02_1" onclick="setHiddenFields('b')" />
@@ -116,7 +113,7 @@
 			</div>
 
 			<div class="question" id="qset3a" style="visibility:hidden; display:none;">
-				<p>3. Would you condsider yourself a strong democrat?</p>
+				<p>3. Would you condsider yourself a strong Democrat?</p>
 					<input type="radio" name="q03" value="0" id="q03_0" />
 					<label for="q03_0">Strong</label><br>
 					<input type="radio" name="q03" value="1" id="q03_1" />
@@ -124,7 +121,7 @@
 			</div>
 
 			<div class="question" id="qset3b" style="visibility:hidden; display:none;">
-				<p>3. Would you condsider yourself a strong republican?</p>
+				<p>3. Would you condsider yourself a strong Republican?</p>
 					<input type="radio" name="q03" value="0" id="q03_0" />
 					<label for="q03_0">Strong</label><br>
 					<input type="radio" name="q03" value="1" id="q03_1" />
@@ -132,7 +129,7 @@
 			</div>
 
 			<div class="question" id="qset3c" style="visibility:hidden; display:none;">
-				<p>3. In general, do you think fo yourself as closer to the Democrat or Republican party?</p>
+				<p>3. In general, do you think of yourself as closer to the Democrat or Republican party?</p>
 					<input type="radio" name="q03" value="2" id="q03_2" />
 					<label for="q03_2">Democrat</label><br>
 					<input type="radio" name="q03" value="3" id="q03_3" />
@@ -141,40 +138,7 @@
 					<label for="q03_4">Neither</label><br>
 			</div>
 
-            <div id="efficacy" style="display:none;">
-			<h3>Efficacy and Trust</h3>
-
-			<div class="question">
-				<p>4. How much of the time do you think you can trust the government in Washington to do what is right?</p>
-					<input type="radio" name="q04" value="0" id="q04_0" />
-					<label for="q04_0">Just about always</label><br>
-					<input type="radio" name="q04" value="1" id="q04_1" />
-					<label for="q04_1">Most of the time</label><br>
-					<input type="radio" name="q04" value="2" id="q04_2" />
-					<label for="q04_2">Only some of the time</label><br>
-					<input type="radio" name="q04" value="3" id="q04_3" />
-					<label for="q04_3">Never</label><br>
-			</div>
-
-			<div class="question">
-				<p>5. Would you say the government is pretty much run by a few big interests looking out for themselves or that it is run for the benefit of all the people?</p>
-					<input type="radio" name="q05" value="0" id="q05_0" />
-					<label for="q05_0">Run by a few big interest</label><br>
-					<input type="radio" name="q05" value="1" id="q05_1" />
-					<label for="q05_1">Run for the benefit of all</label><br>
-			</div>
-
-			<div class="question">
-				<p>6. On the whole, how satisfied are you with the way democracy works in the United States?</p>
-					<input type="radio" name="q06" value="0" id="q06_0" />
-					<label for="q06_0">Very satisfied</label><br>
-					<input type="radio" name="q06" value="1" id="q06_1" />
-					<label for="q06_1">Fairly satisfied</label><br>
-					<input type="radio" name="q06" value="2" id="q06_2" />
-					<label for="q06_2">Not very satisfied</label><br>
-					<input type="radio" name="q06" value="3" id="q06_3" />
-					<label for="q06_3">Not satisfied at all</label><br>
-			</div>
+            
 <br/>
 			<% @results.each do |k, v| -%>
 				<%= hidden_field_tag k, v %>
