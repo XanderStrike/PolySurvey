@@ -1,5 +1,4 @@
 PolySurvey::Application.routes.draw do
-
   
   get "survey/p001"
 
