@@ -31,7 +31,7 @@ class SurveyController < ApplicationController
     for i in 1..15
       valid['n%02d' % i] = 2
     end
-    for i in 1..32
+    for i in 1..34
       unless i == 22
         valid['q%02d' % i] = 2
       end
