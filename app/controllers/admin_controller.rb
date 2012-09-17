@@ -14,8 +14,10 @@ class AdminController < ApplicationController
         csv << results.first.attributes.keys
         # data row
         results.each do |result|
-#          puts "result.attributes.values.inspect: #{result.attributes.values.inspect}"
-          csv << result.attributes.values
+
+          puts "result.attributes.values.inspect: #{result.attributes.values.inspect}"
+
+          csv << ('"' + result.attributes.values.gsub('"', '&quot;').join('","') + '"')
         end
       end
     end
