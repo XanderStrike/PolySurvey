@@ -24,14 +24,15 @@ class SurveyController < ApplicationController
       'q22c' => 2,
       'q22d' => 2,
       'q22e' => 2,
-      'q30a' => 1,
-      'q32a' => 1,
+      'q25a' => 2,
+      'q30a' => 2,
+      'q32a' => 2,
 
     }
     for i in 1..15
       valid['n%02d' % i] = 2
     end
-    for i in 1..32
+    for i in 1..34
       unless i == 22
         valid['q%02d' % i] = 2
       end
