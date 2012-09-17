@@ -13,7 +13,11 @@
                 <table>
                     <tr>
                         <td class="news_header">
-                            Election Watch
+                            <% if @group == 0 || @group == 1 %>
+                            <p style="margin-top:0px;">Election down to the wire</p>
+                            <% elsif @group == 2 || @group == 3 %>
+                            <p style="margin-top:0px;">Election expected to be a blowout</p>
+                            <% end %>
                         </td>
                         <td class="news_content">
                             <% if @group == 0 %>
@@ -25,6 +29,7 @@
                             <% else @group == 3 %>
                             <p>"With election day around the corner, we may already know who our next president is. <%= @name2[0] %> is leading with at an unprecidented 76 percent, with <%= @name1[0] %> trailing at 20 percent, and third party challenger <%= @name0[0] %> at 4 percent."</p>
                             <% end %>
+							<p> - API </p>
                         </td>
                     </tr>
                 </table>
