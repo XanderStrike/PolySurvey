@@ -49,12 +49,12 @@ class SurveyController < ApplicationController
 
   def p001
     @results = restrict_hash(params, 1)
-    @results["time1"] = Time.now
+    @results["time1"] = Time.now.tv_sec.to_s
   end
 
   def p002
     @results = restrict_hash(params, 1)
-    @results["time2"] = Time.now
+    @results["time2"] = Time.now.tv_sec.to_s
   end
 
   def p003
@@ -138,7 +138,7 @@ class SurveyController < ApplicationController
 
   def p004
     @results = restrict_hash(params, 1)
-    @results["time3"] = Time.now
+    @results["time3"] = Time.now.tv_sec.to_s
     @name0 = [@results['name0'], @results['match0']]
     @name1 = [@results['name1'], @results['match1']]
     @name2 = [@results['name2'], @results['match2']]
@@ -156,7 +156,7 @@ class SurveyController < ApplicationController
     @name2 = [@results['name2'], @results['match2']]
 
     @group = @results['poll_scenario'].to_i
-    @results["time4"] = Time.now
+    @results["time4"] = Time.now.tv_sec.to_s
   end
 
   def p006
@@ -189,8 +189,8 @@ class SurveyController < ApplicationController
 
   def p013
     @results = restrict_hash(params, 2)
-    @results["time5"] = Time.now
-    @results['total_time'] = @results['time5'].tv_sec - Time._load(@results['time1']).tv_sec
+    @results["time5"] = Time.now.tv_sec.to_s
+    @results['total_time'] = (@results['time5'].to_i - @results['time1'].to_i).to_s
 
     unless session['saved']
       new_result = Results.create(@results)
