@@ -8,6 +8,7 @@ class Results < ActiveRecord::Base
     attr_accessible :time4
     attr_accessible :time5
     attr_accessible :time6
+    attr_accessible :total_time
     attr_accessible :origin
     attr_accessible :alignment
     attr_accessible :n01
