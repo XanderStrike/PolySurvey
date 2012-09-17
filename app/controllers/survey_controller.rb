@@ -191,9 +191,10 @@ class SurveyController < ApplicationController
     @results = restrict_hash(params, 2)
     @results["time5"] = Time.now
 
-    unless Results.find_by_time1(@results['time1'])
+    unless session['saved']
       new_result = Results.create(@results)
     end
+    session['saved'] = true
 
   end
 end
