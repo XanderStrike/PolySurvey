@@ -24,8 +24,9 @@ class SurveyController < ApplicationController
       'q22c' => 2,
       'q22d' => 2,
       'q22e' => 2,
-      'q30a' => 1,
-      'q32a' => 1,
+      'q25a' => 2,
+      'q30a' => 2,
+      'q32a' => 2,
 
     }
     for i in 1..15
