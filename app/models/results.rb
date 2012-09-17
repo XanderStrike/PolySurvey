@@ -55,6 +55,7 @@ class Results < ActiveRecord::Base
     attr_accessible :q23
     attr_accessible :q24
     attr_accessible :q25
+    attr_accessible :q25a
     attr_accessible :q26
     attr_accessible :q27
     attr_accessible :q28
