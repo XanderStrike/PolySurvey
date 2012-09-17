@@ -9,6 +9,31 @@
 			document.getElementById("vote_options").style.visibility = "visible";
 			document.getElementById("continue").style.visibility = "hidden";
 		}
+        function validatePage() {
+            var isValid = true;
+            var error = "";
+
+            //Loop through to see if there are any errors, going in reverse
+			//Question 1
+			if(!isRadioSelected("vote")){ isValid = false; error = "You haven't given your vote yet." }
+
+			if (isValid == true) {
+				frm.submit();
+			} else {
+				document.getElementById("errorText").innerHTML = error;
+				alert(error);
+			}
+		}
+
+		function isRadioSelected(nme) {
+			var isChecked = false;
+			for(var i = 0; i < document.getElementsByName(nme).length; i++)
+			{
+				if(document.getElementsByName(nme)[i].checked == true){ return true; }
+			}
+			return false;
+		}
+
 	</script>
 	
 	<div id="body">
@@ -47,7 +72,8 @@
 				<button type="button" onclick="vote()">Continue</button>
 				</center>
 			</div>
-			<%= form_tag 'p006' do -%>		
+			<%= form_tag 'p006', :id => 'frm' do -%>		
+            <div id="errorText" style="color:#ff0000;font-style:italic;"></div><br/>
 			<div class="question" id="vote_options" style="visibility:hidden;">
                 <h3>Considering this news story and your candidate matches, who will you vote for?</h3>
                 <input type="radio" name="vote" value="0" id="vote_0" />
@@ -62,7 +88,7 @@
 				<% @results.each do |k, v| -%>
 					<%= hidden_field_tag k, v %>
 				<% end %>
-				<%= submit_tag "Vote!" %>
+				<button type="button" onclick="validatePage()">Continue</button>
 			<% end %>
 			
 			<br><br><%= @data_new %>
