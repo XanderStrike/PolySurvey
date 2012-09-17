@@ -4,6 +4,13 @@
 
 	</div>
 
+	<script type="text/javascript">
+		function vote() {
+			document.getElementById("vote_options").style.visibility = "visible";
+			document.getElementById("continue").style.visibility = "hidden";
+		}
+	</script>
+	
 	<div id="body">
 		
 		<div id="content">
@@ -13,7 +20,11 @@
                 <table>
                     <tr>
                         <td class="news_header">
-                            Election Watch
+                            <% if @group == 0 || @group == 1 %>
+                            <p style="margin-top:0px;">Election down to the wire</p>
+                            <% elsif @group == 2 || @group == 3 %>
+                            <p style="margin-top:0px;">Election expected to be a blowout</p>
+                            <% end %>
                         </td>
                         <td class="news_content">
                             <% if @group == 0 %>
@@ -21,24 +32,41 @@
                             <% elsif @group == 1 %>
                             <p>"The presidential election is coming down to the wire and the candidates are neck-and-neck.  The latest polls show a statistical dead heat, with <%= @name2[0] %> receiving 49 percent support, <%= @name1[0] %> 48 percent, and third party challenger <%= @name0[0] %> just a mere 3 percent.  Both the <%= @name1[0].split(' ')[1] %> and <%= @name2[0].split(' ')[1] %> camps are busy…"</p>
                             <% elsif @group == 2 %>
-                            <p>"With election day around the corner, we may already know who our next president is. <%= @name1[0] %> is leading with at an unprecidented 86 percent, with <%= @name2[0] %> trailing at 20 percent, and third party challenger <%= @name0[0] %> at 4 percent."</p>
+                            <p>"With election day around the corner, we may already know who our next president is. <%= @name1[0] %> is leading with at an unprecidented 76 percent, with <%= @name2[0] %> trailing at 20 percent, and third party challenger <%= @name0[0] %> at 4 percent."</p>
                             <% else @group == 3 %>
-                            <p>"With election day around the corner, we may already know who our next president is. <%= @name2[0] %> is leading with at an unprecidented 86 percent, with <%= @name1[0] %> trailing at 20 percent, and third party challenger <%= @name0[0] %> at 4 percent."</p>
+                            <p>"With election day around the corner, we may already know who our next president is. <%= @name2[0] %> is leading with at an unprecidented 76 percent, with <%= @name1[0] %> trailing at 20 percent, and third party challenger <%= @name0[0] %> at 4 percent."</p>
                             <% end %>
+							<p> - API </p>
                         </td>
                     </tr>
                 </table>
             </div>
+			
+			<div class="button" id="continue">
+				<center>
+				<button type="button" onclick="vote()">Continue</button>
+				</center>
+			</div>
+			<%= form_tag 'p006' do -%>		
+			<div class="question" id="vote_options" style="visibility:hidden;">
+                <h3>Considering this news story and your candidate matches, who will you vote for?</h3>
+                <input type="radio" name="vote" value="0" id="vote_0" />
+                <label for="vote_0"><%= @name0[0] %></label><br>
+                <input type="radio" name="vote" value="1" id="vote_1" />
+                <label for="vote_1"><%= @name1[0] %></label><br>
+                <input type="radio" name="vote" value="2" id="vote_2" />
+                <label for="vote_2"><%= @name2[0] %></label><br>
+				
+			<br>
 
-            <center>
-			<%= form_tag 'p005' do -%>
 				<% @results.each do |k, v| -%>
 					<%= hidden_field_tag k, v %>
 				<% end %>
-				<%= submit_tag "Continue" %>
+				<%= submit_tag "Vote!" %>
 			<% end %>
-
+			
 			<br><br><%= @data_new %>
-            </center>
+			
+			</div>
 		</div>
 	</div>
