@@ -64,4 +64,6 @@ class Results < ActiveRecord::Base
     attr_accessible :q31
     attr_accessible :q32
     attr_accessible :q32a
+    attr_accessible :q33
+    attr_accessible :q34
 end
