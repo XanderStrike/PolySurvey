@@ -1,4 +1,4 @@
-
+<% if session['session_id'] -%>
 	<div id="header">
 		<h1>Survey</h1>
 		<hr size="1">
@@ -209,4 +209,7 @@
 			<% end %>
 		</div>
 	</div>
+<% else %>
+	Sorry, you must have cookies to use this website, but your browser seems to have them disabled.  Please enable cookies and press the back button.
+<% end %>
 	
