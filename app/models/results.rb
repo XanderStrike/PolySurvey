@@ -7,7 +7,7 @@ class Results < ActiveRecord::Base
     attr_accessible :time3
     attr_accessible :time4
     attr_accessible :time5
-    attr_accessible :time6
+    attr_accessible :total_time
     attr_accessible :origin
     attr_accessible :alignment
     attr_accessible :n01
@@ -54,6 +54,7 @@ class Results < ActiveRecord::Base
     attr_accessible :q23
     attr_accessible :q24
     attr_accessible :q25
+    attr_accessible :q25a
     attr_accessible :q26
     attr_accessible :q27
     attr_accessible :q28
@@ -63,4 +64,6 @@ class Results < ActiveRecord::Base
     attr_accessible :q31
     attr_accessible :q32
     attr_accessible :q32a
+    attr_accessible :q33
+    attr_accessible :q34
 end

@@ -26,17 +26,17 @@
             }
         }
 
-        function getQuestion32(show) {
-            for(var i = 0; i < document.getElementsByName("q32"); i++)
+        function getQuestion(number, show) {
+            for(var i = 0; i < document.getElementsByName("q"+ number); i++)
             {
-                document.getElementsByName("q32")[i].checked = false;
+                document.getElementsByName("q"+ number)[i].checked = false;
             }
 
             if (show == true)
             {
-                document.getElementById("q32ID").style.display = "block";
+                document.getElementById("q"+ number +"ID").style.display = "block";
             } else {
-                document.getElementById("q32ID").style.display = "none";
+                document.getElementById("q"+ number +"ID").style.display = "none";
             }
         }
     </script>
@@ -51,22 +51,22 @@
             <div id="errorText" style="color: red;"></div>
 
 			<div class="question">
-				<p>27. How old are you?</p>
+				<p>23. How old are you?</p>
 					<input type="text" name="q27" value="" id="q27_0" />
 					<label for="q27_0"></label><br>
 
 			</div>
 
 			<div class="question">
-				<p>28. Are you Male or Female?</p>
+				<p>24. Are you Male or Female?</p>
 					<input type="radio" name="q28" value="0" id="q28_0" />
 					<label for="q28_0">Male</label><br>
-					<input type="radio" name="q28" value="0" id="q28_1" />
+					<input type="radio" name="q28" value="1" id="q28_1" />
 					<label for="q28_1">Female</label><br>
 			</div>
 
 			<div class="question">
-				<p>29. What state do you live in?</p>
+				<p>25. What state do you live in?</p>
 
                 <select name="q29">
                     <option value="AL">AL</option>
@@ -127,20 +127,20 @@
 
 
 			<div class="question">
-				<p>30. What is the highest level of education you have obtained?</p>
+				<p>26. What is the highest level of education you have obtained?</p>
 					<input type="radio" name="q30" value="0" id="q30_0" />
 					<label for="q30_0">Did not graduate</label><br>
-					<input type="radio" name="q30" value="0" id="q30_1" />
+					<input type="radio" name="q30" value="1" id="q30_1" />
 					<label for="q30_1">High school diploma (including AA)</label><br>
-					<input type="radio" name="q30" value="0" id="q30_2" />
+					<input type="radio" name="q30" value="2" id="q30_2" />
 					<label for="q30_2">I am currently in college</label><br>
-					<input type="radio" name="q30" value="0" id="q30_3" />
+					<input type="radio" name="q30" value="3" id="q30_3" />
 					<label for="q30_3">I have completed my undergraduate degree (MA or BA)</label><br>
-					<input type="radio" name="q30" value="0" id="q30_4" />
+					<input type="radio" name="q30" value="4" id="q30_4" />
 					<label for="q30_4">I am currently in graduate school</label><br>
-					<input type="radio" name="q30" value="0" id="q30_5" />
+					<input type="radio" name="q30" value="5" id="q30_5" />
 					<label for="q30_5">I have completed an advanced degree (e.g., Masters, Doctorate, MBA, MD, JD, etc.)</label><br>
-                    <input type="radio" name="q30" value="0" id="q30_6" />
+                    <input type="radio" name="q30" value="6" id="q30_6" />
 					<label for="q30_6">Other </label>
 					<input type="text" name="q30a" value="" id="q30_6a" />
 					<br>
@@ -148,29 +148,49 @@
 			</div>
 
 			<div class="question">
-				<p>31. Are you a college student?</p>
-					<input type="radio" name="q31" value="0" id="q31_0" onclick="getQuestion32(true)" />
+				<p>27. Are you a college student?</p>
+					<input type="radio" name="q31" value="0" id="q31_0" onclick="getQuestion(32, true)" />
 					<label for="q31_0">Yes</label><br>
-					<input type="radio" name="q31" value="0" id="q31_1" onclick="getQuestion32(false)" />
+					<input type="radio" name="q31" value="1" id="q31_1" onclick="getQuestion32(32, false)" />
 					<label for="q31_1">No</label><br>
 
 			</div>
 
 			<div class="question" id="q32ID" style="display: none;">
-				<p>32. Where do you go to college?</p>
-					<input type="radio" name="q32" value="0" id="q32_0" />
+				<p>28. Where do you go to college?</p>
+					<input type="radio" name="q32" value="0" id="q32_0" onclick="getQuestion(33, true)" />
 					<label for="q32_0">Westmont College</label><br>
-					<input type="radio" name="q32" value="0" id="q32_1" />
+					<input type="radio" name="q32" value="1" id="q32_1" onclick="getQuestion(33, false), getQuestion(34, false)" />
 					<label for="q32_1">UCSB</label><br>
-					<input type="radio" name="q32" value="0" id="q32_2" />
+					<input type="radio" name="q32" value="2" id="q32_2" onclick="getQuestion(33, false), getQuestion(34, false)" />
 					<label for="q32_2">SBCC</label><br>
-					<input type="radio" name="q32" value="0" id="q32_3" />
+					<input type="radio" name="q32" value="3" id="q32_3" onclick="getQuestion(33, false), getQuestion(34, false)" />
 					<label for="q32_3">University of Denver</label><br>
-					<input type="radio" name="q32" value="0" id="q32_4" />
+					<input type="radio" name="q32" value="4" id="q32_4" onclick="getQuestion(33, false), getQuestion(34, false)" />
 					<label for="q32_4">SUNY Postdam</label><br>
-                    <input type="radio" name="q32" value="0" id="q32_5" />
+                    <input type="radio" name="q32" value="5" id="q32_5" onclick="getQuestion(33, false), getQuestion(34, false)" />
 					<label for="q32_5">Other</label>
 					<input type="text" name="q32a" value="" id="q32_5a" />
+					<br>
+
+			</div>
+
+                        <div class="question" id="q33ID" style="display: none;">
+				<p>29. Have you taken a course from Professor Knecht?</p>
+					<input type="radio" name="q33" value="0" id="q33_0" onclick="getQuestion(34, true)" />
+					<label for="q33_0">Yes</label><br>
+					<input type="radio" name="q33" value="1" id="q33_1" onclick="getQuestion(34, false)" />
+					<label for="q33_1">No</label><br>
+					<br>
+
+			</div>
+
+                        <div class="question" id="q34ID" style="display: none;">
+				<p>30. Have you heard his lecture on strategic voting or third party voting?</p>
+					<input type="radio" name="q34" value="0" id="q34_0" />
+					<label for="q34_0">Yes</label><br>
+					<input type="radio" name="q34" value="1" id="q34_1" />
+					<label for="q34_1">No</label><br>
 					<br>
 
 			</div>
