@@ -9,6 +9,31 @@
 			document.getElementById("vote_options").style.visibility = "visible";
 			document.getElementById("continue").style.visibility = "hidden";
 		}
+        function validatePage() {
+            var isValid = true;
+            var error = "";
+
+            //Loop through to see if there are any errors, going in reverse
+			//Question 1
+			if(!isRadioSelected("vote")){ isValid = false; error = "You haven't given your vote yet." }
+
+			if (isValid == true) {
+				frm.submit();
+			} else {
+				document.getElementById("errorText").innerHTML = error;
+				alert(error);
+			}
+		}
+
+		function isRadioSelected(nme) {
+			var isChecked = false;
+			for(var i = 0; i < document.getElementsByName(nme).length; i++)
+			{
+				if(document.getElementsByName(nme)[i].checked == true){ return true; }
+			}
+			return false;
+		}
+
 	</script>
 	
 	<div id="body">
@@ -23,20 +48,19 @@
                             <% if @group == 0 || @group == 1 %>
                             <p style="margin-top:0px;">Election down to the wire</p>
                             <% elsif @group == 2 || @group == 3 %>
-                            <p style="margin-top:0px;">Election expected to be a blowout</p>
+                            <p style="margin-top:0px;">Election a predicted blowout</p>
                             <% end %>
                         </td>
                         <td class="news_content">
                             <% if @group == 0 %>
-                            <p>"The presidential election is coming down to the wire and the candidates are neck-and-neck.  The latest polls show a statistical dead heat, with <%= @name1[0] %> receiving 49 percent support, <%= @name2[0] %> 48 percent, and third party challenger <%= @name0[0] %> just a mere 3 percent.  Both the <%= @name1[0].split(' ')[1] %> and <%= @name2[0].split(' ')[1] %> camps are busy…"</p>
+                            <p>WASHINGTON DC (API): The presidential election is coming down to the wire and the candidates are neck-and-neck.  The latest polls show a statistical dead heat, with <%= @name1[0] %> receiving 49 percent support, <%= @name2[0] %> 48 percent, and third party challenger <%= @name0[0] %> just a mere 3 percent.</p>
                             <% elsif @group == 1 %>
-                            <p>"The presidential election is coming down to the wire and the candidates are neck-and-neck.  The latest polls show a statistical dead heat, with <%= @name2[0] %> receiving 49 percent support, <%= @name1[0] %> 48 percent, and third party challenger <%= @name0[0] %> just a mere 3 percent.  Both the <%= @name1[0].split(' ')[1] %> and <%= @name2[0].split(' ')[1] %> camps are busy…"</p>
+                            <p>WASHINGTON DC (API): The presidential election is coming down to the wire and the candidates are neck-and-neck.  The latest polls show a statistical dead heat, with <%= @name2[0] %> receiving 49 percent support, <%= @name1[0] %> 48 percent, and third party challenger <%= @name0[0] %> just a mere 3 percent.</p>
                             <% elsif @group == 2 %>
-                            <p>"With election day around the corner, we may already know who our next president is. <%= @name1[0] %> is leading with at an unprecidented 76 percent, with <%= @name2[0] %> trailing at 20 percent, and third party challenger <%= @name0[0] %> at 4 percent."</p>
+                            <p>WASHINGTON DC (API): With election day around the corner, we may already know who our next president is. The latest polls show <%= @name1[0] %> with 65 percent support of likely voters, with <%= @name2[0] %> trailing at 32 percent, and third party challenger <%= @name0[0] %> at 3 percent.</p>
                             <% else @group == 3 %>
-                            <p>"With election day around the corner, we may already know who our next president is. <%= @name2[0] %> is leading with at an unprecidented 76 percent, with <%= @name1[0] %> trailing at 20 percent, and third party challenger <%= @name0[0] %> at 4 percent."</p>
+                            <p>WASHINGTON DC (API): With election day around the corner, we may already know who our next president is. The latest polls show <%= @name2[0] %> with 65 percent support of likely voters, with <%= @name1[0] %> trailing at 32 percent, and third party challenger <%= @name0[0] %> at 3 percent.</p>
                             <% end %>
-							<p> - API </p>
                         </td>
                     </tr>
                 </table>
@@ -47,22 +71,39 @@
 				<button type="button" onclick="vote()">Continue</button>
 				</center>
 			</div>
-			<%= form_tag 'p006' do -%>		
+			<%= form_tag 'p006', :id => 'frm' do -%>		
+            <div id="errorText" style="color:#ff0000;font-style:italic;"></div><br/>
 			<div class="question" id="vote_options" style="visibility:hidden;">
                 <h3>Considering this news story and your candidate matches, who will you vote for?</h3>
+		<table>
+		  <tr>
+		    <td>
                 <input type="radio" name="vote" value="0" id="vote_0" />
-                <label for="vote_0"><%= @name0[0] %></label><br>
-                <input type="radio" name="vote" value="1" id="vote_1" />
-                <label for="vote_1"><%= @name1[0] %></label><br>
-                <input type="radio" name="vote" value="2" id="vote_2" />
-                <label for="vote_2"><%= @name2[0] %></label><br>
-				
+                <label for="vote_0"><%= @name0[0] %></label>
+		  </td>
+		    <td>[<%= @name0[1] %> match with your preferences;<br>&nbsp; polling at 3% support]</td>
+		  </tr>
+		  <tr>
+		    <td>
+                      <input type="radio" name="vote" value="1" id="vote_1" />
+                      <label for="vote_1"><%= @name1[0] %></label>
+		      </td>
+		    <td>[<%= @name1[1] %> match with your preferences;<br> &nbsp;polling at <% if @group == 0 %> 49% <% elsif @group == 1 %> 48% <% elsif @group == 2 %> 65% <% else %> 32% <% end %> support]</td>
+		  </tr>
+		  <tr>
+		    <td>
+                      <input type="radio" name="vote" value="2" id="vote_2" />
+                      <label for="vote_2"><%= @name2[0] %> </label>
+		      </td>
+		    <td>[<%= @name2[1] %> match with your preferences;<br> &nbsp;polling at <% if @group == 0 %> 48% <% elsif @group == 1 %> 49% <% elsif @group == 2 %> 32% <% else %> 65% <% end %> support]</td>
+		    </tr>
+		  </table>
 			<br>
 
 				<% @results.each do |k, v| -%>
 					<%= hidden_field_tag k, v %>
 				<% end %>
-				<%= submit_tag "Vote!" %>
+				<button type="button" onclick="validatePage()">Continue</button>
 			<% end %>
 			
 			<br><br><%= @data_new %>
