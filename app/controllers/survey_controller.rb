@@ -6,6 +6,8 @@ class SurveyController < ApplicationController
       'match_scenario' => 2,
       'poll_scenario' => 2,
       'alignment' => 2,
+      'rid' => 1,
+      'code' => 2,
       'name0' => 1,
       'name1' => 1,
       'name2' => 1,
@@ -59,7 +61,6 @@ class SurveyController < ApplicationController
   end
 
   def p003
-
     @results = restrict_hash(params, 1)
 
     result = 0
@@ -84,7 +85,9 @@ class SurveyController < ApplicationController
     @name2 = [names[2]]
 
     # Determine in which way the candidates are displayed (assign them to groups 1-6)
-    group = rand(6)
+    new_result = Results.create
+    @results['rid'] = new_result.id
+    group = @results['rid'].to_i % 6
     case group
     when 0
       @name0 += ["90%"]
@@ -145,7 +148,7 @@ class SurveyController < ApplicationController
     @name2 = [@results['name2'], @results['match2']]
 
     # Determine which group, close election or blowout election they are part of
-    @group = rand(4)
+    @group = @results['rid'].to_i / 6 % 4
 
     @results['poll_scenario'] = @group
   end
@@ -189,12 +192,14 @@ class SurveyController < ApplicationController
   end
 
   def p013
+    rid = params['rid'].to_i
     @results = restrict_hash(params, 2)
     @results["time5"] = Time.now.tv_sec.to_s
     @results['total_time'] = (@results['time5'].to_i - @results['time1'].to_i).to_s
+    @results['code'] = session['session_id']
 
     unless session['saved']
-      new_result = Results.create(@results)
+      Results.find_by_id(rid).update_attributes(@results)
     end
     session['saved'] = true
 
