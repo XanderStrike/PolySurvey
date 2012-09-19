@@ -17,6 +17,7 @@
 # Ignore backup files
 *~
 
+political_survey_results.csv
 public/political_survey_results.csv
 db/schema.rb
 
