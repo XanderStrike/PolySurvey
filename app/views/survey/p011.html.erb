@@ -10,13 +10,14 @@
             if(!isRadioSelected("q26")){ isValid = false; error = getErrorText(22); }
             if(!isRadioSelected("q25")){ isValid = false; error = getErrorText(21); }
             if(!isRadioSelected("q24")){ isValid = false; error = getErrorText(20); }
+            if(!isRadioSelected("q23")){ isValid = false; error = getErrorText(19); }
 
             //Loop through the text boxes
-            if (!isTextBoxRangeValid("q22a")){ isValid = false; error = "Range is not a valid number"; }
-            if (!isTextBoxRangeValid("q22b")){ isValid = false; error = "Range is not a valid number"; }
-            if (!isTextBoxRangeValid("q22c")){ isValid = false; error = "Range is not a valid number"; }
-            if (!isTextBoxRangeValid("q22d")){ isValid = false; error = "Range is not a valid number"; }
-            if (!isTextBoxRangeValid("q22e")){ isValid = false; error = "Range is not a valid number"; }
+            if (!isTextBoxRangeValid("q22a")){ isValid = false; error = "Question 18: number is invalid or out of range"; }
+            if (!isTextBoxRangeValid("q22b")){ isValid = false; error = "Question 18: number is invalid or out of range"; }
+            if (!isTextBoxRangeValid("q22c")){ isValid = false; error = "Question 18: number is invalid or out of range"; }
+            if (!isTextBoxRangeValid("q22d")){ isValid = false; error = "Question 18: number is invalid or out of range"; }
+            if (!isTextBoxRangeValid("q22e")){ isValid = false; error = "Question 18: number is invalid or out of range"; }
 
             if (isValid == true) {
                 frm.submit();

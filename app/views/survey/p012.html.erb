@@ -15,8 +15,16 @@
                 if(!isRadioSelected("q32")){ isValid = false; error = getErrorText(28); }
             }
 
+            if (document.getElementsByName("q32")[0].checked == true) {
+                if(!isRadioSelected("q33")){ isValid = false; error = getErrorText(29); }
+            }
+
+            if (document.getElementsByName("q33")[0].checked == true) {
+                if(!isRadioSelected("q34")){ isValid = false; error = getErrorText(30); }
+            }
+
             //Loop through the text boxes
-            if (!isTextBoxRangeValid("q27")){ isValid = false; error = "Please enter a valid age."; }
+            if (!isTextBoxRangeValid("q27")){ isValid = false; error = "Question 23: please enter a valid age."; }
 
             if (isValid == true) {
                 frm.submit();
