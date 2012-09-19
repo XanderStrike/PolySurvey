@@ -83,8 +83,6 @@ ActiveRecord::Schema.define(:version => 20120917220311) do
     t.string   "total_time"
     t.string   "q33"
     t.string   "q34"
-    t.string   "q25a"
-    t.string   "alignment"
   end
 
   create_table "users", :force => true do |t|

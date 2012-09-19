@@ -8,11 +8,11 @@
             var error = "";
 
             //Loop through to see if there are any errors, going in reverse
-            if(!isRadioSelected("q18")){ isValid = false; error = getErrorText(18); }
-            if(!isRadioSelected("q19")){ isValid = false; error = getErrorText(19); }
-            if(!isRadioSelected("q20")){ isValid = false; error = getErrorText(20); }
+            if(!isRadioSelected("q18")){ isValid = false; error = getErrorText(14); }
+            if(!isRadioSelected("q19")){ isValid = false; error = getErrorText(15); }
+            if(!isRadioSelected("q20")){ isValid = false; error = getErrorText(16); }
             if (document.getElementsByName("q20")[2].checked == true) {
-                if(!isRadioSelected("q21")){ isValid = false; error = getErrorText(21); }
+                if(!isRadioSelected("q21")){ isValid = false; error = getErrorText(17); }
             }
 
             if (isValid == true) {
