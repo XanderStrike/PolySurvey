@@ -7,12 +7,12 @@
             var error = "";
 
             //Loop through to see if there are any errors, going in reverse
-            if(!isRadioSelected("q31")){ isValid = false; error = getErrorText(31); }
-            if(!isRadioSelected("q30")){ isValid = false; error = getErrorText(30); }
-            if(!isRadioSelected("q28")){ isValid = false; error = getErrorText(28); }
+            if(!isRadioSelected("q31")){ isValid = false; error = getErrorText(27); }
+            if(!isRadioSelected("q30")){ isValid = false; error = getErrorText(26); }
+            if(!isRadioSelected("q28")){ isValid = false; error = getErrorText(24); }
 
             if (document.getElementsByName("q31")[0].checked == true) {
-                if(!isRadioSelected("q32")){ isValid = false; error = getErrorText(32); }
+                if(!isRadioSelected("q32")){ isValid = false; error = getErrorText(28); }
             }
 
             //Loop through the text boxes

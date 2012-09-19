@@ -7,14 +7,14 @@
             var error = "";
 
             //Loop through to see if there are any errors, going in reverse
-            if(!isRadioSelected("q13")){ isValid = false; error = getErrorText(13); }
-            if(!isRadioSelected("q12")){ isValid = false; error = getErrorText(12); }
-            if(!isRadioSelected("q16")){ isValid = false; error = getErrorText(16); }
-            if(!isRadioSelected("q17")){ isValid = false; error = getErrorText(17); }
+            if(!isRadioSelected("q13")){ isValid = false; error = getErrorText(10); }
+            if(!isRadioSelected("q12")){ isValid = false; error = getErrorText(9); }
+            if(!isRadioSelected("q16")){ isValid = false; error = getErrorText(12); }
+            if(!isRadioSelected("q17")){ isValid = false; error = getErrorText(13); }
             if (document.getElementsByName("q13")[0].checked == true) {
-                if(!isRadioSelected("q14")){ isValid = false; error = getErrorText(14); }
+                if(!isRadioSelected("q14")){ isValid = false; error = getErrorText(11); }
             } else if (document.getElementsByName("q13")[1].checked == true)  {
-                if(!isRadioSelected("q15")){ isValid = false; error = getErrorText(15); }
+                if(!isRadioSelected("q15")){ isValid = false; error = getErrorText(11); }
             }
 
             if (isValid == true) {
