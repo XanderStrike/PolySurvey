@@ -89,11 +89,11 @@ class SurveyController < ApplicationController
     @results['rid'] = new_result.id
     group = @results['rid'].to_i % 6
     case group
-    when 0
+    when 0 # No PID; match-1-2 FAR; match-2-3 FAR
       @name0 += ["90%"]
       @name1 += ["40%"]
       @name2 += ["10%"]
-    when 1
+    when 1 # PID; match-distance FAR
       if result > 5
         @name0 = ["#{@name0[0]} (Libertarian)", "90%"]
         @name1 = ["#{@name1[0]} (Republican)", "40%"]
@@ -112,19 +112,19 @@ class SurveyController < ApplicationController
           @name2 = ["#{@name2[0]} (Republican)", "10%"]
         end
       end
-    when 2
+    when 2 # No PID; match-1-2 CLOSE; match-2-3 FAR
       @name0 += ["90%"]
       @name1 += ["80%"]
       @name2 += ["30%"]
-    when 3
+    when 3 # No PID; match-1-2 FAR; match-2-3 CLOSE
       @name0 += ["90%"]
       @name1 += ["40%"]
       @name2 += ["30%"]
-    when 4
+    when 4 # No PID; match-1-2 CLOSE; match-2-3 CLOSE
       @name0 += ["90%"]
       @name1 += ["70%"]
       @name2 += ["65%"]
-    when 5
+    when 5 # No PID; match-1-2 CLOSE; match-2-3 FAR
       @name0 += ["90%"]
       @name1 += ["70%"]
       @name2 += ["10%"]
