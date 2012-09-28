@@ -52,9 +52,9 @@ class SurveyController < ApplicationController
   # determine the political label affiliation for the subject
   # based on the sum of the first 15 questions
   def determine_affiliation (sum15)
-    if result > 5
+    if sum15 > 5
       return "conservative"
-    elsif result < -5
+    elsif sum15 < -5
       return "liberal"
     else
       return "moderate"
@@ -90,7 +90,7 @@ class SurveyController < ApplicationController
     @results = restrict_hash(params, 1)
 
     # the desired values to use for candidate match scores
-    match_cond_values = [96,[86,46],13]
+    match_cond_values = [96,[46,86],13]
 
 
     result = 0
@@ -110,10 +110,10 @@ class SurveyController < ApplicationController
     # Determine in which way the candidates are displayed (assign them to groups 0-8)
     new_result = Results.create
     @results['rid'] = new_result.id
-    group = @results['rid'].to_i % 8
+    @group = @results['rid'].to_i % 8
 
     # Add the PID if in that condition
-    if pid_cond(group) == 1
+    if pid_cond(@group) == 1
       if result > 5
         @name0[0] += " (Libertarian)"
         @name1[0] += " (Republican)"
@@ -124,6 +124,7 @@ class SurveyController < ApplicationController
         @name2[0] += " (Republican)"
       else
         @name0[0] += " (Reform)"
+        # account for the lean of moderates toward conservative or liberal
         if result > 0
           @name1[0] += " (Republican)"
           @name2[0] += " (Democrat)"
@@ -135,12 +136,12 @@ class SurveyController < ApplicationController
     end
 
     # Add the match values
-    @name0 += [ match_conditions[0] ]
-    @name1 += [ match_conditions[1][ match_cond(group) ] ]
-    @name2 += [ match_conditions[2] ]
+    @name0 += [ match_cond_values[0] ]
+    @name1 += [ match_cond_values[1][ match_cond(@group) ] ]
+    @name2 += [ match_cond_values[2] ]
 
-    # Handle the polling condition ....
-    # ...
+    # Handle the polling condition in p004
+    @results['poll_scenario'] = poll_cond(@group) # Data Key: poll_scenario either 0 (Wire) or 1 (Blowout)
 
     @results['name0'] = @name0[0]
     @results['match0'] = @name0[1]
@@ -148,7 +149,7 @@ class SurveyController < ApplicationController
     @results['match1'] = @name1[1]
     @results['name2'] = @name2[0]
     @results['match2'] = @name2[1]
-    @results['match_scenario'] = group
+    @results['match_scenario'] = @group
     @results['alignment'] = result
 
   end
@@ -161,9 +162,7 @@ class SurveyController < ApplicationController
     @name2 = [@results['name2'], @results['match2']]
 
     # Determine which group, close election or blowout election they are part of
-    @group = @results['rid'].to_i / 6 % 4
 
-    @results['poll_scenario'] = @group
   end
 
   def p005
