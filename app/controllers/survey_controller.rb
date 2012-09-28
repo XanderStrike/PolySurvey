@@ -49,6 +49,34 @@ class SurveyController < ApplicationController
     return r
   end
 
+  # determine the political label affiliation for the subject
+  # based on the sum of the first 15 questions
+  def determine_affiliation (sum15)
+    if result > 5
+      return "conservative"
+    elsif result < -5
+      return "liberal"
+    else
+      return "moderate"
+    end
+  end
+
+  # pid_cont: bit 0; return 1 if subject in PID condition, 0 for NoPID
+  def pid_cond(c)
+    return c % 2
+  end
+
+  # poll_cond: bit 1; return 1 if subject in Blowout polling condition, 0 for PhotoFinish
+  def poll_cond(c)
+    return (c / 2) % 2
+  end
+
+  # match_cond: bit 2; return 1 if subject in CLOSE match condition with 2nd choice, 0 if FAR
+  def match_cond(c)
+    return (c / 4) % 2
+  end
+  
+  # Match conditions [[90],[86,46],[13]]
 
   def p001
     @results = restrict_hash(params, 1)
@@ -68,14 +96,7 @@ class SurveyController < ApplicationController
       result += @results['n%02d' % i].to_i
     end
 
-  	# Determine affiliation
-  	if result > 5
-      @output = "conservative"
-    elsif result < -5
-    	@output = "liberal"
-    else
-    	@output = "moderate"
-    end
+    @output = determine_affiliation(result)
 
     # Randomly generate three names
     names = ["Michael Jones", "Joseph Taylor", "Charles Thompson", "Jeffrey Smith", "Alexander Johnston", "Steve Brooks"].shuffle
@@ -84,10 +105,44 @@ class SurveyController < ApplicationController
     @name1 = [names[1]]
     @name2 = [names[2]]
 
-    # Determine in which way the candidates are displayed (assign them to groups 1-6)
+    # Determine in which way the candidates are displayed (assign them to groups 0-8)
     new_result = Results.create
     @results['rid'] = new_result.id
-    group = @results['rid'].to_i % 6
+    group = @results['rid'].to_i % 8
+
+    # Add the PID if in that condition
+    if pid_cond(group) == 1
+      if result > 5
+        @name0[0] += " (Libertarian)"
+        @name1[0] += " (Republican)"
+        @name2[0] += " (Democrat)"
+      elsif result < -5
+        @name0[0] += " (Green)"
+        @name1[0] += " (Democrat)"
+        @name2[0] += " (Republican)"
+      else
+        @name0[0] += " (Reform)"
+        if result > 0
+          @name1[0] += " (Republican)"
+          @name2[0] += " (Democrat)"
+        else
+          @name1[0] += " (Democrat)"
+          @name2[0] += " (Republican)"
+        end
+      end
+    end
+
+    # Add the match values
+    @name0 += ["96%"]
+    if match_cond(group) == 1
+      @name1 += ["86%"]
+    else
+      @name1 += ["46%"]
+    end
+    @name2 += ["13%"]
+
+    # Handle the polling condition ....
+
     case group
     when 0 # No PID; match-1-2 FAR; match-2-3 FAR
       @name0 += ["90%"]
@@ -124,7 +179,7 @@ class SurveyController < ApplicationController
       @name0 += ["90%"]
       @name1 += ["70%"]
       @name2 += ["65%"]
-    when 5 # No PID; match-1-2 CLOSE; match-2-3 FAR
+    when 5 # No PID; match-1-2 CLOSE; match-2-3 FAR  **** This seems to be a repeat!
       @name0 += ["90%"]
       @name1 += ["70%"]
       @name2 += ["10%"]
