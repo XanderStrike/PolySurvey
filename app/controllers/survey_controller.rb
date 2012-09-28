@@ -76,8 +76,6 @@ class SurveyController < ApplicationController
     return (c / 4) % 2
   end
   
-  # Match conditions [[90],[86,46],[13]]
-
   def p001
     @results = restrict_hash(params, 1)
     @results["time1"] = Time.now.tv_sec.to_s
@@ -90,6 +88,10 @@ class SurveyController < ApplicationController
 
   def p003
     @results = restrict_hash(params, 1)
+
+    # the desired values to use for candidate match scores
+    match_cond_values = [96,[86,46],13]
+
 
     result = 0
     for i in 1..15
@@ -133,57 +135,13 @@ class SurveyController < ApplicationController
     end
 
     # Add the match values
-    @name0 += ["96%"]
-    if match_cond(group) == 1
-      @name1 += ["86%"]
-    else
-      @name1 += ["46%"]
-    end
-    @name2 += ["13%"]
+    @name0 += [ match_conditions[0] ]
+    @name1 += [ match_conditions[1][ match_cond(group) ] ]
+    @name2 += [ match_conditions[2] ]
 
     # Handle the polling condition ....
+    # ...
 
-    case group
-    when 0 # No PID; match-1-2 FAR; match-2-3 FAR
-      @name0 += ["90%"]
-      @name1 += ["40%"]
-      @name2 += ["10%"]
-    when 1 # PID; match-distance FAR
-      if result > 5
-        @name0 = ["#{@name0[0]} (Libertarian)", "90%"]
-        @name1 = ["#{@name1[0]} (Republican)", "40%"]
-        @name2 = ["#{@name2[0]} (Democrat)", "10%"]
-      elsif result < -5
-        @name0 = ["#{@name0[0]} (Green)", "90%"]
-        @name1 = ["#{@name1[0]} (Democrat)", "40%"]
-        @name2 = ["#{@name2[0]} (Republican)", "10%"]
-      else
-        @name0 = ["#{@name0[0]} (Reform)", "90%"]
-        if result > 0
-          @name1 = ["#{@name1[0]} (Republican)", "40%"]
-          @name2 = ["#{@name2[0]} (Democrat)", "10%"]
-        else
-          @name1 = ["#{@name1[0]} (Democrat)", "40%"]
-          @name2 = ["#{@name2[0]} (Republican)", "10%"]
-        end
-      end
-    when 2 # No PID; match-1-2 CLOSE; match-2-3 FAR
-      @name0 += ["90%"]
-      @name1 += ["80%"]
-      @name2 += ["30%"]
-    when 3 # No PID; match-1-2 FAR; match-2-3 CLOSE
-      @name0 += ["90%"]
-      @name1 += ["40%"]
-      @name2 += ["30%"]
-    when 4 # No PID; match-1-2 CLOSE; match-2-3 CLOSE
-      @name0 += ["90%"]
-      @name1 += ["70%"]
-      @name2 += ["65%"]
-    when 5 # No PID; match-1-2 CLOSE; match-2-3 FAR  **** This seems to be a repeat!
-      @name0 += ["90%"]
-      @name1 += ["70%"]
-      @name2 += ["10%"]
-    end
     @results['name0'] = @name0[0]
     @results['match0'] = @name0[1]
     @results['name1'] = @name1[0]
