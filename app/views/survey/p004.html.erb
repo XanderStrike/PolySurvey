@@ -45,14 +45,14 @@
                 <table>
                     <tr>
                         <td class="news_header">
-                            <% if @group == 0 || @group == 1 %>
+                            <% if @pollcond == 0  %>
                             <p style="margin-top:0px;">Election down to the wire</p>
-                            <% elsif @group == 2 || @group == 3 %>
+                            <% else %>
                             <p style="margin-top:0px;">Election a predicted blowout</p>
                             <% end %>
                         </td>
                         <td class="news_content">
-                            <% if @results['poll_scenario'] == 0 %>
+                            <% if @pollcond == 0 %>
                             <p>WASHINGTON DC (API): The presidential election is coming down to the wire and the candidates are neck-and-neck.  The latest polls show a statistical dead heat, with <%= @name1[0] %> receiving 49 percent support, <%= @name2[0] %> 48 percent, and third party challenger <%= @name0[0] %> just a mere 3 percent.</p>
                             <% else %>
                             <p>WASHINGTON DC (API): With election day around the corner, we may already know who our next president is. The latest polls show <%= @name1[0] %> with 65 percent support of likely voters, with <%= @name2[0] %> trailing at 32 percent, and third party challenger <%= @name0[0] %> at 3 percent.</p>
@@ -86,7 +86,7 @@
                       <label for="vote_1"><%= @name1[0] %></label>
 		      </td>
 		    <td>[<%= @name1[1] %> match with your preferences;<br>
-		      &nbsp;polling at <% if @results['poll_condition'] == 0 %> 49% <% else %> 65% <% end %> support]</td>
+		      &nbsp;polling at <% if @pollcond == 0 %> 49% <% else %> 65% <% end %> support]</td>
 		  </tr>
 
 		  <tr>
@@ -95,7 +95,7 @@
                       <label for="vote_2"><%= @name2[0] %> </label>
 		      </td>
 		    <td>[<%= @name2[1] %> match with your preferences;<br>
-		      &nbsp;polling at <% if @results['poll_condition'] == 0 %> 48% <% else %> 32% <% end %> support]</td>
+		      &nbsp;polling at <% if @pollcond == 0 %> 48% <% else %> 32% <% end %> support]</td>
 		    </tr>
 		  </table>
 			<br>
@@ -106,8 +106,7 @@
 				<button type="button" onclick="validatePage()">Continue</button>
 			<% end %>
 			
-			<br><br><%= @data_new %>
-			
+			<br><br>
 			</div>
 		</div>
 	</div>

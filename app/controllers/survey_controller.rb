@@ -112,7 +112,7 @@ class SurveyController < ApplicationController
     @results['rid'] = new_result.id
     @group = @results['rid'].to_i % 8
 
-    # Add the PID if in that condition
+    # Add the PID if called for
     if pid_cond(@group) == 1
       if result > 5
         @name0[0] += " (Libertarian)"
@@ -161,7 +161,11 @@ class SurveyController < ApplicationController
     @name1 = [@results['name1'], @results['match1']]
     @name2 = [@results['name2'], @results['match2']]
 
-    # Determine which group, close election or blowout election they are part of
+    # Debuging values
+    group = @results['match_scenario'].to_i
+    @pidcond = pid_cond(group)
+    @pollcond = poll_cond(group)
+    @matchcond = match_cond(group)
 
   end
 
