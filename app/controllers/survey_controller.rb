@@ -90,7 +90,7 @@ class SurveyController < ApplicationController
     @results = restrict_hash(params, 1)
 
     # the desired values to use for candidate match scores
-    match_cond_values = [96,[46,86],13]
+    match_cond_values = [93,[47,87],13]
 
 
     result = 0
