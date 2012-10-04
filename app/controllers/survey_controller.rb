@@ -212,8 +212,9 @@ class SurveyController < ApplicationController
     rid = params['rid'].to_i
     @results = restrict_hash(params, 2)
     newtime = (Time.now.tv_sec - @results["time1"].to_i) - (@results["time2"].to_i + @results["time3"].to_i + @results["time4"].to_i)
+    @results['total_time'] = (Time.now.tv_sec - @results['time1'].to_i).to_s
+    @results["time1"] = Time.at(@results["time1"].to_i).to_s
     @results["time5"] = newtime.to_s
-    @results['total_time'] = (@results['time5'].to_i - @results['time1'].to_i).to_s
     @results['code'] = session['session_id']
 
     unless session['saved']
