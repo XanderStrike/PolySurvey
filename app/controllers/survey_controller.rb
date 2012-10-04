@@ -68,6 +68,8 @@ class SurveyController < ApplicationController
       result += @results['n%02d' % i].to_i
     end
 
+    @results["stance"] = result
+
   	# Determine affiliation
   	if result > 5
       @output = "conservative"
