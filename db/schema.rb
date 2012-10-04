@@ -11,13 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120919045003) do
+ActiveRecord::Schema.define(:version => 20121004044608) do
 
   create_table "results", :force => true do |t|
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.string   "match_scenario"
-    t.string   "poll_scenario"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.string   "vote"
     t.string   "time1"
     t.string   "time2"
@@ -84,6 +82,10 @@ ActiveRecord::Schema.define(:version => 20120919045003) do
     t.string   "q33"
     t.string   "q34"
     t.string   "code"
+    t.string   "combined_scenario"
+    t.string   "pid"
+    t.string   "blowout"
+    t.string   "close_match"
   end
 
   create_table "users", :force => true do |t|
