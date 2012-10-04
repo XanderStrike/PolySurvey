@@ -35,15 +35,13 @@
         }
 
         function getQuestion(number, show) {
-            for(var i = 0; i < document.getElementsByName("q"+ number); i++)
-            {
-                document.getElementsByName("q"+ number)[i].checked = false;
-            }
-
             if (show == true)
             {
                 document.getElementById("q"+ number +"ID").style.display = "block";
             } else {
+                for(var i = 0; i < document.getElementsByName("q"+ number).length; i++) {
+                  document.getElementsByName("q"+ number)[i].checked = false;
+                }
                 document.getElementById("q"+ number +"ID").style.display = "none";
             }
         }
