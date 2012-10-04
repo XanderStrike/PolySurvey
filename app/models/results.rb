@@ -10,6 +10,7 @@ class Results < ActiveRecord::Base
     attr_accessible :total_time
     attr_accessible :origin
     attr_accessible :alignment
+    attr_accessible :code
     attr_accessible :n01
     attr_accessible :n02
     attr_accessible :n03

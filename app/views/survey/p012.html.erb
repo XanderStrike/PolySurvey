@@ -7,16 +7,24 @@
             var error = "";
 
             //Loop through to see if there are any errors, going in reverse
-            if(!isRadioSelected("q31")){ isValid = false; error = getErrorText(31); }
-            if(!isRadioSelected("q30")){ isValid = false; error = getErrorText(30); }
-            if(!isRadioSelected("q28")){ isValid = false; error = getErrorText(28); }
+            if(!isRadioSelected("q31")){ isValid = false; error = getErrorText(27); }
+            if(!isRadioSelected("q30")){ isValid = false; error = getErrorText(26); }
+            if(!isRadioSelected("q28")){ isValid = false; error = getErrorText(24); }
 
             if (document.getElementsByName("q31")[0].checked == true) {
-                if(!isRadioSelected("q32")){ isValid = false; error = getErrorText(32); }
+                if(!isRadioSelected("q32")){ isValid = false; error = getErrorText(28); }
+            }
+
+            if (document.getElementsByName("q32")[0].checked == true) {
+                if(!isRadioSelected("q33")){ isValid = false; error = getErrorText(29); }
+            }
+
+            if (document.getElementsByName("q33")[0].checked == true) {
+                if(!isRadioSelected("q34")){ isValid = false; error = getErrorText(30); }
             }
 
             //Loop through the text boxes
-            if (!isTextBoxRangeValid("q27")){ isValid = false; error = "Date of birth valid number"; }
+            if (!isTextBoxRangeValid("q27")){ isValid = false; error = "Question 23: please enter a valid age."; }
 
             if (isValid == true) {
                 frm.submit();
@@ -127,20 +135,20 @@
 
 
 			<div class="question">
-				<p>26. What is the highest level of education you have obtained?</p>
+				<p>26. What is the highest level of education you have <em>completed</em>?</p>
 					<input type="radio" name="q30" value="0" id="q30_0" />
-					<label for="q30_0">Did not graduate</label><br>
+					<label for="q30_0">Did not graduate from high school</label><br>
 					<input type="radio" name="q30" value="1" id="q30_1" />
-					<label for="q30_1">High school diploma (including AA)</label><br>
+					<label for="q30_1">High school diploma</label><br>
 					<input type="radio" name="q30" value="2" id="q30_2" />
-					<label for="q30_2">I am currently in college</label><br>
+					<label for="q30_2">Associates or other two-year degree</label><br>
 					<input type="radio" name="q30" value="3" id="q30_3" />
-					<label for="q30_3">I have completed my undergraduate degree (MA or BA)</label><br>
+					<label for="q30_3">Four year degree (BA, BS, etc.)</label><br>
 					<input type="radio" name="q30" value="4" id="q30_4" />
-					<label for="q30_4">I am currently in graduate school</label><br>
+					<label for="q30_4">Masters degree</label><br>
 					<input type="radio" name="q30" value="5" id="q30_5" />
-					<label for="q30_5">I have completed an advanced degree (e.g., Masters, Doctorate, MBA, MD, JD, etc.)</label><br>
-                    <input type="radio" name="q30" value="6" id="q30_6" />
+					<label for="q30_5">PhD or MD</label><br>
+					<input type="radio" name="q30" value="6" id="q30_6" />
 					<label for="q30_6">Other </label>
 					<input type="text" name="q30a" value="" id="q30_6a" />
 					<br>
@@ -160,15 +168,15 @@
 				<p>28. Where do you go to college?</p>
 					<input type="radio" name="q32" value="0" id="q32_0" onclick="getQuestion(33, true)" />
 					<label for="q32_0">Westmont College</label><br>
-					<input type="radio" name="q32" value="1" id="q32_1" onclick="getQuestion(33, false), getQuestion(34, false)" />
+					<input type="radio" name="q32" value="1" id="q32_1" onclick="getQuestion(33, false); getQuestion(34, false)" />
 					<label for="q32_1">UCSB</label><br>
-					<input type="radio" name="q32" value="2" id="q32_2" onclick="getQuestion(33, false), getQuestion(34, false)" />
+					<input type="radio" name="q32" value="2" id="q32_2" onclick="getQuestion(33, false); getQuestion(34, false)" />
 					<label for="q32_2">SBCC</label><br>
-					<input type="radio" name="q32" value="3" id="q32_3" onclick="getQuestion(33, false), getQuestion(34, false)" />
+					<input type="radio" name="q32" value="3" id="q32_3" onclick="getQuestion(33, false); getQuestion(34, false)" />
 					<label for="q32_3">University of Denver</label><br>
-					<input type="radio" name="q32" value="4" id="q32_4" onclick="getQuestion(33, false), getQuestion(34, false)" />
-					<label for="q32_4">SUNY Postdam</label><br>
-                    <input type="radio" name="q32" value="5" id="q32_5" onclick="getQuestion(33, false), getQuestion(34, false)" />
+					<input type="radio" name="q32" value="4" id="q32_4" onclick="getQuestion(33, false); getQuestion(34, false)" />
+					<!-- <label for="q32_4">SUNY Postdam</label><br>
+					<input type="radio" name="q32" value="5" id="q32_5" onclick="getQuestion(33, false); getQuestion(34, false)" /> -->
 					<label for="q32_5">Other</label>
 					<input type="text" name="q32a" value="" id="q32_5a" />
 					<br>
