@@ -83,7 +83,8 @@ class SurveyController < ApplicationController
 
   def p002
     @results = restrict_hash(params, 1)
-    @results["time2"] = Time.now.tv_sec.to_s
+    newtime = Time.now.tv_sec - @results["time1"].to_i
+    @results["time2"] = newtime.to_s
   end
 
   def p003
@@ -156,7 +157,8 @@ class SurveyController < ApplicationController
 
   def p004
     @results = restrict_hash(params, 1)
-    @results["time3"] = Time.now.tv_sec.to_s
+    newtime = (Time.now.tv_sec - @results["time1"].to_i) - @results["time2"].to_i
+    @results["time3"] = newtime.to_s
     @name0 = [@results['name0'], @results['match0']]
     @name1 = [@results['name1'], @results['match1']]
     @name2 = [@results['name2'], @results['match2']]
@@ -174,13 +176,12 @@ class SurveyController < ApplicationController
     @name0 = [@results['name0'], @results['match0']]
     @name1 = [@results['name1'], @results['match1']]
     @name2 = [@results['name2'], @results['match2']]
-
-    @group = @results['poll_scenario'].to_i
-    @results["time4"] = Time.now.tv_sec.to_s
   end
 
   def p006
     @results = restrict_hash(params, 1)
+    newtime = (Time.now.tv_sec - @results["time1"].to_i) - (@results["time2"].to_i + @results["time3"].to_i)
+    @results["time4"] = newtime.to_s
   end
 
   def p007
@@ -210,7 +211,8 @@ class SurveyController < ApplicationController
   def p013
     rid = params['rid'].to_i
     @results = restrict_hash(params, 2)
-    @results["time5"] = Time.now.tv_sec.to_s
+    newtime = (Time.now.tv_sec - @results["time1"].to_i) - (@results["time2"].to_i + @results["time3"].to_i + @results["time4"].to_i)
+    @results["time5"] = newtime.to_s
     @results['total_time'] = (@results['time5'].to_i - @results['time1'].to_i).to_s
     @results['code'] = session['session_id']
 
