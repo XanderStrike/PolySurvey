@@ -1,10 +1,14 @@
 class SurveyController < ApplicationController
 
   def restrict_hash (h, level)
+	# level 1 = carries value from one page to the next
+	# level 2 = carries value and also writes to database
     valid = {
       'origin' => 2,
-      'match_scenario' => 2,
-      'poll_scenario' => 2,
+      'combined_scenario' => 2,
+      'pid' => 2,
+      'blowout' => 2,
+      'close_match' => 2,
       'alignment' => 2,
       'rid' => 1,
       'code' => 2,
@@ -142,7 +146,9 @@ class SurveyController < ApplicationController
     @name2 += [ match_cond_values[2] ]
 
     # Handle the polling condition in p004
-    @results['poll_scenario'] = poll_cond(@group) # Data Key: poll_scenario either 0 (Wire) or 1 (Blowout)
+    @results['blowout'] = poll_cond(@group) # Data Key: 0 (down-to-the-wire) or 1 (Blowout)
+	@results['pid'] = pid_cond(@group) # Data Key: 0 (no PID) or 1 (PID)
+	@results['close_match'] = match_cond(@group) # Data Key: 0 (far match) or 1 (close match)
 
     @results['name0'] = @name0[0]
     @results['match0'] = @name0[1]
@@ -150,7 +156,7 @@ class SurveyController < ApplicationController
     @results['match1'] = @name1[1]
     @results['name2'] = @name2[0]
     @results['match2'] = @name2[1]
-    @results['match_scenario'] = @group
+    @results['combined_scenario'] = @group
     @results['alignment'] = result
 
   end
@@ -164,18 +170,11 @@ class SurveyController < ApplicationController
     @name2 = [@results['name2'], @results['match2']]
 
     # Debuging values
-    group = @results['match_scenario'].to_i
+    group = @results['combined_scenario'].to_i
     @pidcond = pid_cond(group)
     @pollcond = poll_cond(group)
     @matchcond = match_cond(group)
 
-  end
-
-  def p005
-    @results = restrict_hash(params, 1)
-    @name0 = [@results['name0'], @results['match0']]
-    @name1 = [@results['name1'], @results['match1']]
-    @name2 = [@results['name2'], @results['match2']]
   end
 
   def p006

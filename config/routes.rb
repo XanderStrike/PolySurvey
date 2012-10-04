@@ -11,9 +11,6 @@ PolySurvey::Application.routes.draw do
   #get "survey/p004"
   post "survey/p004"
 
-  #get "survey/p005"
-  post "survey/p005"
-
   #get "survey/p006"
   post "survey/p006"
 

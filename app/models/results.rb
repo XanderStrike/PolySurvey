@@ -1,6 +1,8 @@
 class Results < ActiveRecord::Base
-    attr_accessible :match_scenario
-    attr_accessible :poll_scenario
+    attr_accessible :combined_scenario
+	attr_accessible :pid
+	attr_accessible :blowout
+	attr_accessible :close_match
     attr_accessible :vote
     attr_accessible :time1
     attr_accessible :time2
